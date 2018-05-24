@@ -17,7 +17,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                this is home~<br/>
+                this is home~!<br/>
                 当前计数 new：{this.state.count}<br/>
                 <button onClick={() => this._handleClick()}>auto plus</button>
             </div>
