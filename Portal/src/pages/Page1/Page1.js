@@ -4,6 +4,7 @@ import image from './images/hashiqi.jpg';
 
 export default class Page1 extends Component {
     render() {
+        console.log('page');
         return (
             <div className="page-box">
                 this is Page1~Hot
