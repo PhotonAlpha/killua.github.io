@@ -7,6 +7,7 @@ const devConfig = {
     devtool: 'inline-source-map',
     entry: {
         app: [
+            'babel-polyfill',
             'react-hot-loader/patch',
             path.join(__dirname, 'src/index.js')
         ],
@@ -19,8 +20,8 @@ const devConfig = {
     },
     module: {
         rules: [{
-            test: /\.css$/,
-            use: ["style-loader", "css-loader"]
+            test: /\.(css|scss)$/,
+            use: ['style-loader', 'css-loader', 'postcss-loader']
         }]
     },
     devServer: {

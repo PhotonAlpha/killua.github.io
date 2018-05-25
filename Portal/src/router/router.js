@@ -1,6 +1,6 @@
 import React from 'react';
 // import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Bundle from './Bundle';
 import Loading from 'components/Loading/Loading';
@@ -23,6 +23,32 @@ const createComponent = (component) => (props) => (
     </Bundle>
 );
 
+export default () => (
+    <div>
+        <Route exact path="/" component={createComponent(Home)}/>
+        <Route path="/page1" component={createComponent(Page1)}/>
+        <Route path="/counter" component={createComponent(Counter)}/>
+        <Route path="/userinfo" component={createComponent(UserInfo)}/>
+        <Route path={`/topics/:topicId`} component={createComponent(UserInfo)}/>
+        <Route component={createComponent(NotFound)}/>
+    </div>
+    // <div>
+    //     <Header>
+            
+    //         <Switch>
+    //             {/* <Route exact path="/" component={createComponent(Home)}/>
+    //             <Route path="/page1" component={createComponent(Page1)}/>
+    //             <Route path="/counter" component={createComponent(Counter)}/>
+    //             <Route path="/userinfo" component={createComponent(UserInfo)}/>
+    //             <Route component={createComponent(NotFound)}/> */}
+                
+                
+    //         </Switch>
+    //     </Header>
+    // </div>
+);
+// export default getRouter;
+
 // const getRouter = () => (
 //     <Router>
 //         <div>
@@ -42,29 +68,3 @@ const createComponent = (component) => (props) => (
 //         </div>    
 //     </Router>
 // );
-// const getRouter = () => {
-//     console.log(11111);
-//     <Router>
-//         <div>
-//             <Switch>
-//                 <Route exact path="/" component={createComponent(Home)}/>
-//                 <Route path="/page1" component={createComponent(Page1)}/>
-//                 <Route path="/counter" component={createComponent(Counter)}/>
-//                 <Route path="/userinfo" component={createComponent(UserInfo)}/>
-//                 <Route component={createComponent(NotFound)}/>
-//             </Switch>
-//         </div>
-//     </Router>    
-//     };
-export default () => (
-    <div>
-        <Switch>
-            <Route exact path="/" component={createComponent(Home)}/>
-            <Route path="/page1" component={createComponent(Page1)}/>
-            <Route path="/counter" component={createComponent(Counter)}/>
-            <Route path="/userinfo" component={createComponent(UserInfo)}/>
-            <Route component={createComponent(NotFound)}/>
-        </Switch>
-    </div>
-);
-// export default getRouter;

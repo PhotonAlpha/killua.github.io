@@ -5,6 +5,7 @@ const webpack = require('webpack');
 commonConfig = {
     entry: {
         app: [
+            "babel-polyfill",
             path.join(__dirname, 'src/index.js')
         ],
         vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
@@ -50,7 +51,8 @@ commonConfig = {
             router: path.join(__dirname, 'src/router'),
             actions: path.join(__dirname, 'src/redux/actions'),
             reducers: path.join(__dirname, 'src/redux/reducers'),
-            components: path.join(__dirname, 'src/components')
+            components: path.join(__dirname, 'src/components'),
+            assets: path.join(__dirname, 'src/assets')
         }
     }
 }

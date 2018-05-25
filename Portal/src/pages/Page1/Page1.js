@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Page1.css';
-import image from './images/hashiqi.jpg';
+import image from 'assets/hashiqi.jpg';
 
 export default class Page1 extends Component {
     render() {
