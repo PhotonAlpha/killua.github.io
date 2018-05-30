@@ -1,12 +1,26 @@
 /* For demo */
 .ant-carousel .slick-slide {
     text-align: center;
-    height: 160px;
+    height: calc(100vh - 64px - 69px);
     line-height: 160px;
-    background: #364d79;
+    /* background: #364d79; */
+    background-image: url(../../assets/whale-icon.gif);
+    background-repeat: no-repeat;
+    background-size: 100px 200px;
+
     overflow: hidden;
 }
 
 .ant-carousel .slick-slide h3 {
 color: #fff;
+}
+
+.ant-carousel {
+    
+}
+
+.demo-container {
+    /* background: radial-gradient(transparent 0, transparent 5px, #F39B00 5px);
+    background-size: 15px 15px;
+    background-position: 9px 3px; */
 }

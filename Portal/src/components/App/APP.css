@@ -2,6 +2,12 @@
     width: 120px;
     height: 31px;
     background: rgba(255,255,255,.2);
+    /* background-image: url(../../assets/img-bg-header.jpg); */
     margin: 16px 24px 16px 0;
     float: left;
+}
+
+.ant-layout-header {
+    background-image: url(../../assets/img-bg-header.jpg);
+    height: 260px;
 }

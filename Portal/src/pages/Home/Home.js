@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { Button, Carousel } from 'antd';
 import './Home.css';
+import img1 from 'assets/whale-icon.gif'
+import img2 from 'assets/full_illustration.png'
+import img3 from 'assets/B2XTRwtCAAEnqlP.jpg'
+import img4 from 'assets/animal-canine-cold-160843.jpg'
 
 export default class Home extends Component {
     constructor(props) {
@@ -22,32 +26,16 @@ export default class Home extends Component {
     
     render() {
         return (
-            <div>
-                this is home~!<br/>
-                当前计数 new：{this.state.count}<br/>
-                <Button type="primary" onClick={() => this._handleClick()}>auto plus</Button>
-                {/* <button onClick={() => this._handleClick()}>auto plus</button> */}
-
-                <Carousel afterChange={this.onChange}>
-                    <div><h3>1</h3></div>
-                    <div><h3>2</h3></div>
-                    <div><h3>3</h3></div>
-                    <div><h3>4</h3></div>
-                </Carousel>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-                <div>1</div><br/>
-            </div>
+            // {/* this is home~!<br/>
+            // 当前计数 new：{this.state.count}<br/>
+            // <Button type="primary" onClick={() => this._handleClick()}>auto plus</Button> */}
+            // {/* <button onClick={() => this._handleClick()}>auto plus</button> */}
+            <Carousel autoplay afterChange={this.onChange}>
+                <div><img style={{ width: '100%' }} src={img3}/></div>
+                <div><img style={{ width: '100%' }} src={img2}/></div>
+                <div><img style={{ width: '100%' }} src={img3}/></div>
+                <div><img style={{ width: '100%' }} src={img4}/></div>
+            </Carousel>
         )
     }
 }

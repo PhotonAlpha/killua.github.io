@@ -9,7 +9,14 @@ import Home from 'bundle-loader?lazy&name=home!pages/Home/Home';
 import Page1 from 'bundle-loader?lazy&name=page1!pages/Page1/Page1';
 import Counter from 'bundle-loader?lazy&name=counter!pages/Counter/Counter';
 import UserInfo from 'bundle-loader?lazy&name=userInfo!pages/UserInfo/UserInfo';
+
 import NotFound from 'bundle-loader?lazy&name=notFound!pages/NotFound/NotFound';
+
+import SpringBoot from 'bundle-loader?lazy&name=springBoot!pages/SpringBoot/SpringBoot';
+import SpringCloud from 'bundle-loader?lazy&name=springCloud!pages/SpringCloud/SpringCloud';
+import Archives from 'bundle-loader?lazy&name=archives!pages/Archives/Archives';
+import Redios from 'bundle-loader?lazy&name=redios!pages/Redios/Redios';
+import About from 'bundle-loader?lazy&name=about!pages/About/About';
 // import Home from 'pages/Home/Home';
 // import Page1 from 'pages/Page1/Page1';
 // import Counter from 'pages/Counter/Counter';
@@ -29,8 +36,14 @@ export default () => (
         <Route path="/page1" component={createComponent(Page1)}/>
         <Route path="/counter" component={createComponent(Counter)}/>
         <Route path="/userinfo" component={createComponent(UserInfo)}/>
-        <Route path={`/topics/:topicId`} component={createComponent(UserInfo)}/>
-        <Route component={createComponent(NotFound)}/>
+
+        <Route path="/springboot" component={createComponent(SpringBoot)}/>
+        <Route path="/springcloud" component={createComponent(SpringCloud)}/>
+        <Route path="/archives" component={createComponent(Archives)}/>
+        <Route path="/redios" component={createComponent(Redios)}/>
+        <Route path="/about" component={createComponent(About)}/>
+        
+        <Route path="/404" component={createComponent(NotFound)}/>
     </div>
     // <div>
     //     <Header>

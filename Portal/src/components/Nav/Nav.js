@@ -20,11 +20,36 @@ export default class Nav extends Component {
 
     render() {
         return (
-            <Menu theme='dark' defaultSelectedKeys={['2']} style={{ lineHeight: '64px' }} onClick={this.handleClick} selectedKeys={[this.state.current]} mode='horizontal' >
+            <Menu theme="dark" defaultSelectedKeys={['2']} style={{ lineHeight: '64px' }} onClick={this.handleClick} selectedKeys={[this.state.current]} mode='horizontal' >
               <Menu.Item key="home">
-                <Link to="/"><Icon type="mail" />Home</Link>
+                <Link to="/"><Icon type="home" />Home</Link>
               </Menu.Item>
-              <Menu.Item key="page1">
+              <Menu.Item key="springboot">
+                <Link to="/springboot"><Icon type="coffee" />SpringBoot</Link>
+              </Menu.Item>
+              <Menu.Item key="springcloud">
+                <Link to="/springcloud"><Icon type="cloud" />SpringCloud</Link>
+              </Menu.Item>
+              {/* <Menu.Item key="redios">
+                <Link to="/redios"><Icon type="youtube" />Redios</Link>
+              </Menu.Item> */}
+              <SubMenu title={<span><Icon type="redio" />Redios</span>}>
+                <MenuItemGroup title="WOW">
+                  <Menu.Item key="redio:1"><Link to="/redios">Redios</Link></Menu.Item>
+                </MenuItemGroup>
+                <MenuItemGroup title="Learning">
+                  <Menu.Item key="redio:2">Option 3</Menu.Item>
+                  <Menu.Item key="redio:3">Option 4</Menu.Item>
+                </MenuItemGroup>
+              </SubMenu>
+              <Menu.Item key="archives">
+                <Link to="/archives"><Icon type="hdd" />Archives</Link>
+              </Menu.Item>
+              <Menu.Item key="about">
+                <Link to="/about"><Icon type="dashboard" />About</Link>
+              </Menu.Item>
+
+              {/* <Menu.Item key="page1">
                 <Link to="/page1"><Icon type="appstore" />page1</Link>
               </Menu.Item>
               <Menu.Item key="counter">
@@ -32,7 +57,7 @@ export default class Nav extends Component {
               </Menu.Item>
               <Menu.Item key="userinfo">
                 <Link to="/userinfo"><Icon type="appstore" />userinfo</Link>
-              </Menu.Item>
+              </Menu.Item> */}
             </Menu>
           // <ul>
           //     <li><Link to="/">Home</Link></li>
