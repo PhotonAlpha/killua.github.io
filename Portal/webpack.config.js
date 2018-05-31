@@ -29,7 +29,7 @@ const publicConfig = {
             }
         }),
         new ExtractTextPlugin({
-            filename: '[name].[contenthash:5].css',
+            filename: 'css/[name].[contenthash:5].css',
             allChunks: true
         }),
     ]

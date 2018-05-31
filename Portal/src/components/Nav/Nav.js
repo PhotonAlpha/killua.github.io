@@ -30,10 +30,7 @@ export default class Nav extends Component {
               <Menu.Item key="springcloud">
                 <Link to="/springcloud"><Icon type="cloud" />SpringCloud</Link>
               </Menu.Item>
-              {/* <Menu.Item key="redios">
-                <Link to="/redios"><Icon type="youtube" />Redios</Link>
-              </Menu.Item> */}
-              <SubMenu title={<span><Icon type="redio" />Redios</span>}>
+              <SubMenu title={<span><Icon type="youtube" /><span>Redios1111</span></span>}>
                 <MenuItemGroup title="WOW">
                   <Menu.Item key="redio:1"><Link to="/redios">Redios</Link></Menu.Item>
                 </MenuItemGroup>

@@ -9,6 +9,10 @@
 .ant-menu {
     background-color: initial;
 }
-.ant-menu-dark .ant-menu-item > a {
+.ant-menu-dark .ant-menu-item > a, .ant-menu-submenu-title span, .ant-menu-dark .ant-menu-item >a:hover,
+.ant-menu-dark .ant-menu-item-group-title {
     color: #001529;
+}
+.ant-menu-dark .ant-menu-sub {
+    background: #cbdae2;
 }

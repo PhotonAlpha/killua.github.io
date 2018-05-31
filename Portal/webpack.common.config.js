@@ -12,8 +12,8 @@ commonConfig = {
     },
     output: {
         path: path.join(__dirname, './dist'),
-        filename: '[name].[chunkhash].js',
-        chunkFilename: '[name].[chunkhash].js',
+        filename: 'js/[name].[chunkhash].js',
+        chunkFilename: 'js/[name].[chunkhash].js',
         publicPath: "/"
     },
     module: {
@@ -22,11 +22,12 @@ commonConfig = {
             use: ['babel-loader?cacheDirectory=true'],
             include: path.join(__dirname, 'src')
         }, {
-            test: /\.(png|jpg|gif)$/,
+            test: /\.(png|jpg|gif|svg)$/,
             use: [{
                 loader: 'url-loader',
                 options: {
-                    limit: 8192
+                    limit: 8192,
+                    name: 'images/[name].[ext]?[hash:7]'
                 }
             }]
         }]
