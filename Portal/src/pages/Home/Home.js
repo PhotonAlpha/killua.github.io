@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Carousel } from 'antd';
+import { Button, Carousel, Row, Col } from 'antd';
 import './Home.css';
 import img1 from 'assets/whale-icon.gif'
 import img2 from 'assets/full_illustration.png'
@@ -26,52 +26,56 @@ export default class Home extends Component {
     
     render() {
         return (
-            <div class="container">
-                <div class="slider-containers">
-                    <div class="slider-container">
+            // <Row>
+            //     <Col className="container">
+            //     </Col>
+            // </Row>
+            <div className="container">
+                <div className="slider-containers">
+                    <div className="slider-container">
                         <h2>Effect #2</h2>
-                        <div class="flexbox-slider flexbox-slider-2">
-                            <div class="flexbox-slide">
+                        <div className="flexbox-slider flexbox-slider-2">
+                            <div className="flexbox-slide">
                                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-1.jpg" alt="Slide Image"/>
-                                <div class="text-block">
+                                <div className="text-block">
                                     <h3>Slide #1 is here</h3>
-                                    <div class="text">
+                                    <div className="text">
                                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flexbox-slide">
+                            <div className="flexbox-slide">
                                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-2.jpg" alt="Slide Image"/>
-                                <div class="text-block">
+                                <div className="text-block">
                                     <h3>Slide #2 is here</h3>
-                                    <div class="text">
+                                    <div className="text">
                                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flexbox-slide">
+                            <div className="flexbox-slide">
                                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-3.jpg" alt="Slide Image"/>
-                                <div class="text-block">
+                                <div className="text-block">
                                     <h3>Slide #3 is here</h3>
-                                    <div class="text">
+                                    <div className="text">
                                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flexbox-slide">
+                            <div className="flexbox-slide">
                                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-4.jpg" alt="Slide Image"/>
-                                <div class="text-block">
+                                <div className="text-block">
                                     <h3>Slide #4 is here</h3>
-                                    <div class="text">
+                                    <div className="text">
                                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="flexbox-slide">
+                            <div className="flexbox-slide">
                                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-9.jpg" alt="Slide Image"/>
-                                <div class="text-block">
+                                <div className="text-block">
                                     <h3>Slide #5 is here</h3>
-                                    <div class="text">
+                                    <div className="text">
                                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
                                     </div>
                                 </div>

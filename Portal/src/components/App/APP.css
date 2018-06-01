@@ -1,12 +1,28 @@
+html, body {
+    height: 100vh;
+    background-image: url(../../assets/site-background.png)
+}
+
 .ant-layout-header .logo {
     width: 120px;
     height: 31px;
-    background: black;
     margin: 16px 24px 16px 0;
     float: left;
 }
 
 .ant-layout-header {
-    background-image: url(../../assets/img-bg-header.jpg);
+    background: initial;
+    /* background-image: url(../../assets/img-bg-header.jpg); */
     /* background-image: linear-gradient(to right top, #8e44ad 0%, #3498db 100%); */
+}
+.ant-layout > .ant-row {
+    background-image: url(../../assets/img-bg-header.jpg);
+}
+.ant-layout ,
+.ant-layout > .ant-layout-content,
+.ant-layout > .ant-layout-footer {
+    background: initial;
+}
+.ant-layout > .ant-layout-conten{
+    height: calc(100vh - 135px); 
 }

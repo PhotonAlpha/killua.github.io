@@ -1,11 +1,4 @@
-body {
-    padding: 0;
-    margin: 0;
-    background-color: #130d0a;
-    font-family: "Playfair Display", serif;
-    color: #fff;
-  }
-  
+
   #hero {
     height: 800px;
     overflow: hidden;
