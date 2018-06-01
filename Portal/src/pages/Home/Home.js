@@ -26,16 +26,60 @@ export default class Home extends Component {
     
     render() {
         return (
-            // {/* this is home~!<br/>
-            // 当前计数 new：{this.state.count}<br/>
-            // <Button type="primary" onClick={() => this._handleClick()}>auto plus</Button> */}
-            // {/* <button onClick={() => this._handleClick()}>auto plus</button> */}
-            <Carousel autoplay afterChange={this.onChange}>
-                <div><img style={{ width: '100%' }} src={img3}/></div>
-                <div><img style={{ width: '100%' }} src={img2}/></div>
-                <div><img style={{ width: '100%' }} src={img3}/></div>
-                <div><img style={{ width: '100%' }} src={img4}/></div>
-            </Carousel>
+            <div class="container">
+                <div class="slider-containers">
+                    <div class="slider-container">
+                        <h2>Effect #2</h2>
+                        <div class="flexbox-slider flexbox-slider-2">
+                            <div class="flexbox-slide">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-1.jpg" alt="Slide Image"/>
+                                <div class="text-block">
+                                    <h3>Slide #1 is here</h3>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flexbox-slide">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-2.jpg" alt="Slide Image"/>
+                                <div class="text-block">
+                                    <h3>Slide #2 is here</h3>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flexbox-slide">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-3.jpg" alt="Slide Image"/>
+                                <div class="text-block">
+                                    <h3>Slide #3 is here</h3>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flexbox-slide">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-4.jpg" alt="Slide Image"/>
+                                <div class="text-block">
+                                    <h3>Slide #4 is here</h3>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flexbox-slide">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/694606/eff-9.jpg" alt="Slide Image"/>
+                                <div class="text-block">
+                                    <h3>Slide #5 is here</h3>
+                                    <div class="text">
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

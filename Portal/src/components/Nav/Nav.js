@@ -28,7 +28,7 @@ export default class Nav extends Component {
                 <Link to="/springboot"><Icon type="coffee" />SpringBoot</Link>
               </Menu.Item>
               <Menu.Item key="springcloud">
-                <Link to="/springcloud"><Icon type="cloud" />SpringCloud</Link>
+                <Link to="/page1"><Icon type="cloud" />SpringCloud</Link>
               </Menu.Item>
               <SubMenu title={<span><Icon type="youtube" /><span>Redios1111</span></span>}>
                 <MenuItemGroup title="WOW">
@@ -45,16 +45,6 @@ export default class Nav extends Component {
               <Menu.Item key="about">
                 <Link to="/about"><Icon type="dashboard" />About</Link>
               </Menu.Item>
-
-              {/* <Menu.Item key="page1">
-                <Link to="/page1"><Icon type="appstore" />page1</Link>
-              </Menu.Item>
-              <Menu.Item key="counter">
-                <Link to="/counter"><Icon type="appstore" />counter</Link>
-              </Menu.Item>
-              <Menu.Item key="userinfo">
-                <Link to="/userinfo"><Icon type="appstore" />userinfo</Link>
-              </Menu.Item> */}
             </Menu>
           // <ul>
           //     <li><Link to="/">Home</Link></li>
