@@ -69,7 +69,7 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Footer style={{ textAlign: 'center' }}>
-                            <div>Copyright <Icon type="copyright" /> Cao Qiang </div>
+                            <div>Copyright <Icon type="copyright" /> 2018 Cao Qiang Used By React & Ant Design </div>
                         </Footer>
                     </Row>
                 </Layout>

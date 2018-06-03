@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './About.css';
-import { Menu, Icon, Layout, Modal, Button } from 'antd';
+import { Menu, Icon, Layout, Modal, Button, Row, Col, Input } from 'antd';
 
 export default class About extends Component {
     state = {
@@ -27,6 +27,16 @@ export default class About extends Component {
 
         return (
             <div className='container' >
+                <Row>
+                    <Col xs = {{span: 6}} >
+                        图片    width 260px height 200px
+                    </Col>
+                    <Col xs = {{span: 4}} >
+                        <Input addonBefore="Salt" placeholder="撒点盐" />
+                    </Col>
+                </Row>
+
+
                 <Button type="primary" onClick={this.showModal}>
                 Open
                 </Button>
@@ -42,11 +52,11 @@ export default class About extends Component {
                         </Button>,
                     ]}
                 >
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+                    <p>Some contents...</p>
+                    <p>Some contents...</p>
+                    <p>Some contents...</p>
+                    <p>Some contents...</p>
+                    <p>Some contents...</p>
                 </Modal>
             </div>
         )
