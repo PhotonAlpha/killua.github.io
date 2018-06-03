@@ -29,6 +29,7 @@ class Bundle extends Component {
     }
 
     render() {
+        console.log('~~~~~',this.state.displayLoading, this.constructor.name)
         return this.props.children(this.state.mod)
     }
 

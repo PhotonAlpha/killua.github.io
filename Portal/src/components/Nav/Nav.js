@@ -17,10 +17,15 @@ export default class Nav extends Component {
         current: e.key,
       });
     }
-
     render() {
+        const pathname = window.location.pathname;
+        const currentkey = pathname.replace('/','')?pathname.replace('/',''):'home';
+        this.state = {
+            current: currentkey
+        }
+
         return (
-          <Menu theme="dark" defaultSelectedKeys={['home']} style={{ lineHeight: '64px' }} onClick={this.handleClick} selectedKeys={[this.state.current]} mode='horizontal' >
+          <Menu defaultSelectedKeys={['home']} style={{ lineHeight: '64px' }} onClick={this.handleClick} selectedKeys={[this.state.current]} mode='horizontal' >
               <Menu.Item key="home">
                   <Link to="/"><Icon type="home" />Home</Link>
               </Menu.Item>
@@ -28,15 +33,20 @@ export default class Nav extends Component {
                   <Link to="/springboot"><Icon type="coffee" />SpringBoot</Link>
               </Menu.Item>
               <Menu.Item key="springcloud">
-                  <Link to="/page1"><Icon type="cloud" />SpringCloud</Link>
+                  {/* <Link to="/page1"><Icon type="cloud" />SpringCloud</Link> */}
+                  <Link to="/springcloud"><Icon type="cloud" />SpringCloud</Link>
               </Menu.Item>
-              <SubMenu title={<span><Icon type="youtube" /><span>Redios1111</span></span>}>
-                  <MenuItemGroup title="WOW">
-                    <Menu.Item key="redio:1"><Link to="/redios">Redios</Link></Menu.Item>
+              <Menu.Item key="docker">
+                  <Link to="/docker"><Icon type="hdd" />Docker</Link>
+              </Menu.Item>
+              <SubMenu title={<span><Icon type="youtube" /><span>Videos</span></span>}>
+                  <MenuItemGroup title="Games">
+                    <Menu.Item key="redio:1"><Link to="/wow">wow</Link></Menu.Item>
                   </MenuItemGroup>
                   <MenuItemGroup title="Learning">
-                    <Menu.Item key="redio:2">Option 3</Menu.Item>
-                    <Menu.Item key="redio:3">Option 4</Menu.Item>
+                    <Menu.Item key="redio:2">高等数学</Menu.Item>
+                    <Menu.Item key="redio:3">考研</Menu.Item>
+                    <Menu.Item key="redio:4"><Link to="/python">Python</Link></Menu.Item>
                   </MenuItemGroup>
               </SubMenu>
               <Menu.Item key="archives">

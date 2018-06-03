@@ -1,109 +1,96 @@
-
-.container {
-    width: 1200px;
-    margin: 0px auto 0;
+#hero-page {
+    margin-top: -138px;
 }
-.slider-containers {
-    width: 100%;
-    margin-top: 0px;
-}
-
-.slider-container {
-    margin-bottom: 0px;
-}
-.slider-container h2 {
-    text-align: center;
-    position: relative;
-    font-family: 'Merienda', cursive;
-    color: #CA9CE1;
-}
-  
-.flexbox-slider {
-    margin-top: 0px;
-}
-  
-  /*slide styles */
-.flexbox-slider {
-    display: flex;
-    width: 100%;
-    height: 500px;
-    visibility: hidden;
-}
-.flexbox-slider .flexbox-slide {
-    transition-property: all;
-    transition-duration: 0.3s;
-    transition-timing-function: linear;
-    transition-delay: 0s;
-    width: 20%;
-    height: 100%;
-    position: relative;
+#hero {
+    height: 800px;
     overflow: hidden;
-    cursor: pointer;
-    visibility: visible;
+    position: relative;
 }
-.flexbox-slider .flexbox-slide:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    display: block;
+#content {
+    background-color: #130d0a;
+}
+  
+.layer {
+    background-position: bottom center;
+    background-size: auto;
+    background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.6);
-    z-index: 2;
-    opacity: 0;
+    height: 800px;
+    position: fixed;
+    z-index: -1;
 }
-.flexbox-slider .flexbox-slide img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: auto;
-    width: auto;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    z-index: 1;
+  
+#hero-mobile {
+    display: none; 
+    background: url(../../assets/hero/full_illustration.png) no-repeat center bottom/cover;
+    height: 320px;
 }
-.flexbox-slider .flexbox-slide .text-block {
-    position: absolute;
-    left: 30px;
-    bottom: 30px;
-    max-width: 400px;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    z-index: 4;
-    visibility: hidden;
-    opacity: 0;
+  
+.first-section {
+    padding: 50px 0 20px 0;
 }
-.flexbox-slider .flexbox-slide .text-block h3 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #fff;
+  
+.text-header {
+    font-size: 50px;
+    text-align: center;
 }
-.flexbox-slider:hover .flexbox-slide:hover {
-    flex-shrink: 0;
-    width: 80%;
+  
+#hero-page h1 {
+    line-height: 120%;
+    margin-bottom: 30px;
+    color: #ede0d5;
+  }
+  
+#hero-page   p {
+    color: #ede0d5;
+    font-size: 18px;
+    line-height: 150%;
+  }
+  
+#hero, .layer {
+    min-height: 800px;
+}
+  
+.layer-bg {
+    background-image: url(../../assets/hero/ilu_bg.jpg);
+}
+  
+.layer-1 {
+    background-image: url(../../assets/hero/ilu_03.png);
+    background-position: left bottom;
 }
 
-.flexbox-slider.flexbox-slider-2 .flexbox-slide .text-block {
-    left: -60px;
+.layer-2 {
+    background-image: url(../../assets/hero/ilu_02.png);
 }
-.flexbox-slider.flexbox-slider-2:hover .flexbox-slide:not(:hover):after {
-    transition-property: all;
-    transition-duration: 0.2s;
-    transition-timing-function: linear;
-    transition-delay: 0s;
-    opacity: 1;
+
+.layer-3 {
+    background-image: url(../../assets/hero/ilu_man.png);
+    background-position: right bottom;
 }
-.flexbox-slider.flexbox-slider-2:hover .flexbox-slide:hover .text-block {
-    transition-property: all;
-    transition-duration: 0.3s;
-    transition-timing-function: cubic-bezier(0, 0, 0, 1.82);
-    transition-delay: 0.5s;
-    left: 30px;
-    opacity: 1;
-    visibility: visible;
+
+.layer-4 {
+    background-image: url(../../assets/hero/ilu_01.png);
+}
+  
+.layer-overlay {
+    background-image: url(../../assets/hero/ilu_overlay.png);
+}
+  
+@media only screen and (max-width: 768px) {
+    #hero {
+      display: none;
+    }
+  
+    #hero-mobile {
+      display: block;
+    }
+}
+.tutorial-link {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: underline;
+}
+.tutorial-link:hover {
+    color: #ede0d5;
 }

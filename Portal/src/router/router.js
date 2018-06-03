@@ -14,8 +14,10 @@ import NotFound from 'bundle-loader?lazy&name=notFound!pages/NotFound/NotFound';
 
 import SpringBoot from 'bundle-loader?lazy&name=springBoot!pages/SpringBoot/SpringBoot';
 import SpringCloud from 'bundle-loader?lazy&name=springCloud!pages/SpringCloud/SpringCloud';
+import Docker from 'bundle-loader?lazy&name=docker!pages/Docker/Docker';
 import Archives from 'bundle-loader?lazy&name=archives!pages/Archives/Archives';
-import Redios from 'bundle-loader?lazy&name=redios!pages/Redios/Redios';
+import Wow from 'bundle-loader?lazy&name=wow!pages/Videos/WorldOfWarcraft';
+import Python from 'bundle-loader?lazy&name=python!pages/Videos/Python';
 import About from 'bundle-loader?lazy&name=about!pages/About/About';
 // import Home from 'pages/Home/Home';
 // import Page1 from 'pages/Page1/Page1';
@@ -39,8 +41,10 @@ export default () => (
 
         <Route path="/springboot" component={createComponent(SpringBoot)}/>
         <Route path="/springcloud" component={createComponent(SpringCloud)}/>
+        <Route path="/docker" component={createComponent(Docker)}/>
         <Route path="/archives" component={createComponent(Archives)}/>
-        <Route path="/redios" component={createComponent(Redios)}/>
+        <Route path="/wow" component={createComponent(Wow)}/>
+        <Route path="/python" component={createComponent(Python)}/>
         <Route path="/about" component={createComponent(About)}/>
         
         <Route path="/404" component={createComponent(NotFound)}/>

@@ -1,96 +1,58 @@
+#SpringBoot .ant-timeline-item {
+    font-size: 25px;
+}
 
-  #hero {
-    height: 800px;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  #content {
-    background-color: #130d0a;
-  }
-  
-  .layer {
-    background-position: bottom center;
-    background-size: auto;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 800px;
-    position: fixed;
-    z-index: -1;
-  }
-  
-  #hero-mobile {
-    display: none;
-    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/full_illustration.png") no-repeat center bottom/cover;
-    height: 320px;
-  }
-  
-  .first-section {
-    padding: 50px 0 20px 0;
-  }
-  
-  .text-header {
-    font-size: 50px;
-    text-align: center;
-  }
-  
-  h1 {
-    line-height: 120%;
-    margin-bottom: 30px;
-  }
-  
-  p {
-    color: #ede0d5;
-    font-size: 18px;
-    line-height: 150%;
-  }
-  
-  #hero,
-  .layer {
-    min-height: 800px;
-  }
-  
-  .layer-bg {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_bg.jpg");
-  }
-  
-  .layer-1 {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_03.png\a 		");
-    background-position: left bottom;
-  }
-  
-  .layer-2 {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_02.png");
-  }
-  
-  .layer-3 {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_man.png\a 		");
-    background-position: right bottom;
-  }
-  
-  .layer-4 {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_01.png\a 		");
-  }
-  
-  .layer-overlay {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png\a 		");
-  }
-  
-  @media only screen and (max-width: 768px) {
-    #hero {
-      display: none;
-    }
-  
-    #hero-mobile {
-      display: block;
-    }
-  }
-  .tutorial-link {
-    color: #fff;
-    font-size: 18px;
-    text-decoration: underline;
-  }
-  .tutorial-link:hover {
-    color: #ede0d5;
-  }
-  
+#SpringBoot .ant-timeline-item-head {
+    width: 23px;
+    height: 15px;
+}
+
+#SpringBoot .ant-timeline-item-tail {
+    left: 8px;
+    top: 0;
+    border-left: 6px solid #1890ff;
+}
+#SpringBoot .ant-timeline-item-content {
+    padding: 0 0 0 35px;
+}
+#SpringBoot .ant-timeline-item-content:hover {
+    color: #1890ff;
+    cursor: pointer;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    
+    padding: 0 0 0 55px;
+}
+#SpringBoot .ant-timeline-item-content > i{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 1.5s ;
+
+}
+#SpringBoot .ant-timeline-item-content:hover > i {
+    /* display: inline-block;
+    transition: visibility 1s, opacity 1.5s linear; */
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    0%   {padding: 0 0 0 30px;}
+    25%  {padding: 0 0 0 35px;}
+    50%  {padding: 0 0 0 40px;}
+    75%  {padding: 0 0 0 45px;}
+    100% {padding: 0 0 0 55px;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {padding: 0 0 0 30px;}
+    25%  {padding: 0 0 0 35px;}
+    50%  {padding: 0 0 0 40px;}
+    75%  {padding: 0 0 0 45px;}
+    100% {padding: 0 0 0 55px;}
+}

@@ -5,12 +5,41 @@ import getRouter from 'router/router';
 
 import { Layout, Breadcrumb, BackTop, Icon, Menu, Row, Col } from 'antd';
 import './APP.css';
-import image from 'assets/github-for-atom.png';
 
 const { Header, Content, Footer, Sider  } = Layout;
 
 export default class App extends Component {
-
+    handleScroll (event) {
+        var depth, i, layer, layers, len, movement, topDistance, translate3d;
+        topDistance = this.pageYOffset;
+        console.log('move', topDistance)
+        layers = document.querySelectorAll("[data-type='parallax']");
+        if(topDistance > 0){
+            var element = document.getElementsByClassName('ant-layout-header');
+            element[0].classList.add('site-header-nav-scrolled');
+        }else{
+            var element = document.getElementsByClassName('ant-layout-header');
+            element[0].classList.remove('site-header-nav-scrolled');
+        }
+        for (i = 0, len = layers.length; i < len; i++) {
+            layer = layers[i];
+            depth = layer.getAttribute('data-depth');
+            movement = -(topDistance * depth);
+            translate3d = 'translate3d(0, ' + movement + 'px, 0)';
+            layer.style['-webkit-transform'] = translate3d;
+            layer.style['-moz-transform'] = translate3d;
+            layer.style['-ms-transform'] = translate3d;
+            layer.style['-o-transform'] = translate3d;
+            layer.style.transform = translate3d;
+        }
+    }
+      
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
 
     greeting() {
         const href = window.location.href;
@@ -23,7 +52,7 @@ export default class App extends Component {
             return (
                 <Layout>
                     <Row>
-                        <Header style={{ width: '100%' }}>
+                        <Header style={{ position: 'fixed', zIndex: 1, width: '98%' }}>
                         <Col xs={{ span: 0 }} lg={{ span: 3 }}>
                             <div className="logo" ></div>
                         </Col>
@@ -32,13 +61,17 @@ export default class App extends Component {
                         </Col>
                         </Header>
                     </Row>
-                    <Content style={{ padding: '0 50px'}}>
-                        <BackTop />
-                        {getRouter()}
-                    </Content>
-                    <Footer style={{ textAlign: 'center' }}>
-                        <div>Copyright <Icon type="copyright" /> Cao Qiang </div>
-                    </Footer>
+                    <Row className='content-row'>
+                        <Content>
+                            <BackTop />
+                            {getRouter()}
+                        </Content>
+                    </Row>
+                    <Row>
+                        <Footer style={{ textAlign: 'center' }}>
+                            <div>Copyright <Icon type="copyright" /> Cao Qiang </div>
+                        </Footer>
+                    </Row>
                 </Layout>
             )
         }
@@ -46,20 +79,6 @@ export default class App extends Component {
 
     render() {
         return (
-            // <Layout>
-            //     <Header style={{ width: '100%' }}>
-            //         <div className="logo" ></div>
-            //         <Nav/>
-            //     </Header>
-            //     <Content style={{ padding: '0 50px'}}>
-            //         <BackTop />
-            //         {getRouter()}
-            //     </Content>
-            //     <Footer style={{ textAlign: 'center' }}>
-            //         Ant Design ©2016 Created by CaoQ
-            //     </Footer>
-            //     {this.greeting()}
-            // </Layout>
             this.greeting()
         )
     }

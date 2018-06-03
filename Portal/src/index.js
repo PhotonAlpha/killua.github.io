@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {AppContainer} from 'react-hot-loader';
 import {Provider} from 'react-redux';
 import store from './redux/store';
