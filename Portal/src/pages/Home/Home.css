@@ -39,13 +39,13 @@
     line-height: 120%;
     margin-bottom: 30px;
     color: #ede0d5;
-  }
+}
   
-#hero-page   p {
+#hero-page p {
     color: #ede0d5;
     font-size: 18px;
     line-height: 150%;
-  }
+}
   
 #hero, .layer {
     min-height: 800px;

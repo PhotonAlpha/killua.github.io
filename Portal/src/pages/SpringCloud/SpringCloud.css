@@ -2,7 +2,7 @@
     padding: 0 50px;
 }
   
-  h1 {
+#SpringCloud h1 {
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/6963bbf342d87b3a2150bd8f59682b89.jpg);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -12,7 +12,7 @@
     color: #EA384D;
     font-weight: 900;
   }
-  h1::before {
+#SpringCloud h1::before {
     content: attr(data-heading);
     position: absolute;
     left: 0;
@@ -50,11 +50,8 @@
     font-family: 'frozen';
     src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Ice%20kingdom%20-%20Bold%20-%20Por%20Kustren.woff");
   }
-  html, body {
-    height: 100%;
-  }
   
-  h1 {
+#SpringCloud h1 {
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
