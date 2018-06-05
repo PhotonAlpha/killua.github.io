@@ -11,7 +11,12 @@ windows: type NUL > router.js
 3. 为了添加透明度，我们使用 rgba() 函数来定义颜色结点。rgba() 函数中的最后一个参数可以是从 0 到 1 的值，它定义了颜色的透明度：0 表示完全透明，1 表示完全不透明。
 4. 
 
-#用iPhone访问Mac上搭建的本地服务器
-#https://www.jianshu.com/p/4fc405fe6c91     
+# 用iPhone访问Mac上搭建的本地服务器
+* https://www.jianshu.com/p/4fc405fe6c91     
 
-ribbon: https://www.bypeople.com/css-ribbon/
+# css3 总结
+1. CSS3 ribbon: https://www.bypeople.com/css-ribbon/
+2. Chrome css样式被覆盖查看方式：Computed 里面去查找样式
+
+# reactjs 总结
+1. 常见误区解释： https://medium.com/@baphemot/understanding-reactjs-setstate-a4640451865b

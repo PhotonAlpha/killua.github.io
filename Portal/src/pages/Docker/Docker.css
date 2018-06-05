@@ -1,8 +1,4 @@
-*, *:before, *:after {
-    box-sizing: border-box;
-  }
-  
-  img {
+#docker img {
     max-width: 100%;
     height: auto;
     vertical-align: sub;
@@ -14,7 +10,7 @@
     padding-top: 20px;
   } */
   
-  .btn {
+#docker  .btn {
     display: inline-block;
     padding: 6px 14px;
     background: #f2f2f2;
@@ -24,30 +20,30 @@
     transition: background .3s ease, color .3s ease;
     text-decoration: none;
   }
-  .btn:hover {
+#docker .btn:hover {
     background: #e5e5e5;
     color: #929797;
   }
-  .btn.btn-primary {
+#docker .btn.btn-primary {
     background: #dd5555;
     color: rgba(255, 255, 255, 0.9);
   }
-  .btn.btn-primary:hover, .btn.btn-primary.active {
+#docker .btn.btn-primary:hover, .btn.btn-primary.active {
     background: #d94040;
   }
-  .btn.btn-large {
+#docker .btn.btn-large {
     padding: 12px 28px;
   }
-  .btn.btn-caps {
+#docker .btn.btn-caps {
     text-transform: uppercase;
   }
-  .btn.btn-block {
+#docker .btn.btn-block {
     display: block;
     width: 100%;
     text-align: center;
   }
   
-  input[type="text"] {
+#docker input[type="text"] {
     width: 100%;
     border: 1px solid #cfcfcf;
     background: #ebebeb;
@@ -60,11 +56,11 @@
     transition: background .3s ease;
   }
   
-  input[type="text"]:focus {
+#docker input[type="text"]:focus {
     background: #f0f0f0;
   }
   
-  .checkbox {
+#docker .checkbox {
     color: #ccc;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
     font-size: 0.6875em;
@@ -72,46 +68,46 @@
     display: inline-block;
   }
   
-  .box {
+#docker .box {
     background: #f9f9f9;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     margin-bottom: 20px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
   }
-  .box h2 {
+#docker .box h2 {
     color: #dd5555;
     font-size: 0.875em;
   }
-  .box p {
+#docker .box p {
     font-size: 0.75em;
     color: #7d7d7d;
   }
   
-  .locations {
+#docker .locations {
     padding: 30px;
     text-align: center;
   }
-  .locations .avatar {
+#docker .locations .avatar {
     border-radius: 50%;
   }
-  .locations .avatar img {
+#docker .locations .avatar img {
     border-radius: 50%;
   }
-  .locations .details {
+#docker .locations .details {
     margin-top: 30px;
   }
-  .locations .btn {
+#docker .locations .btn {
     margin-top: 30px;
   }
   
-  .calendar {
+#docker .calendar {
     text-align: center;
   }
-  .calendar .header {
+#docker .calendar .header {
     padding: 10px 0;
   }
-  .calendar [class*="icon-"] {
+#docker .calendar [class*="icon-"] {
     color: #dd5555;
     position: relative;
     top: 2px;
@@ -119,16 +115,16 @@
     display: inline-block;
     cursor: pointer;
   }
-  .calendar .days {
+#docker .calendar .days {
     background: #dd5555;
     padding: 20px;
     border-radius: 0 0 5px 5px;
   }
-  .calendar .days ul {
+#docker .calendar .days ul {
     margin: 0;
     padding: 0;
   }
-  .calendar .days li {
+#docker .calendar .days li {
     display: inline-block;
     color: #fff;
     padding: 5px 0;
@@ -143,39 +139,39 @@
       height: 20px;
     }
   }
-  .calendar .days li.next, .calendar .days li.previous {
+#docker .calendar .days li.next, .calendar .days li.previous {
     color: rgba(0, 0, 0, 0.2);
   }
   
-  .nav a {
+#docker .nav a {
     text-decoration: none;
     color: #cccccc;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
     font-size: 0.75em;
   }
-  .nav a:hover {
+#docker .nav a:hover {
     color: #dd5555;
   }
-  .nav [class*="icon-"] {
+#docker .nav [class*="icon-"] {
     font-size: 2em;
     margin-bottom: 5px;
     display: inline-block;
   }
-  .nav ul {
+#docker .nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
     text-align: center;
   }
-  .nav li {
+#docker .nav li {
     display: inline-block;
   }
-  .nav li a {
+#docker .nav li a {
     display: block;
     padding: 20px 18px;
   }
   
-  .weather .header {
+#docker .weather .header {
     border-radius: 5px 5px 0 0;
     padding: 20px 0;
     background: #dd5555;
@@ -183,20 +179,20 @@
     color: #fff;
     font-size: 3.125em;
   }
-  .weather [class*="icon-"] {
+#docker .weather [class*="icon-"] {
     position: relative;
     top: 2px;
   }
-  .weather article {
+#docker .weather article {
     text-align: center;
     padding: 5px 0;
   }
   
-  .video {
+#docker .video {
     position: relative;
     cursor: pointer;
   }
-  .video:before {
+#docker .video:before {
     content: '';
     border: 2px solid rgba(255, 255, 255, 0.8);
     background: rgba(255, 255, 255, 0.1);
@@ -210,7 +206,7 @@
     margin: -20px 0 0 -20px;
     transition: background .3s ease;
   }
-  .video:after {
+#docker .video:after {
     content: '';
     display: block;
     position: absolute;
@@ -220,45 +216,45 @@
     border: 10px solid transparent;
     border-left: 10px solid rgba(255, 255, 255, 0.8);
   }
-  .video:hover:before {
+#docker .video:hover:before {
     background: rgba(255, 255, 255, 0.3);
   }
-  .video img {
+#docker .video img {
     border-radius: 5px;
   }
   
-  .post img {
+#docker .post img {
     border-radius: 5px 5px 0 0;
   }
-  .post .details {
+#docker .post .details {
     padding: 10px 20px;
   }
-  .post .details p {
+#docker .post .details p {
     line-height: 1.5em;
   }
   
-  .audio {
+#docker .audio {
     position: relative;
     height: 120px;
   }
-  .audio .image {
+#docker .audio .image {
     position: absolute;
     top: 0;
     left: 0;
   }
-  .audio .image img {
+#docker .audio .image img {
     border-radius: 5px 0 0 5px;
   }
-  .audio .details {
+#docker .audio .details {
     padding: 10px 0;
     margin-left: 140px;
   }
-  .audio .actions {
+#docker .audio .actions {
     position: absolute;
     right: 10px;
     bottom: 20px;
   }
-  .audio .actions .btn {
+#docker .audio .actions .btn {
     width: 25px;
     height: 25px;
     display: block;
@@ -267,21 +263,21 @@
     padding: 5px 6px;
     color: #FFF;
   }
-  .audio .player .bar {
+#docker .audio .player .bar {
     margin: 30px 0 0;
     height: 4px;
     background: #cccccc;
     width: 60%;
     border-radius: 2px;
   }
-  .audio .player .bar .progress {
+#docker audio .player .bar .progress {
     width: 45%;
     background: #dd5555;
     border-radius: 2px;
     height: 4px;
     position: relative;
   }
-  .audio .player .bar .progress:before {
+#docker .audio .player .bar .progress:before {
     content: attr(data-time);
     background: #dd5555;
     display: inline;
@@ -293,7 +289,7 @@
     right: -14px;
     bottom: 9px;
   }
-  .audio .player .bar .progress:after {
+#docker .audio .player .bar .progress:after {
     content: '';
     border: 5px solid transparent;
     border-top: 5px solid #dd5555;
@@ -302,7 +298,8 @@
     bottom: 0px;
   }
   
-  .find {
+#docker .find {
     padding: 10px;
   }
+  
   

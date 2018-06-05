@@ -5,16 +5,16 @@ import { Menu, Icon, Layout, Modal, Button, Row, Col, Input, Avatar, Badge, Card
 export default class Dialogue extends Component {
     constructor(props){
         super(props);
-        console.log('Dialogue', props);
+        // console.log('Dialogue', props);
+        this.state = this.props.dialogues;
     }
-    state = {
-        loading: false,
-        visible: false,
-    }
-    showModal = () => {
-        this.setState({
-          visible: true,
-        });
+    componentWillReceiveProps(nextProps) {
+        // console.log('componentWillReceiveProps', nextProps.dialogues, this.props.dialogues)
+        if(nextProps.dialogues != this.props.dialogues) {
+            this.setState(
+                nextProps.dialogues
+            )
+        }
     }
     handleOk = () => {
         this.setState({ loading: true });
@@ -25,9 +25,9 @@ export default class Dialogue extends Component {
     handleCancel = () => {
         this.setState({ visible: false });
     }
+
     render() {
         const { visible, loading } = this.state;
-        
         return (
             <Modal
                 visible={visible}
@@ -35,17 +35,20 @@ export default class Dialogue extends Component {
                 onOk={this.handleOk}
                 onCancel={this.handleCancel}
                 footer={[
-                    <Button key="back" onClick={this.handleCancel}>Return</Button>,
+                    <Button key="back" onClick={this.handleCancel}>返回</Button>,
                     <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
-                    Submit
+                    确定
                     </Button>,
                 ]}
             >
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+                <Row id = 'dialog' >
+                    <Col xs = {{span: 14}} className = 'salt-img' >
+                        
+                    </Col>
+                    <Col xs = {{span: 10}}>
+                        <Input placeholder = "撒点盐" className = 'input-salt' />
+                    </Col>
+                </Row>
             </Modal>
         )
     }

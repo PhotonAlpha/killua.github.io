@@ -1,0 +1,9 @@
+#dialog .input-salt {
+    background: #fc8d55;
+}
+#dialog .salt-img {
+    background-image: url(../../assets/salt.gif);
+    background-size: 256px 158px;
+    background-repeat: no-repeat;
+    height: 158px;
+}

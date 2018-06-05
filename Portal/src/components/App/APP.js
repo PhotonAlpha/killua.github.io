@@ -12,7 +12,7 @@ export default class App extends Component {
     handleScroll (event) {
         var depth, i, layer, layers, len, movement, topDistance, translate3d;
         topDistance = this.pageYOffset;
-        console.log('move', topDistance)
+        // console.log('move', topDistance)
         layers = document.querySelectorAll("[data-type='parallax']");
         if(topDistance > 0){
             var element = document.getElementsByClassName('ant-layout-header');
