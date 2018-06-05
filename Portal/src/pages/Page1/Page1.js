@@ -17,11 +17,8 @@ export default class Page1 extends Component {
                     CSS Animated Ribbon
                     <i></i>
                     <i></i>
-                    <i></i>
-                    <i></i>
                 </div>
-    
-                <p>click to see animation</p>
+
                 <h1 className="banner">A Simple CSS Banner</h1>
             </div>
         )

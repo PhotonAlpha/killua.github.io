@@ -7,15 +7,12 @@
   color: #fff;
   font: 28px/60px sans-serif;
   text-align: center;
-  text-transform: uppercase;
   background: #3D79D0;
-  
   -webkit-animation: main 250ms;
   -moz-animation: main 250ms;
   -ms-animation: main 250ms;
   animation: main 250ms;
 }
-
 .ribbon i {
   position: absolute;
 }
@@ -34,17 +31,10 @@
   animation: edge 500ms;
 }
 
-.ribbon i:nth-child(2) {
-  left: auto;
-  right: -20px;
-  border-right-color: transparent;
-  border-left-color: #043140;
-}
-
-.ribbon i:nth-child(3), .ribbon i:last-child {
+.ribbon i:nth-child(2), .ribbon i:last-child {
   width: 20px;
   bottom: -20px;
-  left: -60px;
+  left: -40px;
   z-index: -2;
   border: 30px solid #1D53C0;
   border-left-color: transparent;
@@ -60,26 +50,7 @@
   transform-origin: 100% 0;
 }
 
-.ribbon i:last-child {
-  bottom: -20px;
-  left: auto;
-  right: -60px;
-  border: 30px solid #1D53C0;
-  border-right-color: transparent;
-
-  -webkit-transform-origin: 0 0;
-  -moz-transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  transform-origin: 0 0;
-}
-
-p {
-  text-align: center;
-  color: #aaa;
-}
-
 /* animations */
-
 @-webkit-keyframes main {
   0% { -webkit-transform: scaleX(0); }
   100% { -webkit-transform: scaleX(1); }
@@ -94,7 +65,6 @@ p {
   0%, 75% { -webkit-transform: scaleX(0); }
   100% { -webkit-transform: scaleX(1); }
 }
-
 
 @-moz-keyframes main {
   0% { -moz-transform: scaleX(0); }
@@ -111,7 +81,6 @@ p {
   100% { -moz-transform: scaleX(1); }
 }
 
-
 @keyframes main {
   0% { transform: scaleX(0); }
   100% { transform: scaleX(1); }
@@ -126,10 +95,10 @@ p {
   0%, 75% { transform: scaleX(0); }
   100% { transform: scaleX(1); }
 }
+
+
 @import url(https://fonts.googleapis.com/css?family=Rye);
 
-body 
-{ background: #eee; }
 
 .banner {
   position: absolute;
@@ -139,18 +108,17 @@ body
   width: 400px;
   height: 60px;
   border: 1px solid #8a1;
-  font: normal 30px/60px 'Rye';
+  font: normal 30px/60px "Rye";
   text-align: center;
   color: #451;
   background: #9b2;
   border-radius: 4px;
-  box-shadow: 0 0 30px rgba(0,0,0,.15) inset,
-      				0 6px 10px rgba(0,0,0,.15);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15) inset, 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .banner::before,
 .banner::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
   left: -70px;
@@ -172,3 +140,4 @@ body
   border-right: 30px solid transparent;
   transform: rotate(5deg);
 }
+

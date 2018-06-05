@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './About.css';
 import { Menu, Icon, Layout, Modal, Button, Row, Col, Input, Avatar, Badge, Card } from 'antd';
+import Dialogue from 'components/Dialogue/Dialogue';
 
 const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
 const colorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
@@ -64,7 +65,17 @@ export default class About extends Component {
                 <Button type="primary" onClick={this.showModal}>
                 Open
                 </Button>
-                <Modal
+                <Dialogue visible={visible}
+                    title="Title"
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    footer={[
+                        <Button key="back" onClick={this.handleCancel}>Return</Button>,
+                        <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
+                        Submit
+                        </Button>,
+                    ]} />
+                {/* <Modal
                     visible={visible}
                     title="Title"
                     onOk={this.handleOk}
@@ -81,7 +92,7 @@ export default class About extends Component {
                     <p>Some contents...</p>
                     <p>Some contents...</p>
                     <p>Some contents...</p>
-                </Modal>
+                </Modal> */}
 </Row>
                 <Row style = {{padding: '50px 0 0 0'}}>
                     <Card
@@ -97,7 +108,7 @@ export default class About extends Component {
                             }
                         />
                     </Card>
-                    <Card 
+                    <Card
                         hoverable
                         title = {
                             <div>
