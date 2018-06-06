@@ -7,19 +7,25 @@ import { Menu, Icon, Layout, Breadcrumb, BackTop, Row, Col, Slider } from 'antd'
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const { Header, Content, Footer, Sider  } = Layout;
+import babaCar from 'assets/baba-car.png';
 
 export default class Page1 extends Component {
     
+    open(event) {
+        document.getElementsByClassName('pop-up')[0].classList.add('open')
+    }
+    close(event) {
+        document.getElementsByClassName('pop-up')[0].classList.remove('open')
+    }
+
     render() {
         return (
-            <div className='ant-layout-header'>
-                <div className="ribbon">
-                    CSS Animated Ribbon
-                    <i></i>
-                    <i></i>
-                </div>
-
-                <h1 className="banner">A Simple CSS Banner</h1>
+            <div id = 'page1' >
+                <span className="swing">
+                    <input  id="song" type="text" placeholder="I don't give a ****" />
+                    {/* <label >盐</label> */}
+                    <img src= {babaCar} alt="Car"/>
+                </span>
             </div>
         )
     }

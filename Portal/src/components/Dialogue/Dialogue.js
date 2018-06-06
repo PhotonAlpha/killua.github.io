@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Dialogue.css';
 import { Menu, Icon, Layout, Modal, Button, Row, Col, Input, Avatar, Badge, Card } from 'antd';
+import babaCar from 'assets/baba-car.png';
 
 export default class Dialogue extends Component {
     constructor(props){
@@ -29,27 +30,39 @@ export default class Dialogue extends Component {
     render() {
         const { visible, loading } = this.state;
         return (
-            <Modal
-                visible={visible}
-                title="Title"
-                onOk={this.handleOk}
-                onCancel={this.handleCancel}
-                footer={[
-                    <Button key="back" onClick={this.handleCancel}>返回</Button>,
-                    <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
-                    确定
-                    </Button>,
-                ]}
-            >
-                <Row id = 'dialog' >
-                    <Col xs = {{span: 14}} className = 'salt-img' >
-                        
-                    </Col>
-                    <Col xs = {{span: 10}}>
-                        <Input placeholder = "撒点盐" className = 'input-salt' />
-                    </Col>
-                </Row>
-            </Modal>
+                <Modal
+                    width = '650px'
+                    style={{ top: 20, height: 350 }}
+                    visible={visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    footer={[
+                        <Button key="back" onClick={this.handleCancel}>返回</Button>,
+                        <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
+                        确定
+                        </Button>,
+                    ]}
+                >
+                    <Row id = 'dialog' >
+                        <div className="pop-up">
+                            <div className="content">
+                                <div className="dots">
+                                    <div className="dot"></div>
+                                    <div className="dot"></div>
+                                    <div className="dot"></div>
+                                </div>
+                                <img src= {babaCar} alt="Car"/>
+                                {/* <div className="title">
+                                    <h1>Salt</h1>
+                                </div> */}
+                                <div className="subscribe swing">
+                                    <input type="text" placeholder="请输入盐"/>
+                                    <img src= {babaCar} alt="Car"/>
+                                </div>
+                            </div>
+                        </div>
+                    </Row>
+                </Modal>
         )
     }
 }

@@ -37,23 +37,18 @@ export default class About extends Component {
     render() {
         return (
             <div id='A4-page'>
-                <h2>ribbon test</h2>
                 <a className="github-fork-ribbon" href="https://github.com/PhotonAlpha/photonalpha.github.io/tree/master/Portal" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
-                <Row>
-                    <Col xs = {{span: 9}} className = 'salt-img' >
-                        <Input size="large" placeholder="撒点盐" />
-                    </Col>
-                    {/* <Col xs = {{span: 4}} >
-                        <Input size="large" addonBefore="Salt" placeholder="撒点盐" />
-                    </Col> */}
-                </Row>
 
-<Row>
-                <Button type="primary" onClick={this.showModal}>
-                Open
-                </Button>
-                <Dialogue dialogues = {this.state} />
-</Row>
+                <Row>
+                    <Button type="primary" onClick={this.showModal}>
+                        Open
+                    </Button>
+                    <Dialogue dialogues = {this.state} />
+
+                    <Button type="primary" >
+                        get data
+                    </Button>
+                </Row>
                 <Row style = {{padding: '50px 0 0 0'}}>
                     <Card
                         hoverable

@@ -16,10 +16,14 @@ export default class App extends Component {
         layers = document.querySelectorAll("[data-type='parallax']");
         if(topDistance > 0){
             var element = document.getElementsByClassName('ant-layout-header');
-            element[0].classList.add('site-header-nav-scrolled');
+            if(element[0]){
+                element[0].classList.add('site-header-nav-scrolled');
+            }
         }else{
             var element = document.getElementsByClassName('ant-layout-header');
-            element[0].classList.remove('site-header-nav-scrolled');
+            if(element[0]){
+                element[0].classList.remove('site-header-nav-scrolled');
+            }
         }
         for (i = 0, len = layers.length; i < len; i++) {
             layer = layers[i];

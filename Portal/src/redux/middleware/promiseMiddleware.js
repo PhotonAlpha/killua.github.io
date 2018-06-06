@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-export default  store => next => action => {
+export default store => next => action => {
     const {dispatch, getState} = store;
+    console.log('axios', store)
     /*如果dispatch来的是一个function，此处不做处理，直接进入下一级*/
     if (typeof action === 'function') {
         action(dispatch, getState);
