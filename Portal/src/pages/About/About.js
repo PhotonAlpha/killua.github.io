@@ -3,11 +3,14 @@ import './About.css';
 import { Menu, Icon, Layout, Modal, Button, Row, Col, Input, Avatar, Badge, Card } from 'antd';
 import Dialogue from 'components/Dialogue/Dialogue';
 
+import {connect} from 'react-redux';
+import {getUserInfo} from "actions/userInfo";
+
 const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
 const colorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
 const { Meta } = Card;
 
-export default class About extends Component {
+class About extends Component {
     constructor(props){
         super(props);
     }
@@ -34,10 +37,31 @@ export default class About extends Component {
         this.setState({ loading: !this.state.loading });
     }
 
+    getData() {
+        const result = this.props.getUserInfo();
+        console.log(result);
+        return result;
+    }
+
     render() {
+        console.log('render', this.props);
+        const {userInfo, isLoading, errorMsg} = this.props.userInfo;
+
         return (
             <div id='A4-page'>
                 <a className="github-fork-ribbon" href="https://github.com/PhotonAlpha/photonalpha.github.io/tree/master/Portal" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+                {
+                    isLoading ? '请求信息中......' :
+                        (
+                            errorMsg ? errorMsg :
+                                <div>
+                                    <p>用户信息：</p>
+                                    <p>用户名：{userInfo.name}</p>
+                                    <p>介绍：{userInfo.intro}</p>
+                                </div>
+                        )
+                }
+                <button onClick={this.getData}>请求用户信息</button>
 
                 <Row>
                     <Button type="primary" onClick={this.showModal}>
@@ -45,7 +69,7 @@ export default class About extends Component {
                     </Button>
                     <Dialogue dialogues = {this.state} />
 
-                    <Button type="primary" >
+                    <Button type="primary"  >
                         get data
                     </Button>
                 </Row>
@@ -195,3 +219,5 @@ export default class About extends Component {
         )
     }
 }
+
+export default connect((state) => ({userInfo: state.userInfo}), {getUserInfo})(About);
