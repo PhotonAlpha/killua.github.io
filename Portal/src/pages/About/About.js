@@ -63,6 +63,7 @@ class About extends Component {
                                     <p>用户信息：</p>
                                     {/* {JSON.stringify(information)} */}
                                     <History params = {information.employmentHistory} />
+                                    
                                     {/* { (() => {
                                         let res = '';
                                         console.log(information.employmentHistory);
@@ -281,13 +282,11 @@ class About extends Component {
         )
     }
 }
+
+const element = <h1>Hello, world!</h1>;
+
 function History(props) {
     console.log('History', props.params)
-    if(props.params){
-        return props.params.map((elem, index) => {
-            <p key={index}>{JSON.stringify(elem)}</p> 
-        })
-    }
     // https://reactjs.org/docs/lists-and-keys.html
     // const content = (
     //     !props.params ? '' :
@@ -295,7 +294,12 @@ function History(props) {
     //             return <p key={index}>{JSON.stringify(elem)}</p>
     //     })
     // );
-    return null;
+
+    return (
+        !props.params ? null :
+            props.params.map((elem, index) => <p key={index}>{JSON.stringify(elem)}</p>
+        )
+    );
 }
 const mapStateToProps = state => {
     return {
