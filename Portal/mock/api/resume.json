@@ -1,0 +1,69 @@
+{
+    "title": "brickspert",
+    "basicInfo": {
+        "gender": "man",
+        "political": "political",
+        "education": "education",
+        "origin": "origin",
+        "working": 5,
+        "email": "email",
+        "phone": "123r3264545",
+        "english": "en"
+    },
+    "post": "post",
+    "employmentHistory": [
+        {
+            "period": "22222-22222",
+            "corporation": "corporation1",
+            "post": "post1"
+        },
+        {
+            "period": "3333-333",
+            "corporation": "corporation2",
+            "post": "post2"
+        },
+        {
+            "period": "555-5555",
+            "corporation": "corporation3",
+            "post": "post3"
+        }
+    ],
+    "skill": ["skill1", "skill2", "skill3", "skill4", "skill5", "skill6"],
+    "experience": [
+        {
+            "period": "11111-1111",
+            "name": "name1",
+            "description": "description1",
+            "responsibility": "Responsibility1"
+        },
+        {
+            "period": "2222-22222",
+            "name": "name2",
+            "description": "description2",
+            "responsibility": "Responsibility2"
+        },
+        {
+            "period": "333-333",
+            "name": "name3",
+            "description": "description3",
+            "responsibility": "Responsibility3"
+        },
+        {
+            "period": "555-555",
+            "name": "name5",
+            "description": "description5",
+            "responsibility": "Responsibility5"
+        }
+    ],
+    "education": [
+        {
+            "period": "11111-11111",
+            "name": "xxxxxx",
+            "specialty": "specialty"
+        }
+    ],
+    "evaluation": [
+        "evaluation1","evaluation2","evaluation3","evaluation4"
+    ]
+}
+

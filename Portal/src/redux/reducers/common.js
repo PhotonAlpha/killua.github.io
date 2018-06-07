@@ -1,34 +1,33 @@
-import {GET_USER_INFO_REQUEST, GET_USER_INFO_SUCCESS, GET_USER_INFO_FAIL} from 'actions/userInfo';
+import {GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL } from 'actions/common';
 
 const initialState = {
     isLoading: false,
-    userInfo: {},
+    information: {},
     errorMsg: ''
-};
+}
 
 export default function reducer(state = initialState, action) {
-    console.log('reducer', state, action)
+    console.log('common reducer', state, action)
     switch (action.type) {
-        case GET_USER_INFO_REQUEST:
+        case GET_INFO_REQUEST:
             return {
                 ...state,
                 isLoading: true,
-                userInfo: {},
+                information: {},
                 errorMsg: ''
             }
-        case GET_USER_INFO_SUCCESS:
+        case GET_INFO_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                // userInfo: action.userInfo,
-                userInfo: action.result.data,
+                information: action.result.data,
                 errorMsg: ''
             }
-        case GET_USER_INFO_FAIL:
+        case GET_INFO_FAIL:
             return {
                 ...state,
                 isLoading: false,
-                userInfo: {},
+                information: {},
                 errorMsg: '请求错误'
             }  
         default:

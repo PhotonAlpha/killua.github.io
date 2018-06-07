@@ -2,6 +2,7 @@ import {combineReducers} from "redux";
 
 import counter from './reducers/counter';
 import userInfo from './reducers/userInfo';
+import common from './reducers/common';
 
 // export default function combineReducers(state = {}, action) {
 //     return {
@@ -12,5 +13,6 @@ import userInfo from './reducers/userInfo';
 
 export default combineReducers({
     counter,
-    userInfo
+    userInfo,
+    common
 });

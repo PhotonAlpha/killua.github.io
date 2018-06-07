@@ -4,6 +4,7 @@ import { Menu, Icon, Layout, Modal, Button, Row, Col, Input, Avatar, Badge, Card
 import Dialogue from 'components/Dialogue/Dialogue';
 
 import {connect} from 'react-redux';
+import {getResumeInfo} from "actions/common";
 import {getUserInfo} from "actions/userInfo";
 
 const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
@@ -13,6 +14,7 @@ const { Meta } = Card;
 class About extends Component {
     constructor(props){
         super(props);
+        this.getData = this.getData.bind(this);
     }
 
     state = {
@@ -38,14 +40,17 @@ class About extends Component {
     }
 
     getData() {
-        const result = this.props.getUserInfo();
+        console.log(this.props.common);
+        const result = this.props.getResumeInfo()
         console.log(result);
+        console.log(this.props.common);
         return result;
     }
 
     render() {
         console.log('render', this.props);
-        const {userInfo, isLoading, errorMsg} = this.props.userInfo;
+        const {information, isLoading, errorMsg} = this.props.common;
+        // const {userInfo, isLoading, errorMsg} = this.props.userInfo;
 
         return (
             <div id='A4-page'>
@@ -56,8 +61,20 @@ class About extends Component {
                             errorMsg ? errorMsg :
                                 <div>
                                     <p>用户信息：</p>
-                                    <p>用户名：{userInfo.name}</p>
-                                    <p>介绍：{userInfo.intro}</p>
+                                    {/* {JSON.stringify(information)} */}
+                                    <History params = {information.employmentHistory} />
+                                    {/* { (() => {
+                                        let res = '';
+                                        console.log(information.employmentHistory);
+                                        if(information.employmentHistory){
+                                            res = information.employmentHistory.map((element, index) => {
+                                                return <p key = {index} >{JSON.stringify(element)}</p>
+                                            });
+                                        }
+                                        console.log(res);
+                                        return res;
+                                    })()
+                                    } */}
                                 </div>
                         )
                 }
@@ -74,6 +91,51 @@ class About extends Component {
                     </Button>
                 </Row>
                 <Row style = {{padding: '50px 0 0 0'}}>
+                    <Card
+                        hoverable
+                        bordered={true} >
+                        <Meta
+                            style = {{ textAlign: 'center'}}
+                            title= {
+                                <div>
+                                    <Avatar style={{ backgroundColor: this.state.color, verticalAlign: 'middle' }} className="portrait" src="https://avatars0.githubusercontent.com/u/21081491?v=3&s=460" />
+                                    <h2>Eric</h2>
+                                </div>
+                            }
+                        />
+                    </Card>
+                    <Card
+                        hoverable
+                        title = {
+                            <div>
+                                <Icon type="idcard" />&nbsp;&nbsp;&nbsp;&nbsp;个人信息
+                            </div>
+                        }>
+                        <Card.Grid className='grid-style'>信息1：</Card.Grid>
+                        <Card.Grid className='grid-style'>结果1</Card.Grid>
+                        <Card.Grid className='grid-style'>信息2：</Card.Grid>
+                        <Card.Grid className='grid-style'>结果2</Card.Grid>
+                        <Card.Grid className='grid-style'>信息3：</Card.Grid>
+                        <Card.Grid className='grid-style'>结果3</Card.Grid>
+                        <Card.Grid className='grid-style'>信息4：</Card.Grid>
+                        <Card.Grid className='grid-style'>结果4</Card.Grid>
+                        <Card.Grid className='grid-style'>信息5：</Card.Grid>
+                        <Card.Grid className='grid-style'>结果5</Card.Grid>
+                        <Card.Grid className='grid-style'>信息6：</Card.Grid>
+                        <Card.Grid className='grid-style'>结果6</Card.Grid>
+                        <Card.Grid className='grid-style'>信息7：</Card.Grid>
+                        <Card.Grid className='grid-style'>结果7</Card.Grid>
+                        <Card.Grid className='grid-style'>信息8：</Card.Grid>
+                        <Card.Grid className='grid-style'>结果8</Card.Grid>
+                    </Card>
+                </Row>
+                
+
+
+
+
+
+                <Row className = 'd-none' style = {{padding: '50px 0 0 0'}}>
                     <Card
                         hoverable
                         bordered={true} >
@@ -209,7 +271,7 @@ class About extends Component {
                         </p>
                     </Card>
                 </Row>
-                <div>
+                <div className = 'd-none' >
                     <Card loading={!this.state.loading} title="Card title">
                     Whatever content
                     </Card>
@@ -219,5 +281,32 @@ class About extends Component {
         )
     }
 }
+function History(props) {
+    console.log('History', props.params)
+    if(props.params){
+        return props.params.map((elem, index) => {
+            <p key={index}>{JSON.stringify(elem)}</p> 
+        })
+    }
+    // https://reactjs.org/docs/lists-and-keys.html
+    // const content = (
+    //     !props.params ? '' :
+    //         props.params.map((elem, index) => {
+    //             return <p key={index}>{JSON.stringify(elem)}</p>
+    //     })
+    // );
+    return null;
+}
+const mapStateToProps = state => {
+    return {
+        common: state.common,
+        userInfo: state.userInfo
+    }
+}
+const mapDispatchToProps = {
+    getResumeInfo,
+    getUserInfo
+}
 
-export default connect((state) => ({userInfo: state.userInfo}), {getUserInfo})(About);
+// export default connect((state) => ({userInfo: state.userInfo}), {getUserInfo})(About);
+export default connect(mapStateToProps, mapDispatchToProps)(About);
