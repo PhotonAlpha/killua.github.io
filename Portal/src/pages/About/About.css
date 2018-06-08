@@ -1,5 +1,5 @@
 #A4-page {
-  height:297mm;
+  /* height:297mm; */
   width:210mm;
   margin: 0 calc((100% - 210mm)/2);
 }
@@ -16,18 +16,21 @@
   width: 25%;
   text-align: center;
 }
-
+/* @page{
+  size: A4;
+  margin: 11mm 17mm 17mm 17mm;
+} */
 @media print {
-  #A4-page {
-    margin: 0;
-    box-shadow: 0;
-    border: initial;
-    border-radius: initial;
-    width: initial;
-    min-height: initial;
-    box-shadow: initial;
-    background: initial;
-    page-break-after: always;
+  div.ant-layout-footer {
+    position: fixed;
+    bottom: 0;
+  }
+  .ant-card {
+    page-break-inside: always;
+  }
+  html, body {
+    width: 210mm;
+    height: 297mm;
   }
 }
 
@@ -37,12 +40,12 @@
   background-repeat: no-repeat;
   height: 158px;
 }
-.ant-card-head {
+#A4-page .ant-card-head {
   /* background: #3D79D0; */
   background: linear-gradient(to right, rgb(24, 144, 255) , rgba(24, 144, 255, 0));
   /* font: 28px/60px sans-serif; */
 }
-.ant-card-head::before {
+#A4-page .ant-card-head::before {
   content: " ";
   display: block;
   position: absolute;
@@ -53,7 +56,7 @@
   border-right-width: 0px;
   border-bottom-width: 25px;
 }
-.ant-card-head::after {
+#A4-page .ant-card-head::after {
   content: " ";
   display: block;
   position: absolute;

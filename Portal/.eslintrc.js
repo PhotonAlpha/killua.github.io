@@ -6,7 +6,10 @@ module.exports = {
     },
     "extends": "eslint-config-alloy/react",
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "rules": {
         "indent": [
@@ -15,7 +18,7 @@ module.exports = {
         ],
         "linebreak-style": [
             "error",
-            "unix"
+            "windows"
         ],
         "quotes": [
             "error",
@@ -23,7 +26,7 @@ module.exports = {
         ],
         "semi": [
             "error",
-            "always"
+            "never"
         ]
     }
 };

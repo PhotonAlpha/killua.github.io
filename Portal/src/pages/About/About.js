@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './About.css';
-import { Menu, Icon, Layout, Modal, Button, Row, Col, Input, Avatar, Badge, Card } from 'antd';
+import { Menu, Icon, Layout, Modal, Button, Row, Col, Input, Avatar, Badge, Card, Table } from 'antd';
 import Dialogue from 'components/Dialogue/Dialogue';
 
 import {connect} from 'react-redux';
@@ -14,7 +14,6 @@ const { Meta } = Card;
 class About extends Component {
     constructor(props){
         super(props);
-        this.getData = this.getData.bind(this);
     }
 
     state = {
@@ -40,11 +39,13 @@ class About extends Component {
     }
 
     getData() {
-        console.log(this.props.common);
-        const result = this.props.getResumeInfo()
-        console.log(result);
-        console.log(this.props.common);
-        return result;
+        // console.log(this.props.common, his);
+        // const result = this.props.getResumeInfo()
+        // console.log(result);
+        // console.log(this.props.common);
+        // return result;
+        window.print(); 
+        window.close();
     }
 
     render() {
@@ -61,25 +62,10 @@ class About extends Component {
                             errorMsg ? errorMsg :
                                 <div>
                                     <p>用户信息：</p>
-                                    {/* {JSON.stringify(information)} */}
-                                    <History params = {information.employmentHistory} />
-                                    
-                                    {/* { (() => {
-                                        let res = '';
-                                        console.log(information.employmentHistory);
-                                        if(information.employmentHistory){
-                                            res = information.employmentHistory.map((element, index) => {
-                                                return <p key = {index} >{JSON.stringify(element)}</p>
-                                            });
-                                        }
-                                        console.log(res);
-                                        return res;
-                                    })()
-                                    } */}
                                 </div>
                         )
                 }
-                <button onClick={this.getData}>请求用户信息</button>
+                <button onClick={this.getData.bind(this, information.employmentHistory)}>请求用户信息</button>
 
                 <Row>
                     <Button type="primary" onClick={this.showModal}>
@@ -87,7 +73,7 @@ class About extends Component {
                     </Button>
                     <Dialogue dialogues = {this.state} />
 
-                    <Button type="primary"  >
+                    <Button type="primary" onClick={this.getData}  >
                         get data
                     </Button>
                 </Row>
@@ -112,22 +98,63 @@ class About extends Component {
                                 <Icon type="idcard" />&nbsp;&nbsp;&nbsp;&nbsp;个人信息
                             </div>
                         }>
-                        <Card.Grid className='grid-style'>信息1：</Card.Grid>
-                        <Card.Grid className='grid-style'>结果1</Card.Grid>
-                        <Card.Grid className='grid-style'>信息2：</Card.Grid>
-                        <Card.Grid className='grid-style'>结果2</Card.Grid>
-                        <Card.Grid className='grid-style'>信息3：</Card.Grid>
-                        <Card.Grid className='grid-style'>结果3</Card.Grid>
-                        <Card.Grid className='grid-style'>信息4：</Card.Grid>
-                        <Card.Grid className='grid-style'>结果4</Card.Grid>
-                        <Card.Grid className='grid-style'>信息5：</Card.Grid>
-                        <Card.Grid className='grid-style'>结果5</Card.Grid>
-                        <Card.Grid className='grid-style'>信息6：</Card.Grid>
-                        <Card.Grid className='grid-style'>结果6</Card.Grid>
-                        <Card.Grid className='grid-style'>信息7：</Card.Grid>
-                        <Card.Grid className='grid-style'>结果7</Card.Grid>
-                        <Card.Grid className='grid-style'>信息8：</Card.Grid>
-                        <Card.Grid className='grid-style'>结果8</Card.Grid>
+                        <BasicInfo basicInfo = { information.basicInfo } />
+                    </Card>
+                    <Card 
+                        hoverable
+                        title = {
+                            <div>
+                                <Icon type="save" />&nbsp;&nbsp;&nbsp;&nbsp;应聘岗位
+                            </div>
+                        }>
+                        <p>
+                            { information.post }
+                        </p>
+                    </Card>
+                    <Card 
+                        hoverable
+                        title = {
+                            <div>
+                                <Icon type="profile" />&nbsp;&nbsp;&nbsp;&nbsp;工作经验
+                            </div>
+                        }>
+                        <TableItem type="history" items={ information.employmentHistory } />
+                    </Card>
+                    <Card 
+                        hoverable
+                        title = {
+                            <div>
+                                <Icon type="star-o" />&nbsp;&nbsp;&nbsp;&nbsp;技能专长
+                            </div>
+                        }>
+                        <ListItems items = { information.skill } />
+                    </Card>
+                    <Card 
+                        hoverable
+                        title = {
+                            <div>
+                                <Icon type="trophy" />&nbsp;&nbsp;&nbsp;&nbsp;项目经验
+                            </div>
+                        }>
+                        <ListItems type='experience' items = { information.experience } />
+                    </Card>
+                    <Card 
+                        hoverable
+                        title = {
+                            <div>
+                                <Icon type="gift" />&nbsp;&nbsp;&nbsp;&nbsp;教育经历
+                            </div>
+                        }>
+                        <TableItem type="education" items={ information.education } ></TableItem>
+                    </Card>
+                    <Card 
+                        hoverable
+                        title = {
+                            <div>
+                                <Icon type="coffee" />&nbsp;&nbsp;&nbsp;&nbsp;自我评价
+                            </div>
+                        }>
+                        <ListItems items = { information.evaluation } />
                     </Card>
                 </Row>
                 
@@ -285,22 +312,61 @@ class About extends Component {
 
 const element = <h1>Hello, world!</h1>;
 
-function History(props) {
-    console.log('History', props.params)
+function TableItem(props) {
     // https://reactjs.org/docs/lists-and-keys.html
-    // const content = (
-    //     !props.params ? '' :
-    //         props.params.map((elem, index) => {
-    //             return <p key={index}>{JSON.stringify(elem)}</p>
-    //     })
-    // );
-
-    return (
-        !props.params ? null :
-            props.params.map((elem, index) => <p key={index}>{JSON.stringify(elem)}</p>
+    if(props.type === 'history' && props.items){
+        return props.items.map((elem, index) => 
+            <Row key={index} >
+                <Col xs = {{span: 6}} >{ elem.period }</Col>
+                <Col  xs = {{span: 12}}>{ elem.corporation }</Col>
+                <Col  xs = {{span: 6}}>{ elem.post }</Col>
+            </Row>
         )
-    );
+    }else if(props.type === 'education' && props.items){
+        return props.items.map((elem, index) => 
+            <Row key={index} >
+                <Col  xs = {{span: 12}}>{ elem.name }</Col>
+                <Col  xs = {{span: 6}}>{ elem.specialty }</Col>
+                <Col xs = {{span: 6}} >{ elem.period }</Col>
+            </Row>
+        )
+    }
+    return null;
 }
+
+function BasicInfo(props) {
+    let comp = null;
+    if(props.basicInfo){
+        comp = [];
+        Object.entries(props.basicInfo).forEach(([key, value], index) => {
+            comp.push(<Card.Grid key = {index} className='grid-style'>{key}：</Card.Grid>)
+            comp.push(<Card.Grid key = {key + index} className='grid-style'>{value}</Card.Grid>)
+
+        });
+    }
+    return comp;
+}
+function ListItems(props) {
+    console.log('ListItems', props);
+    let listItems = null;
+    if(props.type === 'experience' && props.items){
+        listItems = props.items.map((item, index) => 
+            <li key = {index} >
+                <label >{item.period}</label>
+                <h6>项目名称:</h6><p>{item.name}</p>
+                <h6>项目描述:</h6><p>{item.description}</p>
+                <h6>项目描述:</h6><p>{item.responsibility}</p>
+            </li>
+        );
+        return (<ul>{listItems}</ul>);
+    } else if(props.items) {
+        listItems = props.items.map((str, index) => <li key = {index} >{str}</li>);
+        return (<ul>{listItems}</ul>);
+    }
+    return null;
+}
+
+
 const mapStateToProps = state => {
     return {
         common: state.common,
