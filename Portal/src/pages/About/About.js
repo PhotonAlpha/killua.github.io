@@ -44,6 +44,7 @@ class About extends Component {
         // console.log(result);
         // console.log(this.props.common);
         // return result;
+        // https://api.github.com/repos/PhotonAlpha/photon-repository/contents
         window.print(); 
         window.close();
     }
