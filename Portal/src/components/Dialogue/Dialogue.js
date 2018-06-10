@@ -18,17 +18,28 @@ export default class Dialogue extends Component {
         }
     }
     handleOk = () => {
-        this.setState({ loading: true });
-        setTimeout(() => {
-          this.setState({ loading: false, visible: false });
-        }, 3000);
+        if(this.props.handleOk){
+            this.props.handleOk(this.state.salt);
+        }else{
+            this.setState({ loading: true });
+            setTimeout(() => {
+              this.setState({ loading: false, visible: false });
+            }, 3000);
+        }
     }
     handleCancel = () => {
         this.setState({ visible: false });
     }
-
+    emitEmpty = () => {
+        this.setState({ salt: '' });
+    }
+    onChange = (e) => {
+        this.setState({ salt: e.target.value });
+    }
+    
     render() {
-        const { visible, loading } = this.state;
+        const { visible, loading, salt } = this.state;
+        const suffix = salt ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
         return (
                 <Modal
                     width = '650px'
@@ -56,8 +67,9 @@ export default class Dialogue extends Component {
                                     <h1>Salt</h1>
                                 </div> */}
                                 <div className="subscribe swing">
-                                    <input type="text" placeholder="请输入盐"/>
+                                    <input type="text" name='salt' placeholder="请输入手机号码" value={ salt } onChange={ this.onChange } />
                                     <img src= {babaCar} alt="Car"/>
+                                    <span className="suffix" onClick={ this.emitEmpty } ><i className="anticon anticon-close-circle"></i></span>
                                 </div>
                             </div>
                         </div>

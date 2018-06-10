@@ -23,3 +23,6 @@ windows: type NUL > router.js
 
 # VS Code 卡顿
     打开vscode之后，点击文件==>首选项==>设置==>search.followSymlinks=>false
+
+# Github API
+        

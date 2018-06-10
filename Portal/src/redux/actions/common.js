@@ -9,3 +9,19 @@ export function getResumeInfo() {
     }
     return result;
 }
+
+export function getResourceTrees() {
+    const result = {
+        types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
+        promise: client => client.get(`https://api.github.com/repos/photonalpha/blogs/git/trees/master?recursive=1`)
+    }
+    return result;
+}
+
+export function getBlogData() {
+    const result = {
+        types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
+        promise: client => client.get(`https://api.github.com/repos/PhotonAlpha/blogs/git/blobs/ab24c5d484807f0369cccb43a96d73a3e2750f70`)
+    }
+    return result;
+}

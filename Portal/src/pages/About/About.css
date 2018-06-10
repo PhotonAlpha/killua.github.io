@@ -34,16 +34,8 @@
   }
 }
 
-#A4-page .salt-img {
-  background-image: url(../../assets/salt.gif);
-  background-size: 256px 158px;
-  background-repeat: no-repeat;
-  height: 158px;
-}
 #A4-page .ant-card-head {
-  /* background: #3D79D0; */
   background: linear-gradient(to right, rgb(24, 144, 255) , rgba(24, 144, 255, 0));
-  /* font: 28px/60px sans-serif; */
 }
 #A4-page .ant-card-head::before {
   content: " ";
