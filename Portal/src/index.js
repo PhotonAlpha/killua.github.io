@@ -5,11 +5,12 @@ import {AppContainer} from 'react-hot-loader';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import {BrowserRouter as Router} from 'react-router-dom';
+import './assets/favicon.ico';
 
-import zh from './locales/zh';
-import en from './locales/en';
-import intl from 'intl';
-addLocaleDate([...en,...zh]);
+// import zh from './locales/zh';
+// import en from './locales/en';
+// import intl from 'intl';
+// addLocaleDate([...en,...zh]);
 
 import App from 'components/App/App';
 

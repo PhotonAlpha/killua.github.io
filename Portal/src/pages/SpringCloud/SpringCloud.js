@@ -14,7 +14,7 @@ export default class SpringCloud extends Component {
         return (
             <Row id ='SpringCloud' >
                 <h1 data-heading="Frozen">
-                    FrozenADM
+                    Frozen
                 </h1>
             </Row>
         )

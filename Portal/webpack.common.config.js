@@ -30,12 +30,22 @@ commonConfig = {
                     name: 'images/[name].[ext]?[hash:7]'
                 }
             }]
+        }, {
+            test: /\.(ico)$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                    name: '[name].[ext]'
+                }
+            }]
         }]
     },
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: path.join(__dirname, 'src/index.html')
+            template: path.join(__dirname, 'src/index.html'),
+            favicon: 'src/assets/favicon.ico'
         }),
         new webpack.HashedModuleIdsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
