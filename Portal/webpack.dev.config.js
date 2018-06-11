@@ -21,13 +21,13 @@ const devConfig = {
     },
     module: {
         rules: [{
-            // test: /\.(css|scss)$/,
-            // use: ['style-loader', 'css-loader', 'postcss-loader']
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: ['css-loader', 'postcss-loader']
-            })
+            test: /\.(css|scss)$/,
+            use: ['style-loader', 'css-loader', 'postcss-loader']
+            // test: /\.css$/,
+            // use: ExtractTextPlugin.extract({
+            //     fallback: 'style-loader',
+            //     use: ['css-loader', 'postcss-loader']
+            // })
         }]
     },
     plugins: [

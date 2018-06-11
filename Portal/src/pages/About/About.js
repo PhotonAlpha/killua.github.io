@@ -9,19 +9,13 @@ import Dialogue from 'components/Dialogue/Dialogue';
 import DialogueCV from 'components/Dialogue/Dialogue.CV';
 import Letter from 'pages/About/Letter';
 
-import { getResumeInfo , getResourceTrees, getBlogData } from "actions/common";
-import {getUserInfo} from "actions/userInfo";
+import { getBlogData, getResumeInfo } from "actions/common";
 
-const UserList = ['U', 'Lucy', 'Tom', 'Edward'];
-const colorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae'];
-const { Meta } = Card;
-
-const  input  =  '# 这是一个标题\ n \ n这是一个段落'
 
 class About extends Component {
     constructor(props){
         super(props);
-        props.getBlogData();
+        // props.getBlogData();
     }
 
     state = {
@@ -38,19 +32,16 @@ class About extends Component {
         });
     }
     handleOk = (saltVal) => {
-        // this.setState({
-        //     visible: true,
-        //     salt: saltVal,
-        //     error: true,
-        // });
-        this.setState({
-            visible: false,
-            salt: saltVal,
-            visibleCv: true,
-            error: true
+        this.props.getResumeInfo().then(() => {
+            console.log('handleOk', this.props.resume)
+            this.setState({
+                visible: false,
+                salt: saltVal,
+                visibleCv: true,
+                error: false,
+                resume: this.props.resume
+            });
         });
-        console.log('handleOk', saltVal, this.state);
-
     }
 
 
@@ -72,10 +63,10 @@ class About extends Component {
     }
 
     getData = () => {
-        console.log(this.props.common);
-        const result = this.props.getResourceTrees();
+        console.log(this.props);
+        const result = this.props.getResumeInfo();
         console.log(result);
-        console.log(this.props.common);
+        console.log(this.props);
         // return result;
         // https://api.github.com/repos/PhotonAlpha/photon-repository/contents
         // window.print(); 
@@ -84,25 +75,20 @@ class About extends Component {
 
     render() {
         console.log('render', this.props, this.state);
-        const {information, isLoading, errorMsg} = this.props.common;
-        // const {userInfo, isLoading, errorMsg} = this.props.userInfo;
+        const {message , isLoading, errorMsg} = this.props.common;
+
         return (
             <div id='A4-page'>
-                <ReactMarkdown source={ Base64.decode(information.content) } />
+                {
+                    isLoading? 'loading......': (
+                        errorMsg? errorMsg: (
+                            <ReactMarkdown source={ Base64.decode(message.content) } />
+                        )
+                    )
+                }
                 <a className="github-fork-ribbon" href="https://github.com/PhotonAlpha/photonalpha.github.io/tree/master/Portal" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
                 <Letter triggerDialog = { this.showModal } />
                 
-                {
-                    isLoading ? '请求信息中......' :
-                        (
-                            errorMsg ? errorMsg :
-                                <div>
-                                    <p>用户信息：</p>
-                                </div>
-                        )
-                }
-                <button onClick={this.getData.bind(this, information.employmentHistory)}>请求用户信息</button>
-
                 <Row>
                     <Button type="primary" onClick={this.showModal}>
                         Open
@@ -117,99 +103,11 @@ class About extends Component {
                         get data
                     </Button>
                 </Row>
-                <Row style = {{padding: '50px 0 0 0'}}>
-                    <Card
-                        hoverable
-                        bordered={true} >
-                        <Meta
-                            style = {{ textAlign: 'center'}}
-                            title= {
-                                <div>
-                                    <Avatar style={{ backgroundColor: this.state.color, verticalAlign: 'middle' }} className="portrait" src="https://avatars0.githubusercontent.com/u/21081491?v=3&s=460" />
-                                    <h2>Eric</h2>
-                                </div>
-                            }
-                        />
-                    </Card>
-                    <Card
-                        hoverable
-                        title = {
-                            <div>
-                                <Icon type="idcard" />&nbsp;&nbsp;&nbsp;&nbsp;个人信息
-                            </div>
-                        }>
-                        <BasicInfo basicInfo = { information.basicInfo } />
-                    </Card>
-                    <Card 
-                        hoverable
-                        title = {
-                            <div>
-                                <Icon type="save" />&nbsp;&nbsp;&nbsp;&nbsp;应聘岗位
-                            </div>
-                        }>
-                        <p>
-                            { information.post }
-                        </p>
-                    </Card>
-                    <Card 
-                        hoverable
-                        title = {
-                            <div>
-                                <Icon type="profile" />&nbsp;&nbsp;&nbsp;&nbsp;工作经验
-                            </div>
-                        }>
-                        <TableItem type="history" items={ information.employmentHistory } />
-                    </Card>
-                    <Card 
-                        hoverable
-                        title = {
-                            <div>
-                                <Icon type="star-o" />&nbsp;&nbsp;&nbsp;&nbsp;技能专长
-                            </div>
-                        }>
-                        <ListItems items = { information.skill } />
-                    </Card>
-                    <Card 
-                        hoverable
-                        title = {
-                            <div>
-                                <Icon type="trophy" />&nbsp;&nbsp;&nbsp;&nbsp;项目经验
-                            </div>
-                        }>
-                        <ListItems type='experience' items = { information.experience } />
-                    </Card>
-                    <Card 
-                        hoverable
-                        title = {
-                            <div>
-                                <Icon type="gift" />&nbsp;&nbsp;&nbsp;&nbsp;教育经历
-                            </div>
-                        }>
-                        <TableItem type="education" items={ information.education } ></TableItem>
-                    </Card>
-                    <Card 
-                        hoverable
-                        title = {
-                            <div>
-                                <Icon type="coffee" />&nbsp;&nbsp;&nbsp;&nbsp;自我评价
-                            </div>
-                        }>
-                        <ListItems items = { information.evaluation } />
-                    </Card>
-                </Row>
-                
-                <div className = 'd-none' >
-                    <Card loading={!this.state.loading} title="Card title">
-                    Whatever content
-                    </Card>
-                    <Button onClick={this.handleClick} style={{ marginTop: 16 }}>Toggle loading</Button>
-                </div>
             </div>
         )
     }
 }
 
-const element = <h1>Hello, world!</h1>;
 
 function TableItem(props) {
     // https://reactjs.org/docs/lists-and-keys.html
@@ -269,14 +167,12 @@ function ListItems(props) {
 const mapStateToProps = state => {
     return {
         common: state.common,
-        userInfo: state.userInfo
+        resume: state.resume
     }
 }
 const mapDispatchToProps = {
-    getResumeInfo,
-    getUserInfo,
-    getResourceTrees,
-    getBlogData
+    getBlogData,
+    getResumeInfo
 }
 
 // export default connect((state) => ({userInfo: state.userInfo}), {getUserInfo})(About);

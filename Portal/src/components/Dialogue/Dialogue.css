@@ -228,13 +228,21 @@ for dialog cv model
       page-break-inside: avoid;
     } */
     #app,
+    .ant-modal-footer,
+    .ant-modal-close,
     #dialogcv .ant-card-head::before,
-    #dialogcv .ant-card-head::after,
-    #dialogcv .ant-modal-footer{
+    #dialogcv .ant-card-head::after{
         display: none;
     }
-    #dialogcv {
-        page-break-inside: avoid;
+    #dialogcv, div {
+        page-break-inside: auto;
+    }
+    .ant-modal-wrap {
+        position: relative;
+        overflow: hidden;
+    }
+    .ant-modal {
+        overflow: auto;
     }
     /* html, body {
         width: 210mm;
