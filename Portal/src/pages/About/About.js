@@ -15,7 +15,7 @@ import { getBlogData, getResumeInfo } from "actions/common";
 class About extends Component {
     constructor(props){
         super(props);
-        // props.getBlogData();
+        props.getBlogData();
     }
 
     state = {

@@ -1,5 +1,105 @@
-#SpringCloud {
-    padding: 0 50px;
+#SpringCloud h4 > a {
+    background: linear-gradient(to bottom, transparent 78%, #2098d1 0) center center/0% 75% no-repeat;
+    font-size: 2rem;
+    color: #337ab7;
+    line-height: 35px;
+}
+#SpringCloud a:hover {
+    background-size: 100% 100%;
+    color: #23527c;
+}
+#SpringCloud a:active {
+    background-size: 100% 80%;
+}
+#SpringCloud .ant-list-item .ant-card {
+    box-shadow: 10px 6px 11px rgba(0, 0, 0, .44);
+    height: 200px;
 }
 
+/* #SpringCloud .ant-list-item-meta-title > a > h2:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background: #2098d1;
+    height: 4px;
+    transition-property: left,right;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+} */
+  
+#SpringCloud .back1 {
+    background: linear-gradient(68deg, #C7C5A7 0.9em, rgba(255, 255, 255, 0) 0.99em) 3em -3em, linear-gradient(-68deg, #C7C5A7 0.9em, rgba(255, 255, 255, 0) 0.99em) -3em -3em, radial-gradient(circle, #C7C5A7 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, linear-gradient(68deg, #8BA88F 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, linear-gradient(-68deg, #8BA88F 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, radial-gradient(circle, #8BA88F 0.9em, rgba(255, 255, 255, 0) 0.99em) 3em 3em;
+    background-size: 6em 6em;
+    background-color: #F0DFD0;
+    background-repeat: repeat;
+    font: 14px/2 'Trebuchet MS', Verdana, sans-serif;
+    height: 100px;
+}
+#SpringCloud .back2 {
+    background: radial-gradient(circle at right, rgba(233, 241, 223, 0) 0.3333333333em, #E9F1DF 0.3333333333em, #E9F1DF 0.4888888889em, rgba(233, 241, 223, 0) 0.4888888889em, rgba(233, 241, 223, 0) 0.8222222222em, #E9F1DF 0.8222222222em, #E9F1DF 0.9777777778em, rgba(233, 241, 223, 0) 0.9777777778em, rgba(233, 241, 223, 0) 1.3111111111em, #E9F1DF 1.3111111111em, #E9F1DF 1.4666666667em, rgba(233, 241, 223, 0) 1.4666666667em) 0 0, radial-gradient(circle at left, rgba(233, 241, 223, 0) 0.5777777778em, #E9F1DF 0.5777777778em, #E9F1DF 0.7333333333em, rgba(233, 241, 223, 0) 0.7333333333em, rgba(233, 241, 223, 0) 1.0666666667em, #E9F1DF 1.0666666667em, #E9F1DF 1.2222222222em, rgba(233, 241, 223, 0) 1.2222222222em) 0 3.0514619883em, linear-gradient(to right top, #E9F1DF 0.1555555556em, rgba(233, 241, 223, 0) 0.1555555556em) 1.2222222222em 0.1555555556em, linear-gradient(to left top, #E9F1DF 0.1555555556em, rgba(233, 241, 223, 0) 0.1555555556em) 1.2222222222em 0.1555555556em, linear-gradient(to right bottom, #E9F1DF 0.1555555556em, rgba(233, 241, 223, 0) 0.1555555556em) 1.2222222222em 0.1555555556em, linear-gradient(to left bottom, #E9F1DF 0.1555555556em, rgba(233, 241, 223, 0) 0.1555555556em) 1.2222222222em 0.1555555556em;
+    background-size: 2.8em 2.8em;
+    background-color: lightblue;
+    height: 100px;
+}
+#SpringCloud #back {
+    height: 100px;
+    /* background: linear-gradient(68deg, #C7C5A7 0.9em, rgba(255, 255, 255, 0) 0.99em) 3em -3em, 
+                linear-gradient(-68deg, #C7C5A7 0.9em, rgba(255, 255, 255, 0) 0.99em) -3em -3em, 
+                radial-gradient(circle, #C7C5A7 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, 
+                linear-gradient(68deg, #8BA88F 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, 
+                linear-gradient(-68deg, #8BA88F 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, 
+                radial-gradient(circle, #8BA88F 0.9em, rgba(255, 255, 255, 0) 0.99em) 3em 3em; */
+    background-size: 6em 6em;
+    /* background-color: #F0DFD0; */
+}
+  
+#SpringCloud .wrapper {
+    display: flex;
+    flex: 1;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#SpringCloud .tagcloud{padding:2px 0 !important;}
+
+#SpringCloud .tagcloud a{color: #fff;padding:6px;font-size: 14px !important; line-height: 38px; margin-right:5px;}
+
+#SpringCloud .tagcloud [class$="0"]{background-color: #4A4A4A;}
+
+#SpringCloud .tagcloud [class$="1"]{background-color: #428BCA;}
+
+#SpringCloud .tagcloud [class$="2"]{background-color: #5CB85C;}
+
+#SpringCloud .tagcloud [class$="3"]{background-color: #D9534F;}
+
+#SpringCloud .tagcloud [class$="4"]{background-color: #567E95;}
+
+#SpringCloud .tagcloud [class$="5"]{background-color: #B433FF;}
+
+#SpringCloud .tagcloud [class$="6"]{background-color: #00ABA9;}
+
+#SpringCloud .tagcloud [class$="7"]{background-color: #B37333;}
+
+#SpringCloud .tagcloud [class$="8"]{background-color: #FF6600;}
+
+#SpringCloud .tagcloud [class$="9"]{background-color: #D8B303;}
+  
+  
+  
+.text {
+    background: linear-gradient(to bottom, transparent 88%, #2098d1 0) center center/0% 75% no-repeat;
+    font-size: 2rem;
+    color: rgba(80, 89, 113, 0.7);
+}
+.text:hover {
+    background-size: 100% 100%;
+}
+.text:active {
+    background-size: 100% 80%;
+}
   

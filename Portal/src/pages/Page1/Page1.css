@@ -1,108 +1,88 @@
-#page1 {
-  padding: 100px 0 0 100px;
-}
-#page1 .swing input{
-  display: inline-block;
-  width: 215px;
-  padding: 10px 0 10px 15px;
-  font-family: "Open Sans", sans;
-  font-weight: 400;
-  color: #377D6A;
-  background: #efefef;
-  border: 0;
-  border-radius: 3px;
-  outline: 0;
-  text-indent: 60px;
-  transition: all .3s ease-in-out;
-}
-#page1 .swing input::-webkit-input-placeholder {
-  color: #bec1c5;
-  text-indent: 0;
-  font-weight: 300;
-}
-
-
-#page1 .swing > img {
-  display: inline-block;
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
   position: relative;
-  top: -4px;
-  left: -220px;
-  padding: 27px 27px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  transform-origin: 2px 2px;
-  animation: swing-back .4s 1 ease-in-out;
-  max-width: 120px;
 }
 
-@keyframes swing {
-  0% {
-    transform: rotate(0);
-  }
-  20% {
-    transform: rotate(116deg);
-  }
-  40% {
-    transform: rotate(60deg);
-  }
-  60% {
-    transform: rotate(98deg);
-  }
-  80% {
-    transform: rotate(76deg);
-  }
-  100% {
-    transform: rotate(82deg);
-  }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: #34495e;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
-@keyframes swing-back {
-  0% {
-    transform: rotate(82deg);
-  }
-  100% {
-    transform: rotate(0);
-  }
-}
-#page1 .swing input:focus,
-#page1 .swing input:active {
-  color: #377D6A;
-  text-indent: 0;
-  background: #fff;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-#page1 .swing input:focus::-webkit-input-placeholder,
-#page1 .swing input:active::-webkit-input-placeholder {
-  color: #aaa;
-}
-#page1 .swing input:focus + img,
-#page1 .swing input:active + img {
-  animation: swing 1.4s 1 ease-in-out;
-  transform: rotate(82deg);
-}
-#page1 input {
-  /* width: 100%;
-  float: left;
-  padding: 15px 20px; */
-  height: 75px;
+
+.container {
   text-align: center;
-  font-family: inherit;
-  font-size: 2rem;
-  letter-spacing: 0.05rem;
-  outline: 0;
-  /* margin-bottom: 15px; */
-  margin-bottom: 0px;
-  width: 50%;
-  border: 1px solid #bec1c5;
-  transition: all 0.4s;
-  border-width: 2px 0px;
+  margin: 0 auto;
+  max-width: 600px;
+  color: #2d3a3f;
+  padding-top: 60px;
 }
-@media (min-width: 768px) {
-  #page1  .pop-up .content .subscribe input {
-      margin-bottom: 0px;
-      width: 50%;
+
+a, a:visited, a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+      padding-top: 60px;
   }
 }
-#page1  .pop-up .content .subscribe input:focus {
-  border-color: #3e4146;
+
+.box {
+  display: block;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 3px;
+  margin: 10px 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.btn.box {
+  padding: 10px 20px;
+  display: inline-block;
+  /*color: #eee;
+  background-color: #3d566e;*/
+  background-color: #fefefe;
+  text-decoration: none;
+}
+
+.btn.box.small {
+  padding: 5px 10px;
+}
+
+#controls ul {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  text-align: right;
+  display: table;
+}
+#controls li {
+  display: table-row;
+}
+p {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.download::before {
+  display: inline-block;
+  content: '';
+  height: 16px;
+  width: 16px;
+  margin-right: 10px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABQElEQVQ4T92TMU7DQBBFZ7zbUOEbkBtgQQ7gBsmp4hpB2BuQI8ANwgnYWIjarmJEwwEc4SOEG4SKZjfDrKMgO2yiSHS4W83M+zPzxwh//HBffX8wIhevZtnOvP8IOEuuVYD46NsNEUznZabaMe8OfBBfsQN1AOeDqxQpOK3K7L4N2RT3k9EdELxXL1mx6QKji8tISnFDgIppIQF9WGPT+vW5dhAEjF3bLk9IkfP7hL1dIpA2xk7Rec0Kn0zMrTUTV7jvNhqQkGPOSRHheA1gIhAxwD4cBhC3gJi6jhtAW5FpC55zYjEo6lIvXCxKVE/QasgbG7Nqr+PCNqADA8qRIGS1eNdYzRKFlIpVlZvpkH+r2RmCtsboXzYCsRuIQ/8hUQFIej57yn9s9CVGsQqDI6u4/ebqiNVWX0LXb3q5nf8Nymmadx3ne7YAAAAASUVORK5CYII=);
 }

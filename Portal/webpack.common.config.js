@@ -32,13 +32,7 @@ commonConfig = {
             }]
         }, {
             test: /\.(ico)$/,
-            use: [{
-                loader: 'url-loader',
-                options: {
-                    limit: 8192,
-                    name: '[name].[ext]'
-                }
-            }]
+            loader: 'file-loader?name=[name].[ext]'
         }]
     },
     plugins: [
