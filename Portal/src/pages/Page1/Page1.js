@@ -41,28 +41,7 @@ export default class Page1 extends Component {
     render() {
         return (
             <div id = 'page1' >
-                 <div className="container">
-                    <div className="box">
-                        <p>Trianglify is a javascript library for generating colorful triangle meshes that can be used as SVG images and CSS backgrounds.</p>
-                        <p>Trianglify is open source software. Check it out on <a href="https://github.com/qrohlf/trianglify">Github</a>!</p>
-                        <p>Made by <a href="http://qrohlf.com/">Quinn Rohlf</a></p>
-                        <p>
-                            <a  id="button" onClick={this.handleClick}  className="btn box">Click for a new pattern</a>
-                            <a href="#" id="saveas" target="_blank" className="download btn box" title="right click > save as svg" download="trianglify-background.svg">SVG</a>
-                        </p>
-                        <div id="controls" className="hidden">
-                            <ul>
-                                <li>Noise: <a href="#" id="subtractnoise" className="btn box small">-</a><span id="noise">0</span><a href="#" id="addnoise" className="btn box small">+</a></li>
-                                <li>Cellsize: <a href="#" id="subtractcellsize" className="btn box small">-</a><span id="cellsize">0</span><a href="#" id="addcellsize" className="btn box small">+</a></li>
-                                <li>Cellpadding: <a href="#" id="subtractcellpadding" className="btn box small">-</a><span id="cellpadding">0</span><a href="#" id="addcellpadding" className="btn box small" title="cellpadding must be smaller than cellsize/2">+</a></li>
-                            </ul>
-                            <p>Note: noise effect will cause rendering to take longer</p>
-                        </div>
-                        <p>
-                            <a href="#" id="togglecontrols" className="btn box small">show controls</a>
-                        </p>
-                    </div>
-                </div>
+                 page1
             </div>
         )
     }

@@ -17,7 +17,7 @@ export function getResumeInfo() {
 export function getResourceTrees() {
     const result = {
         types: [GET_RESOURCE_REQUEST, GET_RESOURCE_SUCCESS, GET_RESOURCE_FAIL],
-        promise: client => client.get(`https://api.github.com/repos/photonalpha/blogs/git/trees/master?recursive=1`)
+        promise: client => client.get(`http://localhost:4200/api/dataTrees.json`)
     }
     return result;
 }

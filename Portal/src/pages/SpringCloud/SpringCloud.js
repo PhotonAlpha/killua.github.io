@@ -16,7 +16,7 @@ const data = [
       backgroundURI: Trianglify({
         width: 277,
         height: 200,
-        cell_size: (Math.random() * 40) + 25,
+        cell_size: (Math.random() * 30) + 25,
         x_colors: 'random',
       }).png()
     },
@@ -25,7 +25,7 @@ const data = [
       backgroundURI: Trianglify({
         width: 277,
         height: 200,
-        cell_size: (Math.random() * 40) + 25,
+        cell_size: (Math.random() * 30) + 25,
         x_colors: 'random',
       }).png()
     },
@@ -34,7 +34,7 @@ const data = [
       backgroundURI: Trianglify({
         width: 277,
         height: 200,
-        cell_size: (Math.random() * 40) + 25,
+        cell_size: (Math.random() * 30) + 25,
         x_colors: 'random',
       }).png()
     },
@@ -43,7 +43,7 @@ const data = [
       backgroundURI: Trianglify({
         width: 277,
         height: 200,
-        cell_size: (Math.random() * 40) + 25,
+        cell_size: (Math.random() * 30) + 25,
         x_colors: 'random',
       }).png()
     },
@@ -112,6 +112,7 @@ export default class SpringCloud extends Component {
                     />
                 </Col>
                 <Col xs={{ span: 6, offset: 1 }} >
+                    <h2 style={{textAlign: 'center'}} >精选板块</h2>
                     <List
                         grid={{ column: 1 }}
                         dataSource={data}
@@ -127,8 +128,6 @@ export default class SpringCloud extends Component {
                 </Col>
             </Row>
             <Row>
-                
-                <a href="#" id="button" onClick={this.handleClick} class="btn box">Click for a new pattern</a>
                 {/* <h1 data-heading="Frozen">
                     Frozen
                 </h1>

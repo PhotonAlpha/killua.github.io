@@ -7,10 +7,34 @@
     position: relative;
 }
 #content {
-    background-color: #130d0a;
+    /* background-color: #130d0a; */
+    background-image: url(../../assets/site-background.png)
 }
-  
-.layer {
+/** for content style*/
+.customer-gradient {
+    height: 30px;
+    background: linear-gradient(to bottom, rgb(10, 10, 10) , rgba(24, 144, 255, 0));
+}
+#content h4 > a {
+    background: linear-gradient(to bottom, transparent 78%, #2098d1 0) center center/0% 75% no-repeat;
+    font-size: 2rem;
+    color: #337ab7;
+    line-height: 35px;
+}
+#content a:hover {
+    background-size: 100% 100%;
+    color: #23527c;
+}
+#content a:active {
+    background-size: 100% 80%;
+}
+#content .ant-list-item .ant-card {
+    box-shadow: 10px 6px 11px rgba(0, 0, 0, .44);
+    height: 200px;
+}
+
+/**hero layer*/
+#hero-page .layer {
     background-position: bottom center;
     background-size: auto;
     background-repeat: no-repeat;
@@ -19,64 +43,51 @@
     position: fixed;
     z-index: -1;
 }
-  
 #hero-mobile {
     display: none; 
     background: url(../../assets/hero/full_illustration.png) no-repeat center bottom/cover;
     height: 320px;
 }
-  
-.first-section {
+#hero-page .first-section {
     padding: 50px 0 20px 0;
 }
-  
-.text-header {
+#hero-page .text-header {
     font-size: 50px;
     text-align: center;
 }
-  
 #hero-page h1 {
     line-height: 120%;
     margin-bottom: 30px;
     color: #ede0d5;
 }
-  
 #hero-page p {
     color: #ede0d5;
     font-size: 18px;
     line-height: 150%;
 }
-  
 #hero, .layer {
     min-height: 800px;
 }
-  
-.layer-bg {
+#hero-page .layer-bg {
     background-image: url(../../assets/hero/ilu_bg.jpg);
 }
-  
-.layer-1 {
+#hero-page .layer-1 {
     background-image: url(../../assets/hero/ilu_03.png);
     background-position: left bottom;
 }
-
-.layer-2 {
+#hero-page .layer-2 {
     background-image: url(../../assets/hero/ilu_02.png);
 }
-
-.layer-3 {
+#hero-page .layer-3 {
     background-image: url(../../assets/hero/ilu_man.png);
     background-position: right bottom;
 }
-
-.layer-4 {
+#hero-page .layer-4 {
     background-image: url(../../assets/hero/ilu_01.png);
 }
-  
-.layer-overlay {
+#hero-page .layer-overlay {
     background-image: url(../../assets/hero/ilu_overlay.png);
 }
-  
 @media only screen and (max-width: 768px) {
     #hero {
       display: none;
@@ -86,11 +97,11 @@
       display: block;
     }
 }
-.tutorial-link {
+#hero-page .tutorial-link {
     color: #fff;
     font-size: 18px;
     text-decoration: underline;
 }
-.tutorial-link:hover {
+#hero-page .tutorial-link:hover {
     color: #ede0d5;
 }
