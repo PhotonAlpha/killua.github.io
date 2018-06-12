@@ -18,6 +18,7 @@ class SpringBoot extends Component {
         console.log('SpringBoot Render', this.props.common);
         return (
             <div id='SpringBoot' className='container' >
+                <DataTrees data={ message } />
                 <Timeline>
                     <Row>
                         <Timeline.Item><Icon type="caret-left" />Create a services site 2015-09-01</Timeline.Item>
@@ -39,19 +40,28 @@ class SpringBoot extends Component {
 }
 
 function DataTrees(props) {
+    console.log('DataTrees', props)
     const message = props.data;
-    const items = [];
-    if(message && message.items && message.items.length > 0) {
-        items.map(item => {
-            const filename = item.name;
-            filename
-            return {
-                name: item.name,
-                path: item.path,
-                git_url: item.git_url
+    const items = message.items;
+    const pattern = /^[0-9]{4}[-]{1}[0-9]{1,2}[-]{1}[0-9]{1,2}/;
+    if(message && items && items.length > 0) {
+        console.log(111111)
+        const blogdatas = items.map(item => {
+            const name = item.name;
+            const match = pattern.exec(name);
+            if(match) {
+                const blogname = name.substring(match[0].length+1, name.length);
+                return {
+                    name: blogname,
+                    date: match[0],
+                    path: item.path,
+                    git_url: item.git_url
+                }
             }
-        })
+        });
+        console.log(blogdatas);
     }
+    return (<div>DataTrees</div>)
 
 }
 

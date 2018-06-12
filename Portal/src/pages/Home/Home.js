@@ -7,7 +7,7 @@ const data = [
     {
       title: 'Title 1',
       backgroundURI: Trianglify({
-        width: 277,
+        width: 323,
         height: 200,
         cell_size: (Math.random() * 30) + 25,
         x_colors: 'random',
@@ -16,7 +16,7 @@ const data = [
     {
       title: 'Title 2',
       backgroundURI: Trianglify({
-        width: 277,
+        width: 323,
         height: 200,
         cell_size: (Math.random() * 30) + 25,
         x_colors: 'random',
@@ -25,7 +25,7 @@ const data = [
     {
       title: 'Title 3',
       backgroundURI: Trianglify({
-        width: 277,
+        width: 323,
         height: 200,
         cell_size: (Math.random() * 30) + 25,
         x_colors: 'random',
@@ -34,7 +34,7 @@ const data = [
     {
       title: 'Title 4',
       backgroundURI: Trianglify({
-        width: 277,
+        width: 323,
         height: 200,
         cell_size: (Math.random() * 30) + 25,
         x_colors: 'random',
@@ -91,11 +91,9 @@ export default class Home extends Component {
                     </Col>
                 </Row>
                 <Row id='hero-mobile'></Row>
-                <div className='customer-gradient' >
-                </div>
                 <div id='content' >
-                    <Row className='container' >
-                        <Col xs={{ span: 16 }} >
+                    <Row className='container-fluid' >
+                        <Col lg={{ span: 16 }} md={24} >
                             <List
                                 itemLayout="vertical"
                                 size="large"
@@ -104,7 +102,7 @@ export default class Home extends Component {
                                 onChange: (page) => {
                                     console.log(page);
                                 },
-                                pageSize: 10,
+                                pageSize: 6,
                                 }}
                                 dataSource={listData}
                                 footer={<div><b>ant design</b> footer part</div>}
@@ -124,10 +122,10 @@ export default class Home extends Component {
                                 )}
                             />
                         </Col>
-                        <Col xs={{ span: 6, offset: 1 }} >
+                        <Col lg={{ span: 7, offset: 1 }} md={24}>
                             <h2 style={{textAlign: 'center'}} >精选板块</h2>
                             <List
-                                grid={{ column: 1 }}
+                                grid={{ gutter: { md: 16*3, lg: 0 } , lg: 1, md: 2 }}
                                 dataSource={data}
                                 renderItem={item => (
                                 <List.Item>

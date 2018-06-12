@@ -105,5 +105,10 @@
   }
 #letter .letter-image:hover .animated-mail .letter {
     height: 180px;
+}
+@media screen and (min-width: 992px){
+  #letter .ant-tag  {
+    font-size: 1.5rem;
   }
+}
   

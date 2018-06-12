@@ -12,8 +12,8 @@
 }
 /** for content style*/
 .customer-gradient {
-    height: 30px;
-    background: linear-gradient(to bottom, rgb(10, 10, 10) , rgba(24, 144, 255, 0));
+    /* height: 30px;
+    background: linear-gradient(to bottom, rgb(10, 10, 10) , rgba(24, 144, 255, 0)); */
 }
 #content h4 > a {
     background: linear-gradient(to bottom, transparent 78%, #2098d1 0) center center/0% 75% no-repeat;
@@ -31,6 +31,7 @@
 #content .ant-list-item .ant-card {
     box-shadow: 10px 6px 11px rgba(0, 0, 0, .44);
     height: 200px;
+    background-repeat: round;
 }
 
 /**hero layer*/
@@ -88,7 +89,7 @@
 #hero-page .layer-overlay {
     background-image: url(../../assets/hero/ilu_overlay.png);
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1030px) {
     #hero {
       display: none;
     }
@@ -104,4 +105,40 @@
 }
 #hero-page .tutorial-link:hover {
     color: #ede0d5;
+}
+@media screen and  (max-width: 576px){
+    #content h4 > a {
+        font-size: 3rem;
+        line-height: 55px;
+    }
+    .ant-list-item-meta-description,
+    .ant-list-item-action li,
+    .ant-list-vertical .ant-list-item-content {
+        font-size: 2rem;
+        line-height: 50px;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 768px){
+    #content h4 > a {
+        font-size: 3rem;
+        line-height: 55px;
+    }
+    .ant-list-item-meta-description,
+    .ant-list-item-action li,
+    .ant-list-vertical .ant-list-item-content {
+        font-size: 2rem;
+        line-height: 50px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px){
+    #content h4 > a {
+        font-size: 2rem;
+        line-height: 50px;
+    }
+    .ant-list-item-meta-description,
+    .ant-list-item-action li,
+    .ant-list-vertical .ant-list-item-content {
+        font-size: 2rem;
+        line-height: 50px;
+    }
 }
