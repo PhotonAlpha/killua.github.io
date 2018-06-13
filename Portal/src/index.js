@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { Router} from 'react-router-dom';
+import history from './router/history';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {AppContainer} from 'react-hot-loader';
 import {Provider} from 'react-redux';
 import store from './redux/store';
-import {BrowserRouter as Router} from 'react-router-dom';
 import './assets/favicon.ico';
 
 // import zh from './locales/zh';
@@ -25,7 +27,7 @@ function renderWithHotReload(RootElement) {
     ReactDom.render(
         <AppContainer>
             <Provider store={store}>
-                <Router>
+                <Router history={history} >
                     <RootElement/>
                 </Router>
             </Provider>    

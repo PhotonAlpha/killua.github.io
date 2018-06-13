@@ -25,4 +25,29 @@ windows: type NUL > router.js
     打开vscode之后，点击文件==>首选项==>设置==>search.followSymlinks=>false
 
 # Github API
-        
+    blogsiteaccess
+    e5c110e16fd4e61921ae5069c46ec8fca227f20c 
+https://api.github.com/repos/PhotonAlpha/blogs/issues/1/comments?client_secret=e5c110e16fd4e61921ae5069c46ec8fca227f20c
+        首页 API： List<issues> label：rare
+            https://api.github.com/repos/PhotonAlpha/blogs/issues
+            https://api.github.com/repos/PhotonAlpha/blogs/issues?labels=rare
+        SpringBoot API： 
+            https://api.github.com/search/code?q=extension:md+in:path+path:backend/Docker+language:md+repo:photonalpha/blogs
+        展示页面
+            from 首页：
+                data: 
+                    https://api.github.com/search/code?q=extension:md+in:path+filename:2018-5-22-第一篇博文+language:md+repo:photonalpha/blogs
+
+                    https://api.github.com/repositories/105626245/git/blobs/5dd67f8766f088f8d33a94a678dfa3160407b05d
+                comment: 
+                    https://api.github.com/repos/PhotonAlpha/blogs/issues/1/comments?client_id=61bfc53d957e74e78f8f&client_secret=31c61e66cdcc9ada8db2267ee779d0bdafac434c&per_page=50&page=1
+            from search：
+                data：
+                    https://api.github.com/repositories/105626245/git/blobs/5dd67f8766f088f8d33a94a678dfa3160407b05d
+                comment: 
+                    https://api.github.com/search/issues?q=2018-5-22-第一篇博文+in:title+type:issue+repo:photonalpha/blogs
+                    
+                    https://api.github.com/repos/PhotonAlpha/blogs/issues/1/comments  
+
+
+

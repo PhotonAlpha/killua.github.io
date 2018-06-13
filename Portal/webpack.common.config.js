@@ -56,8 +56,7 @@ commonConfig = {
             router: path.join(__dirname, 'src/router'),
             actions: path.join(__dirname, 'src/redux/actions'),
             reducers: path.join(__dirname, 'src/redux/reducers'),
-            components: path.join(__dirname, 'src/components'),
-            assets: path.join(__dirname, 'src/assets')
+            assets: path.join(__dirname, 'src/assets'),
         }
     }
 }

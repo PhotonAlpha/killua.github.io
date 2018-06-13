@@ -19,6 +19,7 @@ import Archives from 'bundle-loader?lazy&name=archives!pages/Archives/Archives';
 import Wow from 'bundle-loader?lazy&name=wow!pages/Videos/WorldOfWarcraft';
 import Python from 'bundle-loader?lazy&name=python!pages/Videos/Python';
 import About from 'bundle-loader?lazy&name=about!pages/About/About';
+import Reveal from 'bundle-loader?lazy&name=reveal!pages/Reveal/Reveal';
 // import Home from 'pages/Home/Home';
 // import Page1 from 'pages/Page1/Page1';
 // import Counter from 'pages/Counter/Counter';
@@ -46,6 +47,8 @@ export default () => (
         <Route path="/wow" component={createComponent(Wow)}/>
         <Route path="/python" component={createComponent(Python)}/>
         <Route path="/about" component={createComponent(About)}/>
+
+        <Route path="/reveal" component={createComponent(Reveal)}/>
         
         <Route path="/404" component={createComponent(NotFound)}/>
     </div>
