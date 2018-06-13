@@ -22,12 +22,18 @@ export function getResourceTrees() {
     return result;
 }
 
-export function getBlogData(...params) {
+export function getBlogData(params) {
     console.log('getBlogData', params);
+    if(params){
+        const result = {
+            types: [GET_RESOURCE_REQUEST, GET_RESOURCE_SUCCESS, GET_RESOURCE_FAIL],
+            promise: client => client.get(`http://localhost:4200/api/blogContent.json`)
+        }
+        return result;
+    }
     const result = {
         types: [GET_RESOURCE_REQUEST, GET_RESOURCE_SUCCESS, GET_RESOURCE_FAIL],
-        promise: client => client.get(`http://localhost:4200/api/dataTrees.json`)
-        // promise: client => client.get(`https://api.github.com/repos/PhotonAlpha/blogs/readme`)
+        promise: client => client.get(`https://api.github.com/repos/PhotonAlpha/blogs/readme`)
     }
     return result;
 }

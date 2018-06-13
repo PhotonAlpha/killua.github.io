@@ -4,6 +4,7 @@ import { Router} from 'react-router-dom';
 import history from './router/history';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'github-markdown-css/github-markdown.css';
 import {AppContainer} from 'react-hot-loader';
 import {Provider} from 'react-redux';
 import store from './redux/store';
