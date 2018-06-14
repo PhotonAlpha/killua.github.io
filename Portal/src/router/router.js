@@ -1,6 +1,6 @@
 import React from 'react';
-// import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+// import { Route, Switch } from 'react-router-dom';
 
 import Bundle from './Bundle';
 import Loading from 'components/Loading/Loading';
@@ -20,6 +20,7 @@ import Wow from 'bundle-loader?lazy&name=wow!pages/Videos/WorldOfWarcraft';
 import Python from 'bundle-loader?lazy&name=python!pages/Videos/Python';
 import About from 'bundle-loader?lazy&name=about!pages/About/About';
 import Reveal from 'bundle-loader?lazy&name=reveal!pages/Reveal/Reveal';
+import Reveal1 from 'pages/Reveal/Reveal';
 // import Home from 'pages/Home/Home';
 // import Page1 from 'pages/Page1/Page1';
 // import Counter from 'pages/Counter/Counter';
@@ -48,7 +49,8 @@ export default () => (
         <Route path="/python" component={createComponent(Python)}/>
         <Route path="/about" component={createComponent(About)}/>
 
-        <Route path="/reveal" component={createComponent(Reveal)}/>
+        {/* <Route path="/reveal" component={createComponent(Reveal)}/> */}
+        <Route path="/reveal" component={Reveal1}/>
         
         <Route path="/404" component={createComponent(NotFound)}/>
     </div>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Nav from 'components/Nav/Nav';
 import getRouter from 'router/router';
+import Trianglify from 'trianglify';
 
 import { Layout, Breadcrumb, BackTop, Icon, Menu, Row, Col } from 'antd';
 import './APP.css';
@@ -37,7 +38,19 @@ export default class App extends Component {
             layer.style.transform = translate3d;
         }
     }
-      
+    
+    generateJumbotron() {
+        const width = document.body.offsetWidth;
+        const url = Trianglify({
+                    width: width,
+                    height: 200,
+                    cell_size: (Math.random() * 30) + 60,
+                    x_colors: 'random',
+                    y_colors: 'random'
+                }).png();
+        return url;
+    }
+
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
     }
@@ -65,7 +78,10 @@ export default class App extends Component {
                         </Col>
                         </Header>
                     </Row>
-                    <Row className='content-row'>
+                    <Row>
+                        <div className='customer-jumbotron' style={{ backgroundImage: 'url('+this.generateJumbotron()+')' }} >
+
+                        </div>
                         <Content>
                             <BackTop />
                             {getRouter()}

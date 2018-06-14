@@ -11,11 +11,15 @@ import { getResourceTrees } from "actions/common";
 class SpringBoot extends Component {
     constructor(props) {
         super(props);
-        this.props.getResourceTrees();
     }
     state = {
         reverse: false,
     }
+
+    componentDidMount() {
+        this.props.getResourceTrees();
+    }
+
     handleClick = (url, e) => {
         console.log(url, this.props);
         const data = {git_url:url};

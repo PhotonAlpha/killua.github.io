@@ -58,13 +58,14 @@ body {
 }
 .ant-menu {
     background: initial;
+    font-size: 1.3rem;
 }
 .ant-menu-horizontal {
     border-bottom: 0 solid;
 }
-.content-row {
-    z-index: 0;
-    margin-top: 138px;
+.customer-jumbotron {
+    height: 200px;
+    margin-bottom: 30px;
 }
 
 @media screen and  (min-width: 576px){

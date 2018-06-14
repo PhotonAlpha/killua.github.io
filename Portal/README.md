@@ -51,3 +51,4 @@ https://api.github.com/repos/PhotonAlpha/blogs/issues/1/comments?client_secret=e
 
 
 
+mark down add id: https://github.com/rexxars/react-markdown/issues/69

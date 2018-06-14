@@ -72,6 +72,12 @@ export default class Home extends Component {
             count: ++this.state.count
         });
     }
+    componentWillMount() {
+        document.querySelector('.customer-jumbotron').classList.add('d-none');
+    }
+    componentWillUnmount() {
+        document.querySelector('.customer-jumbotron').classList.remove('d-none');
+    }
 
     onChange(a, b, c) {
         console.log(a, b, c);
