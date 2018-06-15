@@ -52,3 +52,36 @@ https://api.github.com/repos/PhotonAlpha/blogs/issues/1/comments?client_secret=e
 
 
 mark down add id: https://github.com/rexxars/react-markdown/issues/69
+
+
+Snippets
+
+Below is a list of all available snippets and the triggers of each one. The ⇥ means the TAB key.
+
+Trigger	Content
+rcc→	class component skeleton
+rrc→	class component skeleton with react-redux connect
+rccp→	class component skeleton with prop types after the class
+rcjc→	class component skeleton without import and default export lines
+rcfc→	class component skeleton that contains all the lifecycle methods
+rwwd→	class component without import statements
+rpc→	class pure component skeleton with prop types after the class
+rsc→	stateless component skeleton
+rscp→	stateless component with prop types skeleton
+rpt→	empty propTypes declaration
+rdp→	empty defaultProps declaration
+con→	class default constructor with props
+est→	empty state object
+cwm→	componentWillMount method
+cdm→	componentDidMount method
+cwr→	componentWillReceiveProps method
+scu→	shouldComponentUpdate method
+cwup→	componentWillUpdate method
+cdup→	componentDidUpdate method
+cwun→	componentWillUnmount method
+ren→	render method
+sst→	this.setState with object as parameter
+ssf→	this.setState with function as parameter
+props→	this.props
+state→	this.state
+bnd→	binds the this of method inside the constructor
