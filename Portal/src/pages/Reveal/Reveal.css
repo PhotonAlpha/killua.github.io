@@ -1,0 +1,19 @@
+#reveal .ant-anchor a {
+    white-space: pre;
+    color: #40a9ff;
+    background: linear-gradient(to bottom, transparent 0%, #2098d1 0) left center/0% 50% no-repeat;
+}
+#reveal .container-fluid {
+    padding-right: 30px;
+}
+#reveal .ant-anchor a:hover {
+    color: white;
+    background-size: 100% 100%;
+}
+#reveal .ant-anchor-link {
+    white-space: pre;
+    font-size: 1rem;
+}
+#reveal .ant-anchor-link:hover {
+    font: bold;
+}
