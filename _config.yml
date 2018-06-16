@@ -1,1 +1,4 @@
 theme: jekyll-theme-leap-day
+redirects:
+  redirect_to: index.html
+  try_files: true
