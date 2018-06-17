@@ -25,6 +25,8 @@ windows: type NUL > router.js
     打开vscode之后，点击文件==>首选项==>设置==>search.followSymlinks=>false
 
 # Github API
+1. github pages refresh : <https://github.com/rafrex/spa-github-pages>
+2. 
     blogsiteaccess
     e5c110e16fd4e61921ae5069c46ec8fca227f20c 
 https://api.github.com/repos/PhotonAlpha/blogs/issues/1/comments?client_secret=e5c110e16fd4e61921ae5069c46ec8fca227f20c
