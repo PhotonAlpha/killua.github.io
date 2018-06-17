@@ -4,6 +4,7 @@ import counter from './reducers/counter';
 import userInfo from './reducers/userInfo';
 import common from './reducers/common';
 import resume from './reducers/resume';
+import commentStore from './reducers/comments';
 
 // export default function combineReducers(state = {}, action) {
 //     return {
@@ -16,5 +17,6 @@ export default combineReducers({
     counter,
     userInfo,
     common,
-    resume
+    resume,
+    commentStore
 });

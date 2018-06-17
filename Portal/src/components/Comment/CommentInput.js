@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Icon, Input, Button } from 'antd';
 const { TextArea } = Input;
 
 class CommentInput extends Component {
+    static propTypes = {
+        username: PropTypes.any,
+        onSubmit: PropTypes.func,
+        onUserNameInputBlur: PropTypes.func
+
+    }
+    static defaultProps = {
+        username: ''
+    };
     constructor(props){
         super(props);
         this.state = {
-            username: '',
+            username: props.username,
             content: ''
         }
     }
     componentDidMount() {
         this.textarea.focus();
     }
-    componentWillMount() {
-        this._loadUsername();
-    }
 
+    handleUsernameBlur(event) {
+        if(this.props.onUserNameInputBlur) {
+            this.props.onUserNameInputBlur(event.target.value);
+        }
+    }
     handleUsernameChange(event) {
         this.setState({
             username: event.target.value
@@ -27,21 +39,7 @@ class CommentInput extends Component {
             content: event.target.value
         })
     }
-    //所有私有方法都以 _ 开头
-    _saveUserName(username) {
-        localStorage.setItem('username', username);
-    }
-    _loadUsername(){
-        const username = localStorage.getItem('username')
-        if (username) {
-          this.setState({ username })
-        }
-    }
     
-    handleUsernameBlur(event) {
-        console.log('handleUsernameBlur', event.target.value)
-        this._saveUserName(event.target.value);
-    }
     handleSubmit() {
         if (this.props.onSubmit) {
             const { username, content } = this.state

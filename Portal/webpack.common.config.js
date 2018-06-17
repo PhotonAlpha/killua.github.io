@@ -57,6 +57,7 @@ commonConfig = {
             actions: path.join(__dirname, 'src/redux/actions'),
             reducers: path.join(__dirname, 'src/redux/reducers'),
             assets: path.join(__dirname, 'src/assets'),
+            containers: path.join(__dirname, 'src/containers'),
         }
     }
 }

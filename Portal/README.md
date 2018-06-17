@@ -85,3 +85,9 @@ ssf→	this.setState with function as parameter
 props→	this.props
 state→	this.state
 bnd→	binds the this of method inside the constructor
+
+``
+constructor: con
+component: rccp
+container: rcredux impt bnd
+``

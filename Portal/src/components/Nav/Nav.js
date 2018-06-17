@@ -33,7 +33,6 @@ export default class Nav extends Component {
                   <Link to="/springboot"><Icon type="coffee" />SpringBoot</Link>
               </Menu.Item>
               <Menu.Item key="springcloud">
-                  {/* <Link to="/page1"><Icon type="cloud" />SpringCloud</Link> */}
                   <Link to="/springcloud"><Icon type="cloud" />SpringCloud</Link>
               </Menu.Item>
               <Menu.Item key="docker">
@@ -56,12 +55,6 @@ export default class Nav extends Component {
                   <Link to="/about"><Icon type="dashboard" />About</Link>
               </Menu.Item>
           </Menu>
-          // <ul>
-          //     <li><Link to="/">Home</Link></li>
-          //     <li><Link to="/page1">Page1</Link></li>
-          //     <li><Link to="/counter">Counter</Link></li>
-          //     <li><Link to="/userinfo">UserInfo</Link></li>
-          // </ul>
         )
     }
 }

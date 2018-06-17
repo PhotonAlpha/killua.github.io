@@ -1,0 +1,144 @@
+#hero-page {
+    margin-top: -138px;
+}
+#hero {
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+}
+#content {
+    /* background-color: #130d0a; */
+    background-image: url(../../assets/site-background.png)
+}
+/** for content style*/
+.customer-gradient {
+    /* height: 30px;
+    background: linear-gradient(to bottom, rgb(10, 10, 10) , rgba(24, 144, 255, 0)); */
+}
+#content h4 > a {
+    background: linear-gradient(to bottom, transparent 78%, #2098d1 0) center center/0% 75% no-repeat;
+    font-size: 2rem;
+    color: #337ab7;
+    line-height: 35px;
+}
+#content a:hover {
+    background-size: 100% 100%;
+    color: #23527c;
+}
+#content a:active {
+    background-size: 100% 80%;
+}
+#content .ant-list-item .ant-card {
+    box-shadow: 10px 6px 11px rgba(0, 0, 0, .44);
+    height: 200px;
+    background-repeat: round;
+}
+
+/**hero layer*/
+#hero-page .layer {
+    background-position: bottom center;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 800px;
+    position: fixed;
+    z-index: -1;
+}
+#hero-mobile {
+    display: none; 
+    background: url(../../assets/hero/full_illustration.png) no-repeat center bottom/cover;
+    height: 320px;
+}
+#hero-page .first-section {
+    padding: 50px 0 20px 0;
+}
+#hero-page .text-header {
+    font-size: 50px;
+    text-align: center;
+}
+#hero-page h1 {
+    line-height: 120%;
+    margin-bottom: 30px;
+    color: #ede0d5;
+}
+#hero-page p {
+    color: #ede0d5;
+    font-size: 18px;
+    line-height: 150%;
+}
+#hero, .layer {
+    min-height: 800px;
+}
+#hero-page .layer-bg {
+    background-image: url(../../assets/hero/ilu_bg.jpg);
+}
+#hero-page .layer-1 {
+    background-image: url(../../assets/hero/ilu_03.png);
+    background-position: left bottom;
+}
+#hero-page .layer-2 {
+    background-image: url(../../assets/hero/ilu_02.png);
+}
+#hero-page .layer-3 {
+    background-image: url(../../assets/hero/ilu_man.png);
+    background-position: right bottom;
+}
+#hero-page .layer-4 {
+    background-image: url(../../assets/hero/ilu_01.png);
+}
+#hero-page .layer-overlay {
+    background-image: url(../../assets/hero/ilu_overlay.png);
+}
+@media only screen and (max-width: 1030px) {
+    #hero {
+      display: none;
+    }
+  
+    #hero-mobile {
+      display: block;
+    }
+}
+#hero-page .tutorial-link {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: underline;
+}
+#hero-page .tutorial-link:hover {
+    color: #ede0d5;
+}
+@media screen and  (max-width: 576px){
+    #content h4 > a {
+        font-size: 3rem;
+        line-height: 55px;
+    }
+    .ant-list-item-meta-description,
+    .ant-list-item-action li,
+    .ant-list-vertical .ant-list-item-content {
+        font-size: 2rem;
+        line-height: 50px;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 768px){
+    #content h4 > a {
+        font-size: 3rem;
+        line-height: 55px;
+    }
+    .ant-list-item-meta-description,
+    .ant-list-item-action li,
+    .ant-list-vertical .ant-list-item-content {
+        font-size: 2rem;
+        line-height: 50px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px){
+    #content h4 > a {
+        font-size: 2rem;
+        line-height: 50px;
+    }
+    .ant-list-item-meta-description,
+    .ant-list-item-action li,
+    .ant-list-vertical .ant-list-item-content {
+        font-size: 2rem;
+        line-height: 50px;
+    }
+}
