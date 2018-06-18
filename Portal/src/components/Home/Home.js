@@ -2,19 +2,32 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { List, Avatar, Icon, Row, Col, Card } from 'antd';
 import './Home.css';
-import Trianglify, { randomColor } from 'trianglify';
+
+const IconText = ({ type, text }) => (
+    <span>
+      <Icon type={type} style={{ marginRight: 8 }} />
+      {text}
+    </span>
+);
 
 export default class Home extends Component {
   static propTypes = {
-    prop: PropTypes
+    issueList: PropTypes.array,
+    rareList: PropTypes.array
   }
+  static defaultProps = {
+    issueList: [],
+    rareList: []
+  };
   constructor(props) {
       super(props);
-      this.state = {
-          homepage: true
-      }
   }
-  
+  componentWillMount() {
+    document.querySelector('.customer-jumbotron').classList.add('d-none');
+  }
+  componentWillUnmount() {
+    document.querySelector('.customer-jumbotron').classList.remove('d-none');
+  }
 
   render() {
     return (
@@ -43,20 +56,17 @@ export default class Home extends Component {
                             },
                             pageSize: 6,
                             }}
-                            dataSource={listData}
-                            footer={<div><b>ant design</b> footer part</div>}
+                            dataSource={ this.props.issueList }
                             renderItem={item => (
                             <List.Item
                                 key={item.title}
-                                actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+                                actions={[<IconText type="calendar" text={item.created_at.substring(0,10)} />]}
                                 
                             >
                                 <List.Item.Meta
-                                avatar={<Avatar src={item.avatar} />}
-                                title={<a className='text' href={item.href}>{item.title}</a>}
-                                description={item.description}
+                                title={<a className='text' href={item.issue_url}>{item.title}</a>}
                                 />
-                                {item.content}
+                                {item.body}
                             </List.Item>
                             )}
                         />
@@ -65,13 +75,13 @@ export default class Home extends Component {
                         <h2 style={{textAlign: 'center'}} >精选板块</h2>
                         <List
                             grid={{ gutter: { md: 16*3, lg: 0 } , lg: 1, md: 2 }}
-                            dataSource={data}
+                            dataSource={ this.props.rareList }
                             renderItem={item => (
                             <List.Item>
                                 <Card
                                 hoverable={true}
                                 style={{ backgroundImage: 'url('+item.backgroundURI+')' }}
-                                >Card content</Card>
+                                >{item.body}</Card>
                             </List.Item>
                             )}
                         />

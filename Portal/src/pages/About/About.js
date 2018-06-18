@@ -9,7 +9,7 @@ import Dialogue from 'components/Dialogue/Dialogue';
 import DialogueCV from 'components/Dialogue/Dialogue.CV';
 import Letter from 'pages/About/Letter';
 
-import { getBlogData, getResumeInfo } from "actions/common";
+import { getBlogData, getResumeInfo } from "reducers/blogs";
 
 
 class About extends Component {

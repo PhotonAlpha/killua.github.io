@@ -28,7 +28,9 @@ windows: type NUL > router.js
 1. github pages refresh : <https://github.com/rafrex/spa-github-pages>
 2. 
     blogsiteaccess
-    e5c110e16fd4e61921ae5069c46ec8fca227f20c 
+    access_token=4bda96067eea754344532f7003a8e6fe6e422ec4
+
+
 https://api.github.com/repos/PhotonAlpha/blogs/issues/1/comments?client_secret=e5c110e16fd4e61921ae5069c46ec8fca227f20c
         首页 API： List<issues> label：rare
             https://api.github.com/repos/PhotonAlpha/blogs/issues

@@ -106,6 +106,13 @@
 #hero-page .tutorial-link:hover {
     color: #ede0d5;
 }
+#hero-page .ant-list-vertical .ant-list-item-content {
+    font-size: 16px;
+    font-weight: bold;
+}
+#hero-page .ant-card-body {
+    font-weight: bold;
+}
 @media screen and  (max-width: 576px){
     #content h4 > a {
         font-size: 3rem;

@@ -1,44 +1,24 @@
 import React, {Component} from 'react';
 import { List, Avatar, Icon, Row, Col, Card } from 'antd';
 import './Home.css';
-import Trianglify, { randomColor } from 'trianglify';
+import backgroundPng from 'components/Utils/Utils';
 
 const data = [
     {
       title: 'Title 1',
-      backgroundURI: Trianglify({
-        width: 323,
-        height: 200,
-        cell_size: (Math.random() * 30) + 25,
-        x_colors: 'random',
-      }).png()
+      backgroundURI: backgroundPng(323, 200, 25)
     },
     {
       title: 'Title 2',
-      backgroundURI: Trianglify({
-        width: 323,
-        height: 200,
-        cell_size: (Math.random() * 30) + 25,
-        x_colors: 'random',
-      }).png()
+      backgroundURI: backgroundPng(323, 200, 25)
     },
     {
       title: 'Title 3',
-      backgroundURI: Trianglify({
-        width: 323,
-        height: 200,
-        cell_size: (Math.random() * 30) + 25,
-        x_colors: 'random',
-      }).png()
+      backgroundURI: backgroundPng(323, 200, 25)
     },
     {
       title: 'Title 4',
-      backgroundURI: Trianglify({
-        width: 323,
-        height: 200,
-        cell_size: (Math.random() * 30) + 25,
-        x_colors: 'random',
-      }).png()
+      backgroundURI: backgroundPng(323, 200, 25)
     },
 ];
 

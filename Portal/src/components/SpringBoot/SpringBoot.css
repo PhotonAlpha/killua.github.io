@@ -1,0 +1,55 @@
+#SpringBoot .ant-timeline-item {
+    font-size: 2rem;
+    padding: 0 0 30px;
+}
+
+#SpringBoot .ant-timeline-item-head {
+    width: 23px;
+    height: 23px;
+}
+
+#SpringBoot .ant-timeline-item-tail {
+    left: 8px;
+    top: 0;
+    border: 3px solid #1890ff;
+}
+#SpringBoot .ant-timeline-item-content {
+    padding: 0 0 0 35px;
+}
+#SpringBoot .ant-timeline-item-content:hover {
+    color: #1890ff;
+    cursor: pointer;
+    animation-name: example;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    
+    padding: 0 0 0 55px;
+}
+#SpringBoot .ant-timeline-item-content > i{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 1.5s ;
+
+}
+#SpringBoot .ant-timeline-item-content:hover > i {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    0%   {padding: 0 0 0 30px;}
+    25%  {padding: 0 0 0 35px;}
+    50%  {padding: 0 0 0 40px;}
+    75%  {padding: 0 0 0 45px;}
+    100% {padding: 0 0 0 55px;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {padding: 0 0 0 30px;}
+    25%  {padding: 0 0 0 35px;}
+    50%  {padding: 0 0 0 40px;}
+    75%  {padding: 0 0 0 45px;}
+    100% {padding: 0 0 0 55px;}
+}

@@ -52,9 +52,10 @@ commonConfig = {
     resolve: {
         alias: {
             pages: path.join(__dirname, 'src/pages'),
+            actions: path.join(__dirname, 'src/redux/actions'),
+            
             components: path.join(__dirname, 'src/components'),
             router: path.join(__dirname, 'src/router'),
-            actions: path.join(__dirname, 'src/redux/actions'),
             reducers: path.join(__dirname, 'src/redux/reducers'),
             assets: path.join(__dirname, 'src/assets'),
             containers: path.join(__dirname, 'src/containers'),
