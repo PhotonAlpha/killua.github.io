@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Base64 } from 'js-base64';
+import { Anchor, Row, Col } from 'antd';
 import ReactMarkdown from 'react-markdown';
 
 import './Reveal.css';

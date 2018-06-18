@@ -21,7 +21,7 @@ export class RevealContainer extends Component {
 
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
-
+        console.log('RevealContainer', message , isLoading, errorMsg)
         return (
             <div  id='reveal'>
                 {
