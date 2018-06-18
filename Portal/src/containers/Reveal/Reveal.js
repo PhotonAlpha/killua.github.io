@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { getBlogData } from "actions/common";
+import { getBlogData } from "reducers/blogs";
 import Reveal from 'components/Reveal/Reveal';
 
 export class RevealContainer extends Component {
@@ -14,8 +14,9 @@ export class RevealContainer extends Component {
     }
     
     componentWillMount() {
-        var git_url = this.props.location.state;  
-        console.log('RevealContainer', git_url)
+        var data = this.props.location.state;  
+        console.log('RevealContainer', data);
+        const { git_url } = data;
         this.props.getBlogData(git_url);
     }
 

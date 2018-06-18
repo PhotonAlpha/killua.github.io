@@ -1,33 +1,38 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import './Dialogue.css';
 import { Menu, Icon, Layout, Modal, Button, Row, Col, Input, Avatar, Badge, Card } from 'antd';
 import babaCar from 'assets/baba-car.png';
 
 export default class Dialogue extends Component {
+    static propTypes = {
+        handleOk: PropTypes.func,
+    };
     constructor(props){
         super(props);
-        // console.log('Dialogue', props);
         this.state = this.props.dialogues;
     }
     componentWillReceiveProps(nextProps) {
-        // console.log('componentWillReceiveProps', nextProps.dialogues, this.props.dialogues)
         if(nextProps.dialogues != this.props.dialogues) {
             this.setState(
                 nextProps.dialogues
             )
         }
     }
-    handleOk = () => {
+    handleOk() {
+        // if(this.props.handleOk){
+        //     this.props.handleOk(this.state.salt);
+        // }else{
+        //     this.setState({ loading: true });
+        //     setTimeout(() => {
+        //       this.setState({ loading: false, visible: false });
+        //     }, 3000);
+        // }
         if(this.props.handleOk){
             this.props.handleOk(this.state.salt);
-        }else{
-            this.setState({ loading: true });
-            setTimeout(() => {
-              this.setState({ loading: false, visible: false });
-            }, 3000);
         }
     }
-    handleCancel = () => {
+    handleCancel() {
         this.setState({ visible: false });
     }
     emitEmpty = () => {
@@ -45,8 +50,8 @@ export default class Dialogue extends Component {
                     width = '650px'
                     style={{ top: 20, height: 350 }}
                     visible={visible}
-                    onOk={this.handleOk}
-                    onCancel={this.handleCancel}
+                    onOk={this.handleOk.bind(this)}
+                    onCancel={this.handleCancel.bind(this)}
                     footer={[
                         <Button key="back" onClick={this.handleCancel}>返回</Button>,
                         <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
