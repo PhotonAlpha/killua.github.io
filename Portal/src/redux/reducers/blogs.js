@@ -1,8 +1,8 @@
 import { Base64 } from 'js-base64';
 
-const GET_INFO_REQUEST = "info/GET_INFO_REQUEST";
-const GET_INFO_SUCCESS = "info/GET_INFO_SUCCESS";
-const GET_INFO_FAIL = "info/GET_INFO_FAIL";
+const GET_INFO_REQUEST = "blog/GET_INFO_REQUEST";
+const GET_INFO_SUCCESS = "blog/GET_INFO_SUCCESS";
+const GET_INFO_FAIL = "blog/GET_INFO_FAIL";
 
 const initialState = {
     isLoading: false,
@@ -11,7 +11,7 @@ const initialState = {
 }
 
 export default function reducer(state = initialState, action) {
-    console.log('common reducer', state, action)
+    console.log('blog reducer', state, action)
     switch (action.type) {
         case GET_INFO_REQUEST:
             return {
@@ -38,22 +38,6 @@ export default function reducer(state = initialState, action) {
             return state
     }
 }
-export function getResumeInfo() {
-    const result = {
-        types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
-        promise: client => client.get(`http://localhost:4200/api/resume.json`)
-    }
-    return result;
-}
-
-export function getBlogIssues(params) {
-    console.log('getBlogIssues', params);
-    const result = {
-        types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
-        promise: client => client.get(BOLG_ISSUES)
-    }
-    return result;
-}
 
 export function getRepositoryTree(params) {
     console.log('getRepositoryTree', params);
@@ -63,6 +47,7 @@ export function getRepositoryTree(params) {
     }
     return result;
 }
+
 export function getBlogData(git_url) {
     console.log('getBlogData', git_url);
     if(git_url){
@@ -78,12 +63,13 @@ export function getAboutme() {
     console.log('getAboutme');
     const result = {
         types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
-        promise: client => client.get(ABOUT_REPOSITORY)
+        // promise: client => client.get(ABOUT_REPOSITORY)
+        promise: client => client.get(`http://localhost:4200/api/blogContent.json`)
     }
     return result;
 }
+
 const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
 const TOKEN = `access_token=`+Base64.decode(t);
-const BOLG_ISSUES = `https://api.github.com/repos/PhotonAlpha/blogs/issues?state=open`+`&`+TOKEN;
-const BOLG_REPOSITORY = `https://api.github.com/search/code?q=extension:md+in:path+language:md+repo:photonalpha/blogs`+`&`+TOKEN;
-const ABOUT_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/readme`+`?`+TOKEN;
+const BOLG_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/git/trees/master?recursive=1`+`&`+TOKEN;
+// const ABOUT_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/readme`+`?`+TOKEN;

@@ -1,7 +1,9 @@
 import {combineReducers} from "redux";
 
 import blogStore from './reducers/blogs';
+import issueStore from './reducers/issues';
 import commentStore from './reducers/comments';
+import resumeStore from './reducers/resume';
 
 // export default function combineReducers(state = {}, action) {
 //     return {
@@ -12,5 +14,7 @@ import commentStore from './reducers/comments';
 
 export default combineReducers({
     blogStore,
-    commentStore
+    issueStore,
+    commentStore,
+    resumeStore
 });

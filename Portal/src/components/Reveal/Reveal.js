@@ -9,12 +9,17 @@ import './Reveal.css';
 const { Link } = Anchor;
 export default class Reveal extends Component {
     static propTypes = {
-        blogContent: PropTypes.object
+        blogContent: PropTypes.string
     }
     constructor(props) {
         super(props);
     }
     
+    _scrollTarget(id){
+        if(document.getElementById(id)){
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); 
+        }
+    }
 
     render() {
         return (
@@ -26,7 +31,7 @@ export default class Reveal extends Component {
                     <Col lg ={{ span:6 }} md={{ span:0 }}>
                         <Anchor showInkInFixed={true} offsetTop={138} bounds={20} >
                             <h3 style={{textAlign: 'center'}} >Post Directory</h3>
-                            <AnchorLink />
+                            <AnchorLink scrollTarget={ this._scrollTarget.bind(this) } />
                         </Anchor>
                     </Col>
                 </Row>
@@ -37,12 +42,22 @@ export default class Reveal extends Component {
 
 function AnchorLink(props){
     const anchors = Array.from(document.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+    function handleClick(id) {
+        if(props.scrollTarget){
+            props.scrollTarget(id)
+        }
+    }
     const dataTree = anchors.
         filter(item => (item.localName.indexOf('h')>-1)? true: false)
         .map((item, index) => {
-        return (<Link key={index} href={'#'+item.id} title={item.align} />)
+            return (
+                <div key={index} className="ant-anchor-link" >
+                    <a className="ant-anchor-link-title" onClick={handleClick.bind(this, item.id)} hre={'#'+item.id} title={item.align}>{item.align}</a>
+                </div>
+                // <Link key={index} href={'#'+item.id} title={item.align} />
+            )
         });
-    console.log('AnchorLink', dataTree);  
+    // console.log('AnchorLink', dataTree);  
     return dataTree;
 }
 
@@ -52,7 +67,7 @@ function flatten(text, child) {
       : React.Children.toArray(child.props.children).reduce(flatten, text)
 }
 function HeadingRenderer(props) {
-    console.log('HeadingRenderer', props);
+    // console.log('HeadingRenderer', props);
     const children = React.Children.toArray(props.children);
     const text = children.reduce(flatten, '');
     let content = text;

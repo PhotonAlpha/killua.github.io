@@ -7,11 +7,9 @@ const { Meta } = Card;
 export default class DialogueCV extends Component {
     constructor(props){
         super(props);
-        console.log('``````````````````````');
         this.state = this.props.dialogues;
     }
     componentWillReceiveProps(nextProps) {
-        console.log('``````````````````````', nextProps);
         if(nextProps.dialogues != this.props.dialogues) {
             this.setState(
                 nextProps.dialogues
@@ -24,16 +22,10 @@ export default class DialogueCV extends Component {
     handleCancel = () => {
         this.setState({ visibleCv: false });
     }
-    componentWillMount() {
-        console.log('componentWillMount', this.props, this.state)
-    }
 
     render() {
-        console.log('CV', this.state)
+        // console.log('CV', this.state)
         const { visibleCv, loading, error, resume } = this.state;
-        // if( !error ){
-        //     this.props.getResumeInfo();
-        // }
         return (
                 <Modal
                     width = '212mm'
@@ -88,7 +80,6 @@ function BasicInfo(props) {
         Object.entries(props.basicInfo).forEach(([key, value], index) => {
             comp.push(<Card.Grid key = {index} className='grid-style'>{key}：</Card.Grid>)
             comp.push(<Card.Grid key = {key + index} className='grid-style'>{value}</Card.Grid>)
-
         });
     }
     return comp;
@@ -115,12 +106,7 @@ function ListItems(props) {
 
 function ResumeModal(props){
     console.log('ResumeModal', props)
-    const {message , isLoading, errorMsg} = props.resumeData;
-    if(isLoading){
-        return '请求信息中......';
-    }else if (errorMsg){
-        return errorMsg;
-    }
+    const message = props.resumeData;
     return (
         <Row id = 'dialogcv' style = {{padding: '50px 0 0 0'}}>
             <Card

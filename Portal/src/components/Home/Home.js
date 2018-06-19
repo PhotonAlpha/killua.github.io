@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { List, Avatar, Icon, Row, Col, Card } from 'antd';
 import './Home.css';
+import history from 'router/history';
 
 const IconText = ({ type, text }) => (
     <span>
@@ -17,11 +18,22 @@ export default class Home extends Component {
   }
   static defaultProps = {
     issueList: [],
-    rareList: []
+    rareList: [],
   };
   constructor(props) {
       super(props);
   }
+
+  handleClick(title, e) {
+    console.log(title, this.props);
+    const data = {issue_title: title};
+    const path = {  
+        pathname:'/reveal',  
+        state:data
+      }  
+    history.push(path);
+  }
+
   componentWillMount() {
     document.querySelector('.customer-jumbotron').classList.add('d-none');
   }
@@ -64,7 +76,8 @@ export default class Home extends Component {
                                 
                             >
                                 <List.Item.Meta
-                                title={<a className='text' href={item.issue_url}>{item.title}</a>}
+                                // title={<a className='text' href={item.issue_url}>{item.title}</a>}
+                                title={<a className='text' onClick={ this.handleClick.bind(this, item.title) }>{item.title}</a>}
                                 />
                                 {item.body}
                             </List.Item>

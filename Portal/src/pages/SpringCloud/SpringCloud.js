@@ -67,6 +67,14 @@ const IconText = ({ type, text }) => (
 );
 
 export default class SpringCloud extends Component {
+    constructor(props) {
+        super(props);
+        this.start(1,2);
+    }
+    start(a,b){
+        console.log(a,b)
+    }
+
     state = {
         reverse: false,
     }
@@ -81,6 +89,7 @@ export default class SpringCloud extends Component {
     render() {
         return (
             <div id ='SpringCloud' className='container'>
+            <button onClick={this.start} >test</button>
             <Row>
                 <Col xs={{ span: 16 }} >
                     <List

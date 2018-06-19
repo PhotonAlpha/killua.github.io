@@ -7,6 +7,7 @@ import babaCar from 'assets/baba-car.png';
 export default class Dialogue extends Component {
     static propTypes = {
         handleOk: PropTypes.func,
+        // resumeStore: PropTypes.any
     };
     constructor(props){
         super(props);
@@ -20,19 +21,11 @@ export default class Dialogue extends Component {
         }
     }
     handleOk() {
-        // if(this.props.handleOk){
-        //     this.props.handleOk(this.state.salt);
-        // }else{
-        //     this.setState({ loading: true });
-        //     setTimeout(() => {
-        //       this.setState({ loading: false, visible: false });
-        //     }, 3000);
-        // }
         if(this.props.handleOk){
             this.props.handleOk(this.state.salt);
         }
     }
-    handleCancel() {
+    handleCancel = () => {
         this.setState({ visible: false });
     }
     emitEmpty = () => {
@@ -42,9 +35,14 @@ export default class Dialogue extends Component {
         this.setState({ salt: e.target.value });
     }
     
+    
     render() {
+        console.log('dialog~~~', this.props)
         const { visible, loading, salt } = this.state;
         const suffix = salt ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
+
+        const {message , isLoading, errorMsg} = this.props.resumeStore;
+        console.log('Dialog', message , isLoading, errorMsg)
         return (
                 <Modal
                     width = '650px'
@@ -54,7 +52,7 @@ export default class Dialogue extends Component {
                     onCancel={this.handleCancel.bind(this)}
                     footer={[
                         <Button key="back" onClick={this.handleCancel}>返回</Button>,
-                        <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
+                        <Button key="submit" type="primary" loading={loading} onClick={ this.handleOk.bind(this) }>
                         确定
                         </Button>,
                     ]}
@@ -75,6 +73,14 @@ export default class Dialogue extends Component {
                                     <input type="text" name='salt' placeholder="请输入手机号码" value={ salt } onChange={ this.onChange } />
                                     <img src= {babaCar} alt="Car"/>
                                     <span className="suffix" onClick={ this.emitEmpty } ><i className="anticon anticon-close-circle"></i></span>
+                                </div>
+                                <div style={{color: 'red'}}>
+                                    {
+                                        isLoading? 'loading......': (
+                                            errorMsg? errorMsg :
+                                                ''
+                                        )
+                                    }
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import Home from 'components/Home/Home';
 
 import backgroundPng from 'components/Utils/Utils';
-import { getBlogIssues } from "reducers/blogs";
+import { getBlogIssues } from "reducers/issues";
+import { getRepositoryTree } from "reducers/blogs";
 
 export class HomeContainer extends Component {
 	static propTypes = {
@@ -13,14 +14,19 @@ export class HomeContainer extends Component {
 	}
 	constructor(props) {
 		super(props);
-		console.log('constructor', props)
+		console.log('constructor', props);
+		this.state = {
+			isLoading: false,
+			message: {},
+			errorMsg: ''
+		}
 	}
 	componentWillMount() {
 		this.props.getBlogIssues();
 	}
 
 	render() {
-		const {message , isLoading, errorMsg} = this.props.blogStore;
+		const {message , isLoading, errorMsg} = this.props.issueStore;
 		let issueList = [];
 		let rareList = [];
 		if(Array.isArray(message)) {
@@ -63,12 +69,15 @@ export class HomeContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+	console.log('mapStateToProps', state)
 	return {
+		issueStore: state.issueStore,
 		blogStore: state.blogStore
 	}
 }
 const mapDispatchToProps = {
-  	getBlogIssues
+	  getBlogIssues,
+	  getRepositoryTree
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)

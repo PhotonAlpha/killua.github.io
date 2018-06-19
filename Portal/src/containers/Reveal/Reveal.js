@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { getBlogData } from "reducers/blogs";
+import { getBlogData, searchBlogByIssues } from "reducers/blogs";
 import Reveal from 'components/Reveal/Reveal';
 
 export class RevealContainer extends Component {
@@ -11,13 +11,24 @@ export class RevealContainer extends Component {
     }
     constructor(props) {
         super(props);
+        console.log('RevealContainer constructor');
+        this.state = {
+            git_url: ''
+        }
     }
     
     componentWillMount() {
         var data = this.props.location.state;  
-        console.log('RevealContainer', data);
-        const { git_url } = data;
-        this.props.getBlogData(git_url);
+        const { git_url, issue_title } = data;
+        console.log('RevealContainer componentWillMount', data);
+        if(issue_title){
+            this.props.searchBlogByIssues(issue_title)
+                .then(() => {
+                    console.log('componentWillMount', this.props)
+                })
+        }else if(git_url){
+            this.props.getBlogData(git_url);
+        }
     }
 
     render() {
@@ -43,7 +54,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    getBlogData
+    getBlogData,
+    searchBlogByIssues
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RevealContainer)
