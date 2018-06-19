@@ -24,14 +24,16 @@ export default class Home extends Component {
       super(props);
   }
 
-  handleClick(title, e) {
-    console.log(title, this.props);
-    const data = {issue_title: title};
-    const path = {  
-        pathname:'/reveal',  
-        state:data
-      }  
-    history.push(path);
+  handleClick(git_url, e) {
+    console.log('handleClick', git_url, this.props);
+    if(git_url){
+        const data = {git_url: git_url};
+        const path = {  
+            pathname:'/reveal',  
+            state:data
+          }  
+        history.push(path);
+    }
   }
 
   componentWillMount() {
@@ -77,7 +79,7 @@ export default class Home extends Component {
                             >
                                 <List.Item.Meta
                                 // title={<a className='text' href={item.issue_url}>{item.title}</a>}
-                                title={<a className='text' onClick={ this.handleClick.bind(this, item.title) }>{item.title}</a>}
+                                title={<a className='text' onClick={ this.handleClick.bind(this, item.git_url) }>{item.title}</a>}
                                 />
                                 {item.body}
                             </List.Item>

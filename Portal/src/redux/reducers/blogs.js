@@ -47,6 +47,18 @@ export function getRepositoryTree(params) {
     }
     return result;
 }
+export function getCatalogTree(params) {
+    console.log('getCatalogTree', params);
+    if(params) {
+        console.log('CONTENTS_REPOSITORY', CONTENTS_REPOSITORY.replace('{}', params))
+        const result = {
+            types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
+            promise: client => client.get(CONTENTS_REPOSITORY.replace('{}', params))
+        }
+        return result;
+    }
+    return 'params:'+params+' illegal!'
+}
 
 export function getBlogData(git_url) {
     console.log('getBlogData', git_url);
@@ -63,8 +75,8 @@ export function getAboutme() {
     console.log('getAboutme');
     const result = {
         types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
-        // promise: client => client.get(ABOUT_REPOSITORY)
-        promise: client => client.get(`http://localhost:4200/api/blogContent.json`)
+        promise: client => client.get(ABOUT_REPOSITORY)
+        // promise: client => client.get(`http://localhost:4200/api/blogContent.json`)
     }
     return result;
 }
@@ -72,4 +84,6 @@ export function getAboutme() {
 const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
 const TOKEN = `access_token=`+Base64.decode(t);
 const BOLG_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/git/trees/master?recursive=1`+`&`+TOKEN;
-// const ABOUT_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/readme`+`?`+TOKEN;
+
+const CONTENTS_REPOSITORY = `https://api.github.com/repos/photonalpha/blogs/contents/{}`+`?`+TOKEN;
+const ABOUT_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/readme`+`?`+TOKEN;

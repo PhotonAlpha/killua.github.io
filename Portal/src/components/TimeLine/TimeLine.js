@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Timeline, Button, Icon, Spin, Row, Col } from 'antd';
 import history from 'router/history';
 
-import './SpringBoot.css';
+import './TimeLine.css';
 
 export default class SpringBoot extends Component {
     static propTypes = {
@@ -11,10 +11,9 @@ export default class SpringBoot extends Component {
     }
     constructor(props) {
         super(props);
-        console.log('SpringBoot', props)
     }
     handleClick(url, e) {
-        console.log(url, this.props);
+        // console.log(url, this.props);
         const data = {git_url:url};
         const path = {  
             pathname:'/reveal',  

@@ -21,14 +21,7 @@ export class RevealContainer extends Component {
         var data = this.props.location.state;  
         const { git_url, issue_title } = data;
         console.log('RevealContainer componentWillMount', data);
-        if(issue_title){
-            this.props.searchBlogByIssues(issue_title)
-                .then(() => {
-                    console.log('componentWillMount', this.props)
-                })
-        }else if(git_url){
-            this.props.getBlogData(git_url);
-        }
+        this.props.getBlogData(git_url);
     }
 
     render() {

@@ -29,7 +29,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 isLoading: false,
-                message: {},
+                message: action.result,
                 errorMsg: '请求错误'
             }  
         default:

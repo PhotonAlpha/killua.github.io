@@ -22,22 +22,46 @@ export class HomeContainer extends Component {
 		}
 	}
 	componentWillMount() {
-		this.props.getBlogIssues();
+		this.props.getRepositoryTree().then(()=>{
+			this.props.getBlogIssues();
+		});
 	}
 
 	render() {
 		const {message , isLoading, errorMsg} = this.props.issueStore;
+		const blogStore = {
+			loading: this.props.blogStore.isLoading,
+			error: this.props.blogStore.errorMsg,
+			blog: this.props.blogStore.message
+		}
+		let blogList = [];
+		if(Array.isArray(blogStore.blog.tree)){
+			blogList = blogStore.blog.tree
+				.filter(item => {
+					if(item.type === "blob"){
+						return true;
+					}
+					return false;
+				})
+				.map(item => {
+					return {
+						blogPath: item.path,
+						url: item.url
+					}
+				})
+		}
+		console.log('~~~~~~~~', blogList);
 		let issueList = [];
 		let rareList = [];
 		if(Array.isArray(message)) {
 			issueList= message.map(item => {
 				let _abels = [];
-				
+				let blog = blogList.find(blog=>blog['blogPath'].indexOf(item.title)>-1);
 				if(item.labels && item.labels.length >0){
 					_abels = item.labels.map(item => item.name);
 				}
 				const issue = {
-					issue_url: item.url,
+					git_url: blog?blog.url:'',
 					comments_url: item.comments_url,
 					created_at: item.created_at,
 					labels: _abels,
@@ -53,7 +77,6 @@ export class HomeContainer extends Component {
 				return issue;
 			})
 		}
-		console.log('home render', message , isLoading, errorMsg);
 		console.log(issueList, rareList)
 		return (
 			<div>

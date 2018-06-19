@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getRepositoryTree } from "reducers/blogs";
-import SpringBoot from 'components/SpringBoot/SpringBoot';
+import { getCatalogTree } from "reducers/blogs";
+import SpringBoot from 'components/TimeLine/TimeLine';
+import { SPRING_BOOT } from 'components/Utils/Utils';
 
 export class SpringBootContainer extends Component {
     static propTypes = {
@@ -14,15 +15,16 @@ export class SpringBootContainer extends Component {
     }
     
     componentWillMount() {
-        this.props.getRepositoryTree();
+        console.log('componentWillMount', SPRING_BOOT)
+        this.props.getCatalogTree(SPRING_BOOT);
     }
 
     _reconstructorTree(message) {
         console.log('message', message)
         const pattern = /^[0-9]{4}[-]{1}[0-9]{1,2}[-]{1}[0-9]{1,2}/;
         let blogdatas = [];
-        if(message && message.items && message.items.length > 0) {
-            const items = message.items;
+        if(message && message.length > 0) {
+            const items = message;
             blogdatas = items.filter(item => {
                 const name = item.name;
                 const match = pattern.exec(name);
@@ -73,7 +75,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    getRepositoryTree
+    getCatalogTree
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpringBootContainer)
