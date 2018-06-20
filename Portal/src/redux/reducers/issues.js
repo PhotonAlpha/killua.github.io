@@ -46,11 +46,26 @@ export function getBlogIssues(params) {
     }
     return result;
 }
+export function getComments(params) {
+    console.log('getBlogIssues', params);
+    const result = {
+        types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
+        promise: client => client.get(ABOUT_ISSUE_COMMENT)
+    }
+    return result;
+}
+export function postComments(comment) {
+    console.log('postComments', comment);
+    const bodys = JSON.stringify({body: comment});
+    const result = {
+        types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
+        promise: client => client.post(ABOUT_ISSUE_COMMENT, bodys)
+    }
+    return result;
+}
 
 const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
 const TOKEN = `access_token=`+Base64.decode(t);
 const BOLG_ISSUES = `https://api.github.com/repos/PhotonAlpha/blogs/issues?state=open`+`&`+TOKEN;
 
-
-const BOLG_REPOSITORY = `https://api.github.com/search/code?q=extension:md+in:path+language:md+repo:photonalpha/blogs`+`&`+TOKEN;
-const ABOUT_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/readme`+`?`+TOKEN;
+const ABOUT_ISSUE_COMMENT = `https://api.github.com/repos/PhotonAlpha/blogs/issues/5/comments`+`?`+TOKEN;

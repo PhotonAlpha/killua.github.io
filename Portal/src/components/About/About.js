@@ -4,8 +4,6 @@ import { Base64 } from 'js-base64';
 import ReactMarkdown from 'react-markdown';
 import { Tag } from 'antd';
 
-import Dialogue from 'components/Dialogue/Dialogue';
-import DialogueCV from 'components/Dialogue/Dialogue.CV';
 import './About.css';
 
 export default class About extends Component {
@@ -18,34 +16,17 @@ export default class About extends Component {
         super(props);
         this.state = props.state;
     }
-
     showModal() {
         if(this.props.showDialog){
             this.props.showDialog()
         }
     }
-    // handleOk(saltVal) {
-    //     console.log('handleOk saltVal', saltVal, this.props.handleOk)
-    //     if(this.props.handleResumeInfo){
-    //         this.props.handleResumeInfo(saltVal).then(() => {
-    //             console.log('handleOk', this.props.resume);
-    //             this.setState({
-    //                 visible: false,
-    //                 salt: saltVal,
-    //                 visibleCv: true,
-    //                 error: false,
-    //                 resume: this.props.resume
-    //             });
-    //         })
-    //     }
-    // }
-  
 
     render() {
         console.log('About render', this.props, this.state);
         return (
-            <div id='aboutPage' className='markdown-body' >
-                <ReactMarkdown source={ Base64.decode(this.props.blogContent) } />
+            <div className='markdown-body' >
+                <ReactMarkdown source={ Base64.decode(this.props.blogContent?this.props.blogContent:'') } />
                 <a className="github-fork-ribbon" href="https://github.com/PhotonAlpha/photonalpha.github.io/tree/master/Portal" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
                 <div id = 'letter' onClick = { this.showModal.bind(this) } >
                     <div className="letter-image">
@@ -66,8 +47,6 @@ export default class About extends Component {
                         <Tag size="large" color="#2db7f5">个人简历信息</Tag>
                     </div>
                 </div>
-                {/* <Dialogue dialogues={this.state} handleOk={ this.handleOk.bind(this) } /> */}
-                {/* <DialogueCV dialogues={this.state} /> */}
             </div>
         )
     }

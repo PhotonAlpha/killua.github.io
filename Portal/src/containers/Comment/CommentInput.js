@@ -32,17 +32,6 @@ class CommentInputContainer extends Component {
         localStorage.setItem('username', username)
     }
     handleSubmitComment (comment) {
-        // 评论数据的验证
-        if (!comment) return
-        if (!comment.username) return alert('请输入用户名')
-        if (!comment.content) return alert('请输入评论内容')
-        // 新增评论保存到 LocalStorage 中
-        console.log('handleSubmitComment', this.props, comment);
-        const { comments }= this.props;
-        const newComments = [...comments, comment]
-        localStorage.setItem('comments', JSON.stringify(newComments))
-        // this.props.onSubmit 是 connect 传进来的
-        // 会 dispatch 一个 action 去新增评论
         if (this.props.onSubmit) {
             this.props.onSubmit(comment)
         }
@@ -57,19 +46,6 @@ class CommentInputContainer extends Component {
         );
     }
 }
-const mapStateToProps = (state) => {
-    console.log('mapStateToProps', state)
-    return {
-        comments: state.commentStore.comments
-    };
-}
-const mapDispatchToProps = (dispatch) => {
-    return {
-      onSubmit: (comment) => {
-        dispatch(addComment(comment))
-      }
-    }
-}
 
-export default connect( mapStateToProps,mapDispatchToProps )(CommentInputContainer);
+export default CommentInputContainer;
 

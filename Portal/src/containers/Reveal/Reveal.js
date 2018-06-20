@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { getBlogData, searchBlogByIssues } from "reducers/blogs";
 import Reveal from 'components/Reveal/Reveal';
+import Loading from 'components/Loading/Loading';
 
 export class RevealContainer extends Component {
     static propTypes = {
@@ -30,7 +31,7 @@ export class RevealContainer extends Component {
         return (
             <div  id='reveal'>
                 {
-                    isLoading? 'loading......': (
+                    isLoading? <Loading />: (
                         errorMsg? errorMsg :
                             <Reveal blogContent={ message.content } />
                     )

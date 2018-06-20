@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import About from 'components/About/About';
+import Loading from 'components/Loading/Loading';
+import CommentApp from '../Comment/CommentApp';
 import { getAboutme } from "reducers/blogs";
 import Dialogue from './Dialogue';
 
@@ -51,13 +53,14 @@ export class AboutContainer extends Component {
         const {message , isLoading, errorMsg} = this.props.blogStore;
         console.log('AboutContainer', message , isLoading, errorMsg)
         return (
-        <div>
+        <div id='aboutPage'>
             {
-                isLoading? 'loading......': (
+                isLoading? <Loading />: (
                     errorMsg? errorMsg :
                         <About showDialog={ this.showDialog.bind(this) } state={ this.state } blogContent={ message.content } />
                 )
             }
+            <CommentApp />
             <Dialogue state={ this.state } handleDialogUpdate={ this.handleDialogUpdate.bind(this) } />
         </div>
         )

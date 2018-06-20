@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Home from 'components/Home/Home';
 
 import backgroundPng from 'components/Utils/Utils';
+import Loading from 'components/Loading/Loading';
 import { getBlogIssues } from "reducers/issues";
 import { getRepositoryTree } from "reducers/blogs";
 
@@ -81,7 +82,7 @@ export class HomeContainer extends Component {
 		return (
 			<div>
 				{
-					isLoading? 'loading......': (
+					isLoading? <Loading />: (
 						errorMsg? errorMsg :
 							<Home issueList={ issueList } rareList={ rareList } />
 					)
