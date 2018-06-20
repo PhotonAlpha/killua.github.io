@@ -2,10 +2,18 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './Nav.css';
 
-import { Menu, Icon, Layout } from 'antd';
+import { Menu, Icon, notification, Layout } from 'antd';
 const Sider = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
+
+const openNotification = () => {
+    notification.open({
+      message: 'Notification Title',
+      description: 'This feature is not yet open!',
+      icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+    });
+};
 
 export default class Nav extends Component {
     state = {
@@ -40,16 +48,19 @@ export default class Nav extends Component {
               </Menu.Item>
               <SubMenu title={<span><Icon type="youtube" /><span>Videos</span></span>}>
                   <MenuItemGroup title="Games">
-                    <Menu.Item key="redio:1"><Link to="/wow">wow</Link></Menu.Item>
+                    {/* <Menu.Item key="redio:1"><Link to="/wow">wow</Link></Menu.Item> */}
+                    <Menu.Item key="redio:1" onClick={ openNotification } >GraphQL</Menu.Item>
                   </MenuItemGroup>
                   <MenuItemGroup title="Learning">
-                    <Menu.Item key="redio:2">高等数学</Menu.Item>
-                    <Menu.Item key="redio:3">考研</Menu.Item>
-                    <Menu.Item key="redio:4"><Link to="/python">Python</Link></Menu.Item>
+                    <Menu.Item key="redio:2" onClick={ openNotification }  >高等数学</Menu.Item>
+                    <Menu.Item key="redio:3" onClick={ openNotification }  >考研</Menu.Item>
+                    {/* <Menu.Item key="redio:4" ><Link to="/python">Python</Link></Menu.Item> */}
+                    <Menu.Item key="redio:4" onClick={ openNotification } ></Menu.Item>
                   </MenuItemGroup>
               </SubMenu>
-              <Menu.Item key="archives">
-                  <Link to="/archives"><Icon type="hdd" />Archives</Link>
+              <Menu.Item key="archives" onClick={ openNotification }  >
+                  {/* <Link to="/archives"><Icon type="hdd" />Archives</Link> */}
+                  <Icon type="hdd" />Archives
               </Menu.Item>
               <Menu.Item key="about">
                   <Link to="/about"><Icon type="dashboard" />About</Link>
