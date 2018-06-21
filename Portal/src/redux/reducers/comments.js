@@ -1,46 +1,66 @@
-// action types
-const INIT_COMMENTS = 'INIT_COMMENTS'
-const ADD_COMMENT = 'ADD_COMMENT'
-const DELETE_COMMENT = 'DELETE_COMMENT'
+import { Base64 } from 'js-base64';
 
-export default function(state, action) {
-    console.log('reducers', state, action)
-    if(!state) {
-        state = { comments: [] }
-    }
+const GET_COMMENT_REQUEST = "comment/GET_INFO_REQUEST";
+const GET_COMMENT_SUCCESS = "comment/GET_INFO_SUCCESS";
+const GET_COMMENT_FAIL = "comment/GET_INFO_FAIL";
+
+const initialState = {
+    isLoading: false,
+    message: {},
+    errorMsg: ''
+}
+
+export default function reducer(state = initialState, action) {
+    // console.log('comment reducer', state, action)
     switch (action.type) {
-        case INIT_COMMENTS:
-            return { comments: action.comments };
-        case ADD_COMMENT:
+        case GET_COMMENT_REQUEST:
             return {
-                comments: [
-                    ...state.comments,
-                    action.comment
-                ]
+                ...state,
+                isLoading: true,
+                message: {},
+                errorMsg: ''
             }
-                
-        case DELETE_COMMENT:
+        case GET_COMMENT_SUCCESS:
             return {
-                comments: [
-                    ...state.comments.slice(0, action.commentIndex),
-                    ...state.comments.slice(action.commentIndex + 1)
-                ]
+                ...state,
+                isLoading: false,
+                message: action.result.data,
+                errorMsg: ''
             }
+        case GET_COMMENT_FAIL:
+            return {
+                ...state,
+                isLoading: false,
+                message: {},
+                errorMsg: '请求错误'
+            }  
         default:
-            return state;
+            return state
+    }
+}
+export function getComments(issueNo) {
+    console.log('getBlogIssues', issueNo);
+    if(issueNo && issueNo>0){
+        const ISSUE_COMMENT = `https://api.github.com/repos/PhotonAlpha/blogs/issues/${issueNo}/comments`+`?`+TOKEN;
+        const result = {
+            types: [GET_COMMENT_REQUEST, GET_COMMENT_SUCCESS, GET_COMMENT_FAIL],
+            promise: client => client.get(ISSUE_COMMENT)
+        }
+        return result;
+    }
+}
+export function postComments(issueNo, comment) {
+    console.log('postComments', comment);
+    if(issueNo && issueNo>0){
+        const ISSUE_COMMENT = `https://api.github.com/repos/PhotonAlpha/blogs/issues/${issueNo}/comments`+`?`+TOKEN;
+        const bodys = JSON.stringify({body: comment});
+        const result = {
+            types: [GET_COMMENT_REQUEST, GET_COMMENT_SUCCESS, GET_COMMENT_FAIL],
+            promise: client => client.post(ISSUE_COMMENT, bodys)
+        }
+        return result;
     }
 }
 
-// action creators
-export const initComments = (comments) => {
-    console.log('initComments', comments)
-    return { type: INIT_COMMENTS, comments }
-}
-  
-export const addComment = (comment) => {
-    return { type: ADD_COMMENT, comment }
-}
-  
-export const deleteComment = (commentIndex) => {
-    return { type: DELETE_COMMENT, commentIndex }
-}
+const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
+const TOKEN = `access_token=`+Base64.decode(t);

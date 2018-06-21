@@ -32,9 +32,9 @@ export class AboutContainer extends Component {
             visibleCv: false,
         });
     }
-    handleDialogUpdate(resumeStore){
-        console.log('handleDialogUpdate', resumeStore)
-        const {message , isLoading, errorMsg} = resumeStore;
+    handleDialogUpdate(authorizationStore){
+        console.log('handleDialogUpdate', authorizationStore)
+        const {message , isLoading, errorMsg} = authorizationStore;
         // this.setState(
         //     ...state
         // )
@@ -60,7 +60,7 @@ export class AboutContainer extends Component {
                         <About showDialog={ this.showDialog.bind(this) } state={ this.state } blogContent={ message.content } />
                 )
             }
-            <CommentApp />
+            <CommentApp issueNo={5} />
             <Dialogue state={ this.state } handleDialogUpdate={ this.handleDialogUpdate.bind(this) } />
         </div>
         )

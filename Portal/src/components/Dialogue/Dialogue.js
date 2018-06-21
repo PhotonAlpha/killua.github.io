@@ -7,7 +7,6 @@ import babaCar from 'assets/baba-car.png';
 export default class Dialogue extends Component {
     static propTypes = {
         handleOk: PropTypes.func,
-        // resumeStore: PropTypes.any
     };
     constructor(props){
         super(props);
@@ -41,7 +40,7 @@ export default class Dialogue extends Component {
         const { visible, loading, salt } = this.state;
         const suffix = salt ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
 
-        const {message , isLoading, errorMsg} = this.props.resumeStore;
+        const {message , isLoading, errorMsg} = this.props.authorizationStore;
         console.log('Dialog', message , isLoading, errorMsg)
         return (
                 <Modal

@@ -48,7 +48,16 @@ export default store => next => action => {
             type: FAILURE
         });
     };
-
+    const axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            "Access-Control-Allow-Origin": "*",
+        }
+    };
+    // axios.defaults.headers.common['Access-Control-Allow-Origin']= '*';
+    // axios.defaults.headers.common['Access-Control-Allow-Credentials']= true;
+    // axios.defaults.headers.common['Access-Control-Allow-Methods']= 'GET, POST, OPTIONS';
+    // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
     return promise(axios).then(onFulfilled, onRejected).catch(error => {
         console.error('MIDDLEWARE ERROR:', error);
         onRejected(error)

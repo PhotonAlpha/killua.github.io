@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Dialogue from 'components/Dialogue/Dialogue';
 import DialogueCV from 'components/Dialogue/Dialogue.CV';
-import { getResumeInfo } from "reducers/resume";
+import { getResumeInfo } from "reducers/authorization";
 
 export class DialogueContainer extends Component {
     static propTypes = {
@@ -19,10 +19,9 @@ export class DialogueContainer extends Component {
     handleOk(saltVal) {
         // console.log('handleOk saltVal', saltVal, this.props.handleOk);
         this.props.getResumeInfo().then(() => {
-            // console.log('object', this.props.resumeStore)
-            const {message , isLoading, errorMsg} = this.props.resumeStore;
+            const {message , isLoading, errorMsg} = this.props.authorizationStore;
             if(this.props.handleDialogUpdate){
-                this.props.handleDialogUpdate(this.props.resumeStore);
+                this.props.handleDialogUpdate(this.props.authorizationStore);
             }
         })
     }
@@ -31,7 +30,7 @@ export class DialogueContainer extends Component {
         // console.log('111', this.props.state)
         return (
             <div>
-                <Dialogue resumeStore={ this.props.resumeStore } dialogues={ this.props.state } handleOk={ this.handleOk.bind(this) } />
+                <Dialogue authorizationStore={ this.props.authorizationStore } dialogues={ this.props.state } handleOk={ this.handleOk.bind(this) } />
                 <DialogueCV dialogues={ this.props.state } />
             </div>
         )
@@ -40,7 +39,7 @@ export class DialogueContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        resumeStore: state.resumeStore
+        authorizationStore: state.authorizationStore
     }
 }
 

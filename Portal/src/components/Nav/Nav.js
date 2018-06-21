@@ -58,9 +58,9 @@ export default class Nav extends Component {
                     <Menu.Item key="redio:4" onClick={ openNotification } ></Menu.Item>
                   </MenuItemGroup>
               </SubMenu>
-              <Menu.Item key="archives" onClick={ openNotification }  >
-                  {/* <Link to="/archives"><Icon type="hdd" />Archives</Link> */}
-                  <Icon type="hdd" />Archives
+              <Menu.Item key="archives"  >
+                  <Link to="/archives"><Icon type="hdd" />Archives</Link>
+                  {/* <Icon type="hdd" />Archives  onClick={ openNotification } */}
               </Menu.Item>
               <Menu.Item key="about">
                   <Link to="/about"><Icon type="dashboard" />About</Link>

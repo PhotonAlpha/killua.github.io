@@ -3,7 +3,7 @@ import {combineReducers} from "redux";
 import blogStore from './reducers/blogs';
 import issueStore from './reducers/issues';
 import commentStore from './reducers/comments';
-import resumeStore from './reducers/resume';
+import authorizationStore from './reducers/authorization';
 
 // export default function combineReducers(state = {}, action) {
 //     return {
@@ -16,5 +16,5 @@ export default combineReducers({
     blogStore,
     issueStore,
     commentStore,
-    resumeStore
+    authorizationStore
 });

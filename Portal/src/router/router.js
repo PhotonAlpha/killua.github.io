@@ -11,11 +11,12 @@ import Reveal from 'containers/Reveal/Reveal';
 import About from 'bundle-loader?lazy&name=about!containers/About/About';
 import SpringCloud from 'bundle-loader?lazy&name=springCloud!containers/SpringCloud/SpringCloud';
 import Docker from 'bundle-loader?lazy&name=docker!containers/Docker/Docker';
+import Authenticate from 'bundle-loader?lazy&name=authenticate!containers/Authorization/Authorization';
 
 import Archives from 'bundle-loader?lazy&name=archives!pages/Archives/Archives';
 import Page1 from 'bundle-loader?lazy&name=page1!pages/Page1/Page1';
-import Counter from 'bundle-loader?lazy&name=counter!pages/Counter/Counter';
-import UserInfo from 'bundle-loader?lazy&name=userInfo!pages/UserInfo/UserInfo';
+// import Counter from 'bundle-loader?lazy&name=counter!pages/Counter/Counter';
+// import UserInfo from 'bundle-loader?lazy&name=userInfo!pages/UserInfo/UserInfo';
 import NotFound from 'bundle-loader?lazy&name=notFound!pages/NotFound/NotFound';
 import Wow from 'bundle-loader?lazy&name=wow!pages/Videos/WorldOfWarcraft';
 import Python from 'bundle-loader?lazy&name=python!pages/Videos/Python';
@@ -37,8 +38,8 @@ export default () => (
     <div>
         <Route exact path="/" component={createComponent(Home)}/>
         <Route path="/page1" component={createComponent(Page1)}/>
-        <Route path="/counter" component={createComponent(Counter)}/>
-        <Route path="/userinfo" component={createComponent(UserInfo)}/>
+        {/* <Route path="/counter" component={createComponent(Counter)}/> */}
+        {/* <Route path="/userinfo" component={createComponent(UserInfo)}/> */}
 
         <Route path="/springboot" component={createComponent(SpringBoot)}/>
         <Route path="/springcloud" component={createComponent(SpringCloud)}/>
@@ -47,6 +48,7 @@ export default () => (
         <Route path="/wow" component={createComponent(Wow)}/>
         <Route path="/python" component={createComponent(Python)}/>
         <Route path="/about" component={createComponent(About)}/>
+        <Route path="/auth" component={createComponent(Authenticate)}/>
 
         {/* <Route path="/reveal" component={createComponent(Reveal)}/> */}
         <Route path="/reveal" component={Reveal}/>

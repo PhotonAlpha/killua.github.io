@@ -12,9 +12,12 @@ export default class SpringBoot extends Component {
     constructor(props) {
         super(props);
     }
-    handleClick(url, e) {
+    handleClick(url, title, e) {
         // console.log(url, this.props);
-        const data = {git_url:url};
+        const data = {
+            git_url:url,
+            issue_title: title
+        };
         const path = {  
             pathname:'/reveal',  
             state:data
@@ -31,7 +34,7 @@ export default class SpringBoot extends Component {
                         this.props.repositoryTree.map((element, index) => {
                             return (
                                 <Timeline.Item key = {index} 
-                                    onClick={ this.handleClick.bind(this, element.git_url) } >
+                                    onClick={ this.handleClick.bind(this, element.git_url, element.name) } >
                                     <Icon type="caret-left" />{new Date(element.date).toISOString().slice(0, 10)} {element.name} 
                                 </Timeline.Item>
                             )
