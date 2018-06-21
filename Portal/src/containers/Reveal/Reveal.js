@@ -26,9 +26,9 @@ export class RevealContainer extends Component {
         const data = this.props.location.state;
         console.log('queryParams', queryParams.get('hash'), data)
         // if(data){
-        //     const { git_url, issue_title } = data;
+            // const { git_url, issue_title } = data;
         //     console.log('RevealContainer componentWillMount', data);
-        //     this.props.getBlogData(git_url);
+            // this.props.getBlogData(git_url);
         // }else{
         //     const path = {  
         //         pathname:'/404',  

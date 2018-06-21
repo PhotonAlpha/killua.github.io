@@ -19,7 +19,7 @@ export class Authorization extends Component {
         console.log('componentWillMount', this.props)
         const queryParams = new URLSearchParams(this.props.location.search);
         const hash = queryParams.get('hash');
-        const code = "cb59bac24a163ccfeb06";//queryParams.get('code');
+        const code = queryParams.get('code');
         console.log(hash, code)
         if(!hash || !code){
             const path = {

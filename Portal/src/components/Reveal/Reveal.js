@@ -20,13 +20,18 @@ export default class Reveal extends Component {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); 
         }
     }
+    //instance variable
+    imgUtil = uri => <img src={uri} />;
 
     render() {
         return (
             <div id='reveal'>
                 <Row>
                     <Col lg ={{ span:18 }} md={{ span:24 }} className='container-fluid markdown-body'>
-                        <ReactMarkdown source={ Base64.decode(this.props.blogContent) } renderers={{heading: HeadingRenderer}} />
+                        <ReactMarkdown source={ Base64.decode(this.props.blogContent) } 
+                        renderers={{heading: HeadingRenderer}} 
+                        // transformImageUri={this.imgUtil}
+                        />
                     </Col>
                     <Col lg ={{ span:6 }} md={{ span:0 }}>
                         <Anchor showInkInFixed={true} offsetTop={138} bounds={20} >
