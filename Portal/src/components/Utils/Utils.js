@@ -33,7 +33,8 @@ export function _reconstructorTree(message) {
                 name: blogname,
                 date: Date.parse(match[0]),
                 path: item.path,
-                git_url: item.git_url
+                git_url: item.git_url,
+                sha: item.sha
             }
         });
         console.log(blogdatas);
@@ -49,3 +50,7 @@ export const GRAPHQL='frontend/GraphQL';
 export const SPRING_BOOT='backend/SpringBoot';
 export const SPRING_CLOUD='backend/SpringCloud';
 export const DOCKER='backend/Docker';
+
+const client_id = '22f33b7f43ec9ae6d0c9';
+const redirect_uri = 'http://localhost:4200/auth';
+export const AUTHURL=` https://github.com/login/oauth/authorize?client_id=${client_id}&scope=public_repo&redirect_uri=${redirect_uri}`;

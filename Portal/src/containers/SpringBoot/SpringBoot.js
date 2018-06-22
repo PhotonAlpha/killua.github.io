@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import history from 'router/history';
+
 import { getCatalogTree } from "reducers/blogs";
 import SpringBoot from 'components/TimeLine/TimeLine';
 import { SPRING_BOOT, _reconstructorTree } from 'components/Utils/Utils';
@@ -18,6 +20,18 @@ export class SpringBootContainer extends Component {
         console.log('componentWillMount', SPRING_BOOT)
         this.props.getCatalogTree(SPRING_BOOT);
     }
+    handleClick(sha, title, e) {
+        // console.log(url, this.props);
+        const data = {
+            git_url:sha,
+            issue_title: title
+        };
+        const path = {  
+            pathname:'/reveal',  
+            state:data
+        }
+        history.push(path);
+    }
 
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
@@ -27,7 +41,7 @@ export class SpringBootContainer extends Component {
             {
                 isLoading? 'loading......': (
                     errorMsg? errorMsg :
-                        <SpringBoot repositoryTree={ _reconstructorTree(message) } />
+                        <SpringBoot handleClick={ this.handleClick.bind(this) } repositoryTree={ _reconstructorTree(message) } />
                 )
             }
             </div>

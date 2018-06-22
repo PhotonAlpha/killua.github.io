@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Row, Col } from 'antd';
 
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
 import 'components/Comment/CommentApp.css'
 
 import { getComments, postComments } from "reducers/comments";
+import { getUserInfo } from "reducers/authorization";
 
 class CommentAppContainer extends Component {
     static propTypes = {
-        issueNo: PropTypes.number
+        issueNo: PropTypes.number,
+        handleAuth: PropTypes.func
     }
     constructor(props) {
         super(props);
@@ -30,13 +33,25 @@ class CommentAppContainer extends Component {
         }
     }
     
-    handleSubmitComment(comment) {
-        console.log('handleSubmitComment', this.props, comment);
-        let bodycontent = comment.username+': '+comment.content
-        if(comment.star >0) {
-            bodycontent += ('<br/> star '+comment.star);
+    componentWillMount() {
+        if(this.props.getUserInfo){
+            this.props.getUserInfo();
         }
-        if (this.props.postComments) {
+    }
+    
+    
+    handleAuth(){
+        if(this.props.handleAuth){
+            this.props.handleAuth()
+        }
+    }
+    handleSubmitComment(comment) {
+        let bodycontent = comment.content
+        if(comment.star > 0) {
+            bodycontent += ('<br/> with star '+comment.star);
+        }
+        console.log('handleSubmitComment', this.props, comment);
+        if (this.props.postComments && this.props.issueNo > 0) {
             this.props.postComments(this.props.issueNo, bodycontent)
                 .then(() => {
                     console.log('postComments');
@@ -53,22 +68,26 @@ class CommentAppContainer extends Component {
             message= [];
         }
         return (
-            <div>
-                <CommentInput onSubmit={ this.handleSubmitComment.bind(this) } />
-                <CommentList comments={ message } />
-            </div>
+            <Row>
+                <Col lg ={{ span:18 }} md={{ span:24 }} className='container-fluid markdown-body'>
+                    <CommentInput handleAuth={ this.handleAuth.bind(this) } userInfo={ this.props.authorizationStore } onSubmit={ this.handleSubmitComment.bind(this) } />
+                    <CommentList comments={ message } />
+                </Col>
+            </Row>
         );
     }
 }
 const mapStateToProps = (state) => {
     return {
-        commentStore: state.commentStore
+        commentStore: state.commentStore,
+        authorizationStore: state.authorizationStore
     }
 }
 
 const mapDispatchToProps = {
     getComments,
-    postComments
+    postComments,
+    getUserInfo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentAppContainer)

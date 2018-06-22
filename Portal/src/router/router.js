@@ -11,6 +11,7 @@ import Reveal from 'containers/Reveal/Reveal';
 import About from 'bundle-loader?lazy&name=about!containers/About/About';
 import SpringCloud from 'bundle-loader?lazy&name=springCloud!containers/SpringCloud/SpringCloud';
 import Docker from 'bundle-loader?lazy&name=docker!containers/Docker/Docker';
+
 import Authenticate from 'bundle-loader?lazy&name=authenticate!containers/Authorization/Authorization';
 
 import Archives from 'bundle-loader?lazy&name=archives!pages/Archives/Archives';

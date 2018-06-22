@@ -56,7 +56,7 @@ export default store => next => action => {
     };
     // axios.defaults.headers.common['Access-Control-Allow-Origin']= '*';
     // axios.defaults.headers.common['Access-Control-Allow-Credentials']= true;
-    // axios.defaults.headers.common['Access-Control-Allow-Methods']= 'GET, POST, OPTIONS';
+    // axios.defaults.headers.common['Authorization']= 'token 123';
     // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
     return promise(axios).then(onFulfilled, onRejected).catch(error => {
         console.error('MIDDLEWARE ERROR:', error);

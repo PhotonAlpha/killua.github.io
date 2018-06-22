@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import history from 'router/history';
 
 import { getCatalogTree } from "reducers/blogs";
 import SpringCloud from 'components/TimeLine/TimeLine';
@@ -17,6 +18,18 @@ export class SpringCloudContainer extends Component {
         console.log('componentWillMount', SPRING_CLOUD)
         this.props.getCatalogTree(SPRING_CLOUD);
     }
+    handleClick(sha, title, e) {
+        // console.log(url, this.props);
+        const data = {
+            git_url:sha,
+            issue_title: title
+        };
+        const path = {  
+            pathname:'/reveal',  
+            state:data
+          }  
+        history.push(path);
+    }
 
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
@@ -26,7 +39,7 @@ export class SpringCloudContainer extends Component {
                 {
                 isLoading? 'loading......': (
                     errorMsg? errorMsg :
-                        <SpringCloud repositoryTree={ _reconstructorTree(message) } />
+                        <SpringCloud handleClick={ this.handleClick.bind(this) } repositoryTree={ _reconstructorTree(message) } />
                 )
                 }
             </div>

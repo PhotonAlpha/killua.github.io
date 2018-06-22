@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Timeline, Button, Icon, Spin, Row, Col } from 'antd';
-import history from 'router/history';
 
 import './TimeLine.css';
 
 export default class SpringBoot extends Component {
     static propTypes = {
-        repositoryTree: PropTypes.array
+        repositoryTree: PropTypes.array,
+        handleClick: PropTypes.func
     }
     constructor(props) {
         super(props);
     }
-    handleClick(url, title, e) {
-        // console.log(url, this.props);
-        const data = {
-            git_url:url,
-            issue_title: title
-        };
-        const path = {  
-            pathname:'/reveal',  
-            state:data
-          }  
-        history.push(path);
+    handleClick(sha, title, e) {
+        if(this.props.handleClick) {
+            this.props.handleClick(sha, title);
+        }
     }
 
     render() {
@@ -34,7 +27,7 @@ export default class SpringBoot extends Component {
                         this.props.repositoryTree.map((element, index) => {
                             return (
                                 <Timeline.Item key = {index} 
-                                    onClick={ this.handleClick.bind(this, element.git_url, element.name) } >
+                                    onClick={ this.handleClick.bind(this, element.sha, element.name) } >
                                     <Icon type="caret-left" />{new Date(element.date).toISOString().slice(0, 10)} {element.name} 
                                 </Timeline.Item>
                             )

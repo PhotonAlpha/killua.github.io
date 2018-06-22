@@ -6,6 +6,9 @@
     color: rgba(0, 0, 0, .65);
     font-weight: 400;
 }
+.comment-input .ant-form-item {
+    margin: 0;
+}
   /* 评论框样式 */
 .comment-input {
     background-color: #ffffffa3;;

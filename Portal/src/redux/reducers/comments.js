@@ -41,10 +41,9 @@ export default function reducer(state = initialState, action) {
 export function getComments(issueNo) {
     console.log('getBlogIssues', issueNo);
     if(issueNo && issueNo>0){
-        const ISSUE_COMMENT = `https://api.github.com/repos/PhotonAlpha/blogs/issues/${issueNo}/comments`+`?`+TOKEN;
         const result = {
             types: [GET_COMMENT_REQUEST, GET_COMMENT_SUCCESS, GET_COMMENT_FAIL],
-            promise: client => client.get(ISSUE_COMMENT)
+            promise: client => client.get(ISSUE_COMMENT.replace(':issueNo', issueNo), config)
         }
         return result;
     }
@@ -52,15 +51,17 @@ export function getComments(issueNo) {
 export function postComments(issueNo, comment) {
     console.log('postComments', comment);
     if(issueNo && issueNo>0){
-        const ISSUE_COMMENT = `https://api.github.com/repos/PhotonAlpha/blogs/issues/${issueNo}/comments`+`?`+TOKEN;
         const bodys = JSON.stringify({body: comment});
         const result = {
             types: [GET_COMMENT_REQUEST, GET_COMMENT_SUCCESS, GET_COMMENT_FAIL],
-            promise: client => client.post(ISSUE_COMMENT, bodys)
+            promise: client => client.post(ISSUE_COMMENT.replace(':issueNo', issueNo), bodys, config)
         }
         return result;
     }
 }
-
-const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
-const TOKEN = `access_token=`+Base64.decode(t);
+const config= {
+    headers: {
+        'Authorization': `token `+localStorage.getItem('GT_ACCESS_TOKEN')
+    }
+}
+const ISSUE_COMMENT = `https://api.github.com/repos/PhotonAlpha/blogs/issues/:issueNo/comments`

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Icon, Input, Button, Rate, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Rate, Checkbox, Avatar } from 'antd';
 const { TextArea } = Input;
 const FormItem = Form.Item;
 
@@ -16,41 +16,43 @@ const formItemLayout = {
 };
 class CommentInput extends Component {
     static propTypes = {
-        username: PropTypes.any,
-        onSubmit: PropTypes.func,
-        onUserNameInputBlur: PropTypes.func
-
+        userInfo: PropTypes.any,
+        onSubmit: PropTypes.func
     }
-    static defaultProps = {
-        username: ''
-    };
     constructor(props){
         super(props);
         this.state = {
-            username: {
-                value: props.username
+            userInfo: {
+                username: props.userInfo.username,
+                html_url: props.userInfo.html_url,
+                avatar_url: props.userInfo.avatar_url
             },
             content: {
                 value: ''
             }
         }
     }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.userInfo != this.props.userInfo){
+            this.setState({
+                userInfo: {
+                    username: nextProps.userInfo.username,
+                    html_url: nextProps.userInfo.html_url,
+                    avatar_url: nextProps.userInfo.avatar_url,
+                    authSuccess: nextProps.authSuccess
+                }
+            })
+        }
+    }
+    
+    
     componentDidMount() {
         this.textarea.focus();
     }
-
-    handleUsernameBlur(event) {
-        if(this.props.onUserNameInputBlur) {
-            this.props.onUserNameInputBlur(event.target.value);
+    handleAuth(){
+        if(this.props.handleAuth){
+            this.props.handleAuth()
         }
-    }
-    handleUsernameChange(event) {
-        this.setState({
-            username: {
-                ...this.state.username,
-                value: event.target.value
-            }
-        })
     }
     handleContentChange(event) {
         this.setState({
@@ -61,32 +63,25 @@ class CommentInput extends Component {
         })
     }
     handleRateChange(value) {
-        console.log('handleRateChange', value);
         this.setState({
             star: value
         })
     }
     handleSubmit = (e) => {
-        const { value } = this.state.username;
-        const contentValue = this.state.content.value;
+        const { value } = this.state.content;
         this.setState({
-            username: {
+            content: {
                 ...validateInput(value),
                 value
-            },
-            content: {
-                ...validateInput(contentValue),
-                value: contentValue
             },
             star: this.state.star
         },() => {
             console.log('this.......state', this.state);
-            if(!this.state.username.errorMsg && !this.state.content.errorMsg) {
+            if(!this.state.content.errorMsg) {
                 if (this.props.onSubmit) {
-                    const username = this.state.username.value;
                     const content = this.state.content.value;
                     this.props.onSubmit({
-                        username, content,
+                        content,
                         star: this.state.star
                     })
                 }
@@ -102,24 +97,12 @@ class CommentInput extends Component {
                 <Form  className="login-form">
                     <FormItem
                         {...formItemLayout}
-                        label='用户名'
-                        hasFeedback
-                        validateStatus={ this.state.username.validateStatus }
-                        help={ this.state.username.errorMsg }
-                    >
-                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} size="large" placeholder="Username"
-                            value={ this.state.username.value } 
-                            onBlur={ this.handleUsernameBlur.bind(this) }
-                            onChange={ this.handleUsernameChange.bind(this) }
-                        />
-                    </FormItem>
-                    <FormItem
-                        {...formItemLayout}
-                        label='评论内容'
+                        label={ this.state.userInfo.avatar_url? <div><Avatar size="large" src={this.state.userInfo.avatar_url} /><a target="_blank" style={{color:'#1890ff'}} src={ this.state.userInfo.html_url } >{this.state.userInfo.username}</a></div> : 'Comment' }
+                        colon={this.state.userInfo.avatar_url? false: true}
                         hasFeedback
                         validateStatus={ this.state.content.validateStatus }
                         help={ this.state.content.errorMsg }
-                        >
+                    >
                         <TextArea placeholder="leave a comment" autosize={{ minRows: 2, maxRows: 6 }}
                             ref={(textarea) => this.textarea = textarea} 
                             value={ this.state.content.value } 
@@ -133,11 +116,20 @@ class CommentInput extends Component {
                         }}
                         >
                         <Rate onChange = { this.handleRateChange.bind(this) } />
-                        <Button htmlType="submit" type="primary" icon="poweroff" loading={this.state.iconLoading} 
-                            onClick={ this.handleSubmit }
-                            >
-                            发布
-                        </Button>
+                        {
+                            this.state.userInfo.authSuccess?
+                                <Button htmlType="submit" type="primary" icon="poweroff" loading={this.state.iconLoading} 
+                                    onClick={ this.handleSubmit }
+                                    >
+                                    Comment
+                                </Button>
+                            :
+                                <Button icon="poweroff" type="danger" ghost
+                                    onClick={ this.handleAuth.bind(this) }
+                                    >
+                                    Login with Github
+                                </Button>
+                        }
                     </FormItem>
                 </Form>
             </div>

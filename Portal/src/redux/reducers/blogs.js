@@ -50,26 +50,23 @@ export function getRepositoryTree(params) {
 export function getCatalogTree(params) {
     console.log('getCatalogTree', params);
     if(params) {
-        console.log('CONTENTS_REPOSITORY', CONTENTS_REPOSITORY.replace('{}', params))
+        console.log('CONTENTS_REPOSITORY', CONTENTS_REPOSITORY.replace(':path', params))
         const result = {
             types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
-            promise: client => client.get(CONTENTS_REPOSITORY.replace('{}', params))
+            promise: client => client.get(CONTENTS_REPOSITORY.replace(':path', params))
         }
         return result;
     }
     return 'params:'+params+' illegal!'
 }
 
-export function getBlogData(git_url) {
-    console.log('getBlogData', git_url);
-    if(git_url){
-        const result = {
-            types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
-            promise: client => client.get(git_url+`?`+TOKEN)
-        }
-        return result;
+export function getBlogData(git_hash) {
+    console.log('getBlogData', git_hash, BLOG_BLOBS.replace(':hash', git_hash));
+    const result = {
+        types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
+        promise: client => client.get(BLOG_BLOBS.replace(':hash', git_hash))
     }
-    return 'git_url:'+git_url+' illegal!'
+    return result;
 }
 export function getAboutme() {
     console.log('getAboutme');
@@ -84,6 +81,7 @@ export function getAboutme() {
 const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
 const TOKEN = `access_token=`+Base64.decode(t);
 const BOLG_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/git/trees/master?recursive=1`+`&`+TOKEN;
+const BLOG_BLOBS = `https://api.github.com/repos/PhotonAlpha/blogs/git/blobs/:hash`+`?`+TOKEN;
 
-const CONTENTS_REPOSITORY = `https://api.github.com/repos/photonalpha/blogs/contents/{}`+`?`+TOKEN;
+const CONTENTS_REPOSITORY = `https://api.github.com/repos/photonalpha/blogs/contents/:path`+`?`+TOKEN;
 const ABOUT_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/readme`+`?`+TOKEN;

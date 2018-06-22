@@ -6,30 +6,46 @@ import { addComment } from 'reducers/comments'
 
 class CommentInputContainer extends Component {
     static propTypes = {
-        onSubmit: PropTypes.func
+        onSubmit: PropTypes.func,
+        handleAuth: PropTypes.func,
+        userInfo: PropTypes.object
     };
     constructor(props) {
         super(props);
         console.log('CommentInputContainer', props)
-        this.state = { username: '' }
-    }
-    
-    componentWillMount() {
-        this._loadUsername()
-    }
-    
-    _loadUsername() {
-        // 从 LocalStorage 加载 username
-        // 然后可以在 render 方法中传给 CommentInput
-        const username = localStorage.getItem('username')
-        if (username) {
-            this.setState({ username })
+        this.state = { 
+            username: '',
+            avatar_url: '',
+            html_url: '',
+            authSuccess: false
         }
     }
-    _saveUsername(username) {
-        // 看看 render 方法的 onUserNameInputBlur
-        // 这个方法会在用户名输入框 blur 的时候的被调用，保存用户名
-        localStorage.setItem('username', username)
+    
+    componentWillReceiveProps(nextProps) {
+        const { message, isLoading, errorMsg} = nextProps.userInfo;
+        console.log('componentWillReceiveProps', !!(nextProps.userInfo != this.props.userInfo), message, isLoading, errorMsg);
+        if(nextProps.userInfo != this.props.userInfo){
+            this._loadUserInfo(nextProps.userInfo)
+        }
+    }
+
+    _loadUserInfo(userInfo) {
+        const { message, isLoading, errorMsg} = userInfo;
+        if(!isLoading && !errorMsg){
+            this.setState({ 
+                username: message.login,
+                avatar_url: message.avatar_url,
+                html_url: message.html_url,
+                authSuccess: true
+             })
+        }else{
+            this.setState({ authSuccess: false })
+        }
+    }
+    handleAuth(){
+        if(this.props.handleAuth){
+            this.props.handleAuth()
+        }
     }
     handleSubmitComment (comment) {
         if (this.props.onSubmit) {
@@ -38,9 +54,10 @@ class CommentInputContainer extends Component {
     }
     
     render() {
+        console.log('render' ,this.state)
         return (
-            <CommentInput username={ this.state.username }
-                onUserNameInputBlur={ this._saveUsername.bind(this) }
+            <CommentInput userInfo={ this.state }
+                handleAuth={ this.handleAuth.bind(this) }
                 onSubmit={ this.handleSubmitComment.bind(this) }
             />
         );
