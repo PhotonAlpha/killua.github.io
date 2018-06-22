@@ -1,4 +1,5 @@
 import { Base64 } from 'js-base64';
+import { TEMP_TOKEN } from 'components/Utils/Utils';
 
 const GET_INFO_REQUEST = "blog/GET_INFO_REQUEST";
 const GET_INFO_SUCCESS = "blog/GET_INFO_SUCCESS";
@@ -11,7 +12,6 @@ const initialState = {
 }
 
 export default function reducer(state = initialState, action) {
-    console.log('blog reducer', state, action)
     switch (action.type) {
         case GET_INFO_REQUEST:
             return {
@@ -31,8 +31,8 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 isLoading: false,
-                message: {},
-                errorMsg: '请求错误'
+                message: action.error.response.data,
+                errorMsg: action.error.response.status+' Bad Request!'
             }  
         default:
             return state
@@ -48,16 +48,12 @@ export function getRepositoryTree(params) {
     return result;
 }
 export function getCatalogTree(params) {
-    console.log('getCatalogTree', params);
-    if(params) {
-        console.log('CONTENTS_REPOSITORY', CONTENTS_REPOSITORY.replace(':path', params))
-        const result = {
-            types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
-            promise: client => client.get(CONTENTS_REPOSITORY.replace(':path', params))
-        }
-        return result;
+    console.log('getCatalogTree', CONTENTS_REPOSITORY.replace(':path', params))
+    const result = {
+        types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
+        promise: client => client.get(CONTENTS_REPOSITORY.replace(':path', params))
     }
-    return 'params:'+params+' illegal!'
+    return result;
 }
 
 export function getBlogData(git_hash) {
@@ -78,8 +74,7 @@ export function getAboutme() {
     return result;
 }
 
-const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
-const TOKEN = `access_token=`+Base64.decode(t);
+const TOKEN = TEMP_TOKEN;
 const BOLG_REPOSITORY = `https://api.github.com/repos/PhotonAlpha/blogs/git/trees/master?recursive=1`+`&`+TOKEN;
 const BLOG_BLOBS = `https://api.github.com/repos/PhotonAlpha/blogs/git/blobs/:hash`+`?`+TOKEN;
 

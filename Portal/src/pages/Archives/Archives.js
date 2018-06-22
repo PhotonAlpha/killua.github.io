@@ -27,11 +27,11 @@ export class Archives extends Component {
     handleAuthentication(){
         let href = AUTHURL+'?hash='+this.state.git_url+'title='+Base64.encode(encodeURIComponent(this.state.issue_title));
         console.log('handleAuthentication', href);
+        window.location.href = href;
     }
 
     render() {
         const {message , isLoading, errorMsg} = this.props.issueStore;
-        console.log('object',message , isLoading, errorMsg);
         let issueNo = 0;
         if(Array.isArray(message.items)){
             let item = message.items[0];

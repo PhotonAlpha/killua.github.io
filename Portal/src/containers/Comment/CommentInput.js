@@ -12,7 +12,6 @@ class CommentInputContainer extends Component {
     };
     constructor(props) {
         super(props);
-        console.log('CommentInputContainer', props)
         this.state = { 
             username: '',
             avatar_url: '',
@@ -23,7 +22,6 @@ class CommentInputContainer extends Component {
     
     componentWillReceiveProps(nextProps) {
         const { message, isLoading, errorMsg} = nextProps.userInfo;
-        console.log('componentWillReceiveProps', !!(nextProps.userInfo != this.props.userInfo), message, isLoading, errorMsg);
         if(nextProps.userInfo != this.props.userInfo){
             this._loadUserInfo(nextProps.userInfo)
         }
@@ -54,7 +52,6 @@ class CommentInputContainer extends Component {
     }
     
     render() {
-        console.log('render' ,this.state)
         return (
             <CommentInput userInfo={ this.state }
                 handleAuth={ this.handleAuth.bind(this) }

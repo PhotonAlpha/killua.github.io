@@ -105,7 +105,6 @@ function ListItems(props) {
 }
 
 function ResumeModal(props){
-    console.log('ResumeModal', props)
     const message = props.resumeData;
     return (
         <Row id = 'dialogcv' style = {{padding: '50px 0 0 0'}}>

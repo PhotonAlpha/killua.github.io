@@ -36,12 +36,10 @@ export default class Dialogue extends Component {
     
     
     render() {
-        console.log('dialog~~~', this.props)
         const { visible, loading, salt } = this.state;
         const suffix = salt ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
 
         const {message , isLoading, errorMsg} = this.props.authorizationStore;
-        console.log('Dialog', message , isLoading, errorMsg)
         return (
                 <Modal
                     width = '650px'

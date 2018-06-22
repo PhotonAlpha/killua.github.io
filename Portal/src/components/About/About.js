@@ -23,9 +23,9 @@ export default class About extends Component {
     }
 
     render() {
-        console.log('About render', this.props, this.state);
+        // console.log('About render', this.props, this.state);
         return (
-            <div className='markdown-body' >
+            <div className='container-fluid markdown-body' >
                 <ReactMarkdown source={ Base64.decode(this.props.blogContent?this.props.blogContent:'') } />
                 <a className="github-fork-ribbon" href="https://github.com/PhotonAlpha/photonalpha.github.io/tree/master/Portal" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
                 <div id = 'letter' onClick = { this.showModal.bind(this) } >

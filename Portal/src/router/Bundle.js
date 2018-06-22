@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class Bundle extends Component {
     constructor(props) {
         super(props);
-        console.log('Bundle constructor', props)
+        // console.log('Bundle constructor', props)
     }
     
     state = {
@@ -12,12 +12,12 @@ class Bundle extends Component {
     }
 
     componentWillMount() {
-        console.log('Bundle componentWillMount', this.props)
+        // console.log('Bundle componentWillMount', this.props)
         this.load(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('Bundle componentWillReceiveProps', nextProps)
+        // console.log('Bundle componentWillReceiveProps', nextProps)
         if (nextProps.load !== this.props.load) {
             this.load(nextProps)
         }
@@ -36,7 +36,7 @@ class Bundle extends Component {
     }
 
     render() {
-        console.log('~~~~~',this.state.displayLoading, this.constructor.name)
+        // console.log('~~~~~',this.state.displayLoading, this.constructor.name)
         return this.props.children(this.state.mod)
     }
 

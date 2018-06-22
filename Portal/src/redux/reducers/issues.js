@@ -1,4 +1,5 @@
 import { Base64 } from 'js-base64';
+import { TEMP_TOKEN } from 'components/Utils/Utils';
 
 const GET_ISSUE_REQUEST = "issue/GET_INFO_REQUEST";
 const GET_ISSUE_SUCCESS = "issue/GET_INFO_SUCCESS";
@@ -31,8 +32,8 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 isLoading: false,
-                message: {},
-                errorMsg: '请求错误'
+                message: action.error.response.data,
+                errorMsg: action.error.response.status+' Bad Request!'
             }  
         default:
             return state
@@ -48,16 +49,13 @@ export function getBlogIssues(params) {
 }
 export function searchBlogIssues(params) {
     console.log('searchBlogIssues', params);
-    if(params){
-        const SEARCH_ISSUE = `https://api.github.com/search/issues?q=${params}+type:issue+in:title+state:open+repo:photonalpha/blogs&sort=created&order=desc`+`&`+TOKEN;
-        const result = {
-            types: [GET_ISSUE_REQUEST, GET_ISSUE_SUCCESS, GET_ISSUE_FAIL],
-            promise: client => client.get(SEARCH_ISSUE)
-        }
-        return result;
+    const SEARCH_ISSUE = `https://api.github.com/search/issues?q=${params}+type:issue+in:title+state:open+repo:photonalpha/blogs&sort=created&order=desc`+`&`+TOKEN;
+    const result = {
+        types: [GET_ISSUE_REQUEST, GET_ISSUE_SUCCESS, GET_ISSUE_FAIL],
+        promise: client => client.get(SEARCH_ISSUE)
     }
+    return result;
 }
 
-const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
-const TOKEN = `access_token=`+Base64.decode(t);
+const TOKEN = TEMP_TOKEN;
 const BOLG_ISSUES = `https://api.github.com/repos/PhotonAlpha/blogs/issues?state=open&labels=rare&labels=BlogWorks`+`&`+TOKEN;

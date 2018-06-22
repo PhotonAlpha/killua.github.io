@@ -25,7 +25,8 @@ class CommentInput extends Component {
             userInfo: {
                 username: props.userInfo.username,
                 html_url: props.userInfo.html_url,
-                avatar_url: props.userInfo.avatar_url
+                avatar_url: props.userInfo.avatar_url,
+                authSuccess: props.userInfo.authSuccess
             },
             content: {
                 value: ''
@@ -39,7 +40,7 @@ class CommentInput extends Component {
                     username: nextProps.userInfo.username,
                     html_url: nextProps.userInfo.html_url,
                     avatar_url: nextProps.userInfo.avatar_url,
-                    authSuccess: nextProps.authSuccess
+                    authSuccess: nextProps.userInfo.authSuccess
                 }
             })
         }
@@ -76,7 +77,6 @@ class CommentInput extends Component {
             },
             star: this.state.star
         },() => {
-            console.log('this.......state', this.state);
             if(!this.state.content.errorMsg) {
                 if (this.props.onSubmit) {
                     const content = this.state.content.value;
@@ -91,7 +91,6 @@ class CommentInput extends Component {
     }
 
     render() {
-        console.log('this.state', this.state)
         return (
             <div className='comment-input'>
                 <Form  className="login-form">
@@ -112,9 +111,10 @@ class CommentInput extends Component {
                     <FormItem
                         wrapperCol={{
                             xs: { span: 24, offset: 0 },
-                            sm: { span: 8, offset:16 },
+                            sm: { span: 24 },
                         }}
                         >
+                        <span style={{ color: '#1890ff' }} ><Icon type="exclamation-circle-o" />Markdown is supported</span>
                         <Rate onChange = { this.handleRateChange.bind(this) } />
                         {
                             this.state.userInfo.authSuccess?

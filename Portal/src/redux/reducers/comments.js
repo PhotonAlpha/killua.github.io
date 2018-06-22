@@ -1,4 +1,5 @@
 import { Base64 } from 'js-base64';
+import { TEMP_TOKEN_AUTH } from 'components/Utils/Utils';
 
 const GET_COMMENT_REQUEST = "comment/GET_INFO_REQUEST";
 const GET_COMMENT_SUCCESS = "comment/GET_INFO_SUCCESS";
@@ -41,6 +42,14 @@ export default function reducer(state = initialState, action) {
 export function getComments(issueNo) {
     console.log('getBlogIssues', issueNo);
     if(issueNo && issueNo>0){
+        let token = localStorage.getItem('GT_ACCESS_TOKEN');
+        if(!token){
+            config= {
+                headers: {
+                    'Authorization': `token ${TEMP_TOKEN_AUTH}`
+                }
+            }
+        }
         const result = {
             types: [GET_COMMENT_REQUEST, GET_COMMENT_SUCCESS, GET_COMMENT_FAIL],
             promise: client => client.get(ISSUE_COMMENT.replace(':issueNo', issueNo), config)
@@ -59,7 +68,7 @@ export function postComments(issueNo, comment) {
         return result;
     }
 }
-const config= {
+let config= {
     headers: {
         'Authorization': `token `+localStorage.getItem('GT_ACCESS_TOKEN')
     }

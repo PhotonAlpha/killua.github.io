@@ -1,9 +1,3 @@
-#aboutPage {
-    /* height:297mm; */
-    width:220mm;
-    margin: 0 calc((100% - 210mm)/2);
-    padding: 0;
-}
 #aboutPage .portrait{
     width: 100px;
     height: 100px;

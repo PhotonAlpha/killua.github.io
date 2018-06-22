@@ -12,7 +12,6 @@ export default function (wid = 200, hei = 200, minimalSize = 60) {
 }
 
 export function _reconstructorTree(message) {
-    console.log('message', message)
     const pattern = /^[0-9]{4}[-]{1}[0-9]{1,2}[-]{1}[0-9]{1,2}/;
     let blogdatas = [];
     if(message && message.length > 0) {
@@ -37,7 +36,6 @@ export function _reconstructorTree(message) {
                 sha: item.sha
             }
         });
-        console.log(blogdatas);
         blogdatas.sort((a, b) => {
             return new Date(b.date) - new Date(a.date);
         });
@@ -54,3 +52,6 @@ export const DOCKER='backend/Docker';
 const client_id = '22f33b7f43ec9ae6d0c9';
 const redirect_uri = 'http://localhost:4200/auth';
 export const AUTHURL=` https://github.com/login/oauth/authorize?client_id=${client_id}&scope=public_repo&redirect_uri=${redirect_uri}`;
+const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
+export const TEMP_TOKEN = `access_token=`+Base64.decode(t);
+export const TEMP_TOKEN_AUTH = Base64.decode(t);

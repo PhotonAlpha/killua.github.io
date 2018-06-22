@@ -8,6 +8,7 @@ import { searchBlogIssues } from "reducers/issues";
 import Reveal from 'components/Reveal/Reveal';
 import Loading from 'components/Loading/Loading';
 import CommentApp from 'containers/Comment/CommentApp';
+import { AUTHURL } from 'components/Utils/Utils';
 
 export class RevealContainer extends Component {
     static propTypes = {
@@ -15,21 +16,31 @@ export class RevealContainer extends Component {
     }
     constructor(props) {
         super(props);
-        console.log('RevealContainer constructor');
         this.state = {
-            git_url: ''
+            git_url: '',
+            issue_title: '',
+            number: 0
         }
     }
     
     componentWillMount() {
         const queryParams = new URLSearchParams(this.props.location.search);
         const data = this.props.location.state;
-        console.log('queryParams', queryParams.get('hash'), data)
+        // console.log('queryParams', queryParams.get('hash'), data)
         if(data){
-            const { git_url, issue_title } = data;
+            const { git_url, issue_title, number } = data;
             console.log('RevealContainer componentWillMount', data);
-            this.props.getBlogData(git_url);
-            this.props.searchBlogIssues(issue_title);
+            this.setState({
+                git_url,
+                issue_title,
+                number
+            },()=>{
+                this.props.getBlogData(git_url);
+                console.log('number', issue_title)
+                if(!(number && number>0)){
+                    this.props.searchBlogIssues(issue_title);
+                }
+            })
         }else{
             const path = {  
                 pathname:'/404',  
@@ -40,14 +51,16 @@ export class RevealContainer extends Component {
 
     handleAuthentication(){
         let href = AUTHURL+'?hash='+this.state.git_url+'title='+Base64.encode(encodeURIComponent(this.state.issue_title));
-        console.log('handleAuthentication', href);
+        // console.log(href);
+        window.location.href = href;
     }
 
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
         const issueMessage = this.props.issueStore.message;
-        let issueNo = 0;
-        if(Array.isArray(issueMessage.items)){
+        console.log(issueMessage)
+        let issueNo = this.state.number;
+        if(Array.isArray(issueMessage.items) && issueMessage.items.length > 0){
             let item = issueMessage.items[0];
             issueNo=item.number;
         }
@@ -65,15 +78,6 @@ export class RevealContainer extends Component {
         )
     }
 }
-// const gitalk = new Gitalk({
-//     clientID: '22f33b7f43ec9ae6d0c9',
-//     clientSecret: '28897992561806c11dbf14f231dc6c31afa985e5',
-//     repo: 'blogs',
-//     owner: 'photonalpha',
-//     admin: ['photonalpha'],
-//     id: 'issue-comment',
-//     distractionFreeMode: false  // Facebook-like distraction free mode
-// })
 
 const mapStateToProps = (state) => {
     return {

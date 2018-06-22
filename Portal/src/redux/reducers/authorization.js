@@ -10,7 +10,6 @@ const initialState = {
 }
 
 export default function reducer(state = initialState, action) {
-    console.log('resume reducer', state, action)
     switch (action.type) {
         case GET_AUTH_REQUEST:
             return {

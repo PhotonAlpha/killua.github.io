@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Home from 'components/Home/Home';
+import history from 'router/history';
 
 import backgroundPng from 'components/Utils/Utils';
 import Loading from 'components/Loading/Loading';
@@ -15,7 +16,6 @@ export class HomeContainer extends Component {
 	}
 	constructor(props) {
 		super(props);
-		console.log('constructor', props);
 		this.state = {
 			isLoading: false,
 			message: {},
@@ -27,12 +27,23 @@ export class HomeContainer extends Component {
 			this.props.getBlogIssues();
 		});
 	}
+	handleClick(sha, issuenumber, title, e) {
+		console.log('handleClick', sha, issuenumber, title)
+        const data = {
+            git_url:sha,
+			number: issuenumber,
+			issue_title: title
+        };
+        const path = {  
+            pathname:'/reveal',  
+            state:data
+        }
+        history.push(path);
+	}
 
 	render() {
 		const {message , isLoading, errorMsg} = this.props.issueStore;
 		const blogStore = {
-			loading: this.props.blogStore.isLoading,
-			error: this.props.blogStore.errorMsg,
 			blog: this.props.blogStore.message
 		}
 		let blogList = [];
@@ -47,11 +58,11 @@ export class HomeContainer extends Component {
 				.map(item => {
 					return {
 						blogPath: item.path,
-						url: item.url
+						sha: item.sha
 					}
 				})
 		}
-		console.log('~~~~~~~~', blogList);
+		// console.log('~~~~~~~~', blogList);
 		let issueList = [];
 		let rareList = [];
 		if(Array.isArray(message)) {
@@ -62,7 +73,8 @@ export class HomeContainer extends Component {
 					_abels = item.labels.map(item => item.name);
 				}
 				const issue = {
-					git_url: blog?blog.url:'',
+					git_sha: blog?blog.sha:'',
+					number: item.number,
 					comments_url: item.comments_url,
 					created_at: item.created_at,
 					labels: _abels,
@@ -78,13 +90,12 @@ export class HomeContainer extends Component {
 				return issue;
 			})
 		}
-		console.log(issueList, rareList)
 		return (
 			<div>
 				{
 					isLoading? <Loading />: (
 						errorMsg? errorMsg :
-							<Home issueList={ issueList } rareList={ rareList } />
+							<Home handleClick={ this.handleClick.bind(this) } issueList={ issueList } rareList={ rareList } />
 					)
 				}
 			</div>
@@ -93,7 +104,6 @@ export class HomeContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log('mapStateToProps', state)
 	return {
 		issueStore: state.issueStore,
 		blogStore: state.blogStore

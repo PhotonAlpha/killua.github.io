@@ -20,23 +20,24 @@ class CommentAppContainer extends Component {
         
     }
     componentWillReceiveProps(nextProps) {
-        console.log('CommentAppContainer componentWillReceiveProps', nextProps);
+        console.log('componentWillReceiveProps', nextProps.issueNo, this.props.issueNo)
         if(nextProps.issueNo != this.props.issueNo) {
-            this.setState({
-                issueNo: nextProps.issueNo
-            },()=> {
-                console.log('componentWillReceiveProps', this.props.issueNo)
-                if(this.props.issueNo>0){
-                    this.props.getComments(this.props.issueNo);
-                }
-            })
+            if(nextProps.issueNo > 0){
+                this._initComments(nextProps.issueNo)
+            }
         }
     }
-    
     componentWillMount() {
         if(this.props.getUserInfo){
             this.props.getUserInfo();
         }
+        if(this.props.issueNo > 0){
+            this._initComments(this.props.issueNo)
+        }
+    }
+    _initComments(issueNo) {
+        console.log('_initComments', issueNo)
+        this.props.getComments(issueNo);
     }
     
     
@@ -47,10 +48,6 @@ class CommentAppContainer extends Component {
     }
     handleSubmitComment(comment) {
         let bodycontent = comment.content
-        if(comment.star > 0) {
-            bodycontent += ('<br/> with star '+comment.star);
-        }
-        console.log('handleSubmitComment', this.props, comment);
         if (this.props.postComments && this.props.issueNo > 0) {
             this.props.postComments(this.props.issueNo, bodycontent)
                 .then(() => {
@@ -63,13 +60,12 @@ class CommentAppContainer extends Component {
     render() {
         const { isLoading, errorMsg} = this.props.commentStore;
         let { message } = this.props.commentStore;
-        console.log('comments message', message)
         if(!Array.isArray(message)){
             message= [];
         }
         return (
             <Row>
-                <Col lg ={{ span:18 }} md={{ span:24 }} className='container-fluid markdown-body'>
+                <Col lg ={{ span:18 }} md={{ span:24 }} style={{ borderTop: '1em solid #dfe2e5' }} className='container-fluid markdown-body'>
                     <CommentInput handleAuth={ this.handleAuth.bind(this) } userInfo={ this.props.authorizationStore } onSubmit={ this.handleSubmitComment.bind(this) } />
                     <CommentList comments={ message } />
                 </Col>

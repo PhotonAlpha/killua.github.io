@@ -33,7 +33,6 @@ class About extends Component {
     }
     handleOk = (saltVal) => {
         this.props.getResumeInfo().then(() => {
-            console.log('handleOk', this.props.resume)
             this.setState({
                 visible: false,
                 salt: saltVal,
@@ -58,23 +57,14 @@ class About extends Component {
         });
     }
     handleClick = () => {
-        console.log('about handleClick')
         this.setState({ loading: !this.state.loading });
     }
 
     getData = () => {
-        console.log(this.props);
         const result = this.props.getResumeInfo();
-        console.log(result);
-        console.log(this.props);
-        // return result;
-        // https://api.github.com/repos/PhotonAlpha/photon-repository/contents
-        // window.print(); 
-        // window.close();
     }
 
     render() {
-        console.log('render', this.props, this.state);
         const {message , isLoading, errorMsg} = this.props.common;
 
         return (

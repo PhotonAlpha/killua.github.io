@@ -17,7 +17,6 @@ export class SpringBootContainer extends Component {
     }
     
     componentWillMount() {
-        console.log('componentWillMount', SPRING_BOOT)
         this.props.getCatalogTree(SPRING_BOOT);
     }
     handleClick(sha, title, e) {
@@ -35,7 +34,6 @@ export class SpringBootContainer extends Component {
 
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
-        console.log('SpringBootContainer', message , isLoading, errorMsg)
         return (
             <div>
             {

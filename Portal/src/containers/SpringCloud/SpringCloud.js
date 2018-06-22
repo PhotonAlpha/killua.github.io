@@ -15,7 +15,6 @@ export class SpringCloudContainer extends Component {
         super(props);
     }
     componentWillMount() {
-        console.log('componentWillMount', SPRING_CLOUD)
         this.props.getCatalogTree(SPRING_CLOUD);
     }
     handleClick(sha, title, e) {
@@ -33,7 +32,6 @@ export class SpringCloudContainer extends Component {
 
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
-        console.log('SpringBootContainer', message , isLoading, errorMsg)
         return (
             <div>
                 {
