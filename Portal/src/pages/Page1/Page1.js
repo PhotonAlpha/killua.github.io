@@ -3,13 +3,18 @@ import ReactDom from 'react-dom';
 import {Link} from 'react-router-dom';
 import './Page1.css';
 import image from 'assets/hashiqi.jpg';
-import { Menu, Icon, Layout, Breadcrumb, BackTop, Row, Col, Slider } from 'antd';
+import { Menu, Icon, Layout, Avatar, Breadcrumb, BackTop, Row, Col, Slider, Card, Button } from 'antd';
+const { Meta } = Card;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const { Header, Content, Footer, Sider  } = Layout;
 import babaCar from 'assets/baba-car.png';
 import Trianglify, { randomColor } from 'trianglify';
 
+const gridStyle = {
+    width: '100%',
+    textAlign: 'center',
+};
 export default class Page1 extends Component {
     
     open(event) {
@@ -37,27 +42,66 @@ export default class Page1 extends Component {
           }).png();
         document.getElementById('page1').style.backgroundImage = `url(${pngURI})`;
     }
-
+    state = {
+        loading: false,
+    }
+    
+    handleClick = () => {
+        this.setState({ loading: !this.state.loading });
+    }
     render() {
         return (
             <div id = 'page1' >
-                <h1>Cooking in progress..</h1>
-                <div id="cooking">
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div id="area">
-                    <div id="sides">
-                    <div id="pan"></div>
-                    <div id="handle"></div>
-                    </div>
-                    <div id="pancake">
-                    <div id="pastry"></div>
-                    </div>
-                </div>
-                </div>
+                <Row>
+                    <Col lg={{ span:16 }}></Col>
+                    <Col lg={{ span:4, offset:2 }}>
+                        <Card title="Open Source" loading={this.state.loading}>
+                            <Card.Grid style={gridStyle}>
+                                <Meta
+                                    title={ <div><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png" />React</div> }
+                                    description="那是一种内在的东西，他们到达不了，也无法触及的"
+                                />
+                                <div style={{ paddingTop: '10px' }}>
+                                    <a href="/">科学搬砖组</a>
+                                    <span>16 分钟前</span>
+                                </div>
+                            </Card.Grid>
+                            <Card.Grid style={gridStyle}>
+                                <Meta
+                                    title={ <div><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png" />Bootstrap</div> }
+                                    description="希望是一个好东西，也许是最好的，好东西是不会消亡的"
+                                />
+                                <div style={{ paddingTop: '10px' }}>
+                                    <a href="/">全组都是吴彦祖</a>
+                                    <span>16 分钟前</span>
+                                </div>
+                            
+                            </Card.Grid>
+                            <Card.Grid style={gridStyle}>
+                                <Meta
+                                    title={ <div><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png" />Ant Design</div> }
+                                    description="城镇中有那么多的酒馆，她却偏偏走进了我的酒馆"
+                                />
+                                <div style={{ paddingTop: '10px' }}>
+                                    <a href="/">中二少女团</a>
+                                    <span>16 分钟前</span>
+                                </div>
+                            
+                            </Card.Grid>
+                            <Card.Grid style={gridStyle}>
+                                <Meta
+                                    title={ <div><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png" />Ant Design Pro</div> }
+                                    description="城镇中有那么多的酒馆，她却偏偏走进了我的酒馆"
+                                />
+                                <div style={{ paddingTop: '10px' }}>
+                                    <a href="/">中二少女团</a>
+                                    <span>16 分钟前</span>
+                                </div>
+                            </Card.Grid>
+                        </Card>
+                        <Button onClick={this.handleClick} style={{ marginTop: 16 }}>Toggle loading</Button>
+                    </Col>
+                </Row>
             </div>
         )
     }

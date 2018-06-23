@@ -11,7 +11,7 @@ export default function (wid = 200, hei = 200, minimalSize = 60) {
     return url;
 }
 
-export function _reconstructorTree(message) {
+export function _reconstructorTree(message= []) {
     const pattern = /^[0-9]{4}[-]{1}[0-9]{1,2}[-]{1}[0-9]{1,2}/;
     let blogdatas = [];
     if(message && message.length > 0) {

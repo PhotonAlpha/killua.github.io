@@ -11,14 +11,14 @@ import Reveal from 'containers/Reveal/Reveal';
 import About from 'bundle-loader?lazy&name=about!containers/About/About';
 import SpringCloud from 'bundle-loader?lazy&name=springCloud!containers/SpringCloud/SpringCloud';
 import Docker from 'bundle-loader?lazy&name=docker!containers/Docker/Docker';
+import Archives from 'bundle-loader?lazy&name=archives!containers/Archives/Archives';
+import NotFound from 'bundle-loader?lazy&name=notFound!components/NotFound/NotFound';
 
 import Authenticate from 'bundle-loader?lazy&name=authenticate!containers/Authorization/Authorization';
 
-import Archives from 'bundle-loader?lazy&name=archives!pages/Archives/Archives';
 import Page1 from 'bundle-loader?lazy&name=page1!pages/Page1/Page1';
 // import Counter from 'bundle-loader?lazy&name=counter!pages/Counter/Counter';
 // import UserInfo from 'bundle-loader?lazy&name=userInfo!pages/UserInfo/UserInfo';
-import NotFound from 'bundle-loader?lazy&name=notFound!pages/NotFound/NotFound';
 import Wow from 'bundle-loader?lazy&name=wow!pages/Videos/WorldOfWarcraft';
 import Python from 'bundle-loader?lazy&name=python!pages/Videos/Python';
 // import Reveal from 'bundle-loader?lazy&name=reveal!pages/Reveal/Reveal';

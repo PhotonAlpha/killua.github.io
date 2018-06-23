@@ -13,12 +13,16 @@ import { getUserInfo } from "reducers/authorization";
 class CommentAppContainer extends Component {
     static propTypes = {
         issueNo: PropTypes.number,
-        handleAuth: PropTypes.func
+        handleAuth: PropTypes.func,
+        specify: PropTypes.bool
     }
     constructor(props) {
         super(props);
         
     }
+    static defaultProps = {
+        specify: false
+    };
     componentWillReceiveProps(nextProps) {
         console.log('componentWillReceiveProps', nextProps.issueNo, this.props.issueNo)
         if(nextProps.issueNo != this.props.issueNo) {
@@ -28,8 +32,13 @@ class CommentAppContainer extends Component {
         }
     }
     componentWillMount() {
+        console.log('componentWillMount' , this.props)
         if(this.props.getUserInfo){
-            this.props.getUserInfo();
+            if(this.props.specify === true){
+                this.props.getUserInfo(this.props.specify);
+            }else{
+                this.props.getUserInfo();
+            }
         }
         if(this.props.issueNo > 0){
             this._initComments(this.props.issueNo)
@@ -49,7 +58,7 @@ class CommentAppContainer extends Component {
     handleSubmitComment(comment) {
         let bodycontent = comment.content
         if (this.props.postComments && this.props.issueNo > 0) {
-            this.props.postComments(this.props.issueNo, bodycontent)
+            this.props.postComments(this.props.issueNo, bodycontent, this.props.specify)
                 .then(() => {
                     console.log('postComments');
                     this.props.getComments(this.props.issueNo);

@@ -39,8 +39,8 @@ export default function reducer(state = initialState, action) {
     }
 }
 
-export function getRepositoryTree(params) {
-    console.log('getRepositoryTree', params);
+export function getRepositoryTree() {
+    console.log('getRepositoryTree');
     const result = {
         types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
         promise: client => client.get(BOLG_REPOSITORY)

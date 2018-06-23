@@ -60,7 +60,7 @@ export class AboutContainer extends Component {
                         <About showDialog={ this.showDialog.bind(this) } state={ this.state } blogContent={ message.content } />
                 )
             }
-            <CommentApp issueNo={5} />
+            <CommentApp specify={ true } issueNo={5} />
             <Dialogue state={ this.state } handleDialogUpdate={ this.handleDialogUpdate.bind(this) } />
         </div>
         )

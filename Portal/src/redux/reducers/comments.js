@@ -43,6 +43,11 @@ export function getComments(issueNo) {
     console.log('getBlogIssues', issueNo);
     if(issueNo && issueNo>0){
         let token = localStorage.getItem('GT_ACCESS_TOKEN');
+        let config= {
+            headers: {
+                'Authorization': `token `+localStorage.getItem('GT_ACCESS_TOKEN')
+            }
+        }
         if(!token){
             config= {
                 headers: {
@@ -57,20 +62,27 @@ export function getComments(issueNo) {
         return result;
     }
 }
-export function postComments(issueNo, comment) {
+export function postComments(issueNo, comment, privKey = false) {
     console.log('postComments', comment);
     if(issueNo && issueNo>0){
+        let config= {
+            headers: {
+                'Authorization': `token `+localStorage.getItem('GT_ACCESS_TOKEN')
+            }
+        }
+        if(privKey) {
+            config= {
+                headers: {
+                    'Authorization': `token `+TEMP_TOKEN_AUTH
+                }
+            }
+        }
         const bodys = JSON.stringify({body: comment});
         const result = {
             types: [GET_COMMENT_REQUEST, GET_COMMENT_SUCCESS, GET_COMMENT_FAIL],
             promise: client => client.post(ISSUE_COMMENT.replace(':issueNo', issueNo), bodys, config)
         }
         return result;
-    }
-}
-let config= {
-    headers: {
-        'Authorization': `token `+localStorage.getItem('GT_ACCESS_TOKEN')
     }
 }
 const ISSUE_COMMENT = `https://api.github.com/repos/PhotonAlpha/blogs/issues/:issueNo/comments`

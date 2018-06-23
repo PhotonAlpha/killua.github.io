@@ -35,6 +35,16 @@
     visibility: visible;
     opacity: 1;
 }
+#SpringBoot .ant-card-grid {
+    padding-bottom: 0;
+}
+#SpringBoot .ant-card-body {
+    padding: 0;
+}
+#SpringBoot .ant-card,
+#SpringBoot .ant-card-head{
+    background: #ffffff6e;
+}
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {

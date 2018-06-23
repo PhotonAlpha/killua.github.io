@@ -20,8 +20,6 @@ export default class Reveal extends Component {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); 
         }
     }
-    //instance variable
-    imgUtil = uri => <img src={uri} />;
 
     render() {
         return (
@@ -33,7 +31,7 @@ export default class Reveal extends Component {
                         // transformImageUri={this.imgUtil}
                         />
                     </Col>
-                    <Col lg ={{ span:6 }} md={{ span:0 }}>
+                    <Col lg ={{ span:6 }} md={{ span:0 }} style={{ zIndex: '10' }} >
                         <Anchor showInkInFixed={true} offsetTop={138} bounds={20} >
                             <h3 style={{textAlign: 'center'}} >Post Directory</h3>
                             <AnchorLink scrollTarget={ this._scrollTarget.bind(this) } />

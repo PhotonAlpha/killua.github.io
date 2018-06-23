@@ -1,4 +1,6 @@
 import { Base64 } from 'js-base64';
+import { TEMP_TOKEN_AUTH } from 'components/Utils/Utils';
+
 const GET_AUTH_REQUEST = "auth/GET_RESUME_REQUEST";
 const GET_AUTH_SUCCESS = "auth/GET_RESUME_SUCCESS";
 const GET_AUTH_FAIL = "auth/GET_RESUME_FAIL";
@@ -44,11 +46,18 @@ export function getResumeInfo() {
     }
     return result;
 }
-export function getUserInfo() {
-    const config= {
+export function getUserInfo(privKey = false) {
+    console.log('getUserInfo', privKey)
+    let config= {
         headers: {
             'Authorization': `token `+localStorage.getItem('GT_ACCESS_TOKEN')
-            // 'Authorization': `token 123`
+        }
+    }
+    if(privKey) {
+        config= {
+            headers: {
+                'Authorization': `token `+TEMP_TOKEN_AUTH
+            }
         }
     }
     const result = {
@@ -71,7 +80,9 @@ export function postAuth(code) {
     }
     return result;
 }
-const CLIENT_ID = "MjJmMzNiN2Y0M2VjOWFlNmQwYzk=";
-const CLIENT_SECRET = "Mjg4OTc5OTI1NjE4MDZjMTFkYmYxNGYyMzFkYzZjMzFhZmE5ODVlNQ==";
+// const CLIENT_ID = "MjJmMzNiN2Y0M2VjOWFlNmQwYzk="; // for local
+// const CLIENT_SECRET = "Mjg4OTc5OTI1NjE4MDZjMTFkYmYxNGYyMzFkYzZjMzFhZmE5ODVlNQ=="; // for local
+const CLIENT_ID = "OWMwNDUzNzBhMGZlZTBiZWI3Njg=";
+const CLIENT_SECRET = "OTI2NDcwOWY0MzY5NzBiYThjNDBjMjFjNTg4NDIzZTgyZDMzNjQzYg==";
 const POST_AUTH = `https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token`;
 const GET_USERINFO = `https://api.github.com/user`;

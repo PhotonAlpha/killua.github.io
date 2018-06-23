@@ -6,19 +6,23 @@
     color: rgba(0, 0, 0, .65);
     font-weight: 400;
 }
-#comment-list .markdown-body h1, 
-#comment-list .markdown-body h2, 
-#comment-list .markdown-body h3, 
-#comment-list .markdown-body h4, 
-#comment-list .markdown-body h5, 
-#comment-list .markdown-body h6{
+#comment-list  h1, 
+#comment-list  h2, 
+#comment-list  h3, 
+#comment-list  h4, 
+#comment-list  h5, 
+#comment-list  h6{
     color: rgba(0, 0, 0, .65);
     margin-bottom: 4px;
     font-size: 14px;
     line-height: 22px;
+    border-bottom: 1px solid #eaecef;
 }
 #comment-list .ant-list-item-meta-title > a {
     color: rgb(24, 144, 255);
+}
+#comment-list .ant-list-item-meta-content {
+    background-color: #d0cbcb47;
 }
 
 .comment-input .ant-form-item {
@@ -33,7 +37,7 @@
     border: 1px solid #f1f1f1;
     padding: 20px 20px 0 20px;
     border-radius: 30px;
-    box-shadow: 6px 9px 0 0 #615f5f;
+    box-shadow: 6px 9px 11px 5px #7f7f7f;
 }
   
 code {

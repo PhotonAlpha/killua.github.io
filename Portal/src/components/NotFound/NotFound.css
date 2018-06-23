@@ -1,0 +1,12 @@
+#not-found h1 {
+    color: #434e59;
+    font-size: 72px;
+    font-weight: 600;
+    line-height: 72px;
+    margin-bottom: 24px;
+}
+#not-found .ant-row {
+    height: 70vh;
+    align-items: center;
+    display: flex;
+}
