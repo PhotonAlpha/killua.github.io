@@ -6,7 +6,6 @@ import backgroundPng from '../Utils/Utils';
 
 import { Layout, Breadcrumb, BackTop, Icon, Menu, Row, Col } from 'antd';
 import './APP.css';
-
 const { Header, Content, Footer, Sider  } = Layout;
 
 export default class App extends Component {
@@ -38,13 +37,6 @@ export default class App extends Component {
             layer.style.transform = translate3d;
         }
     }
-    
-    // generateJumbotron() {
-    //     const width = document.body.offsetWidth;
-    //     const url =  backgroundPng(width, 200, 60);
-    //     console.log('url', url)
-    //     return url;
-    // }
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);

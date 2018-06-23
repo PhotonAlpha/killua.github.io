@@ -30,7 +30,7 @@ export function _reconstructorTree(message= []) {
             const blogname = name.substring(match[0].length+1, name.length).replace('.md','');
             return {
                 name: blogname,
-                date: Date.parse(match[0]),
+                date: Date.parse(match[0].replace(/-/g, "/")),
                 path: item.path,
                 git_url: item.git_url,
                 sha: item.sha

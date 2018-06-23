@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Icon, Input, Button, Rate, Checkbox, Avatar } from 'antd';
+import { Form, Icon, Input, Button, Rate, Checkbox, Avatar, Card } from 'antd';
 const { TextArea } = Input;
 const FormItem = Form.Item;
 
@@ -19,6 +19,9 @@ class CommentInput extends Component {
         userInfo: PropTypes.any,
         onSubmit: PropTypes.func
     }
+    static defaultProps = {
+        commentCount: 0
+    };
     constructor(props){
         super(props);
         this.state = {
@@ -93,45 +96,47 @@ class CommentInput extends Component {
     render() {
         return (
             <div className='comment-input'>
-                <Form  className="login-form">
-                    <FormItem
-                        {...formItemLayout}
-                        label={ this.state.userInfo.avatar_url? <div><Avatar size="large" src={this.state.userInfo.avatar_url} /><a target="_blank" style={{color:'#1890ff'}} src={ this.state.userInfo.html_url } >{this.state.userInfo.username}</a></div> : 'Comment' }
-                        colon={this.state.userInfo.avatar_url? false: true}
-                        hasFeedback
-                        validateStatus={ this.state.content.validateStatus }
-                        help={ this.state.content.errorMsg }
-                    >
-                        <TextArea placeholder="leave a comment" autosize={{ minRows: 2, maxRows: 6 }}
-                            ref={(textarea) => this.textarea = textarea} 
-                            value={ this.state.content.value } 
-                            onChange={ this.handleContentChange.bind(this) }
-                        />
-                    </FormItem>
-                    <FormItem
-                        wrapperCol={{
-                            xs: { span: 24, offset: 0 },
-                            sm: { span: 24 },
-                        }}
+                <Card title="Comment" extra={<a >{ this.props.commentCount } comments</a>} >
+                    <Form  className="login-form">
+                        <FormItem
+                            {...formItemLayout}
+                            label={ this.state.userInfo.avatar_url? <div><Avatar size="large" src={this.state.userInfo.avatar_url} /><a target="_blank" style={{color:'#1890ff'}} src={ this.state.userInfo.html_url } >{this.state.userInfo.username}</a></div> : 'Comment' }
+                            colon={this.state.userInfo.avatar_url? false: true}
+                            hasFeedback
+                            validateStatus={ this.state.content.validateStatus }
+                            help={ this.state.content.errorMsg }
                         >
-                        <span style={{ color: '#1890ff' }} ><Icon type="exclamation-circle-o" />Markdown is supported</span>
-                        <Rate onChange = { this.handleRateChange.bind(this) } />
-                        {
-                            this.state.userInfo.authSuccess?
-                                <Button htmlType="submit" type="primary" icon="poweroff" loading={this.state.iconLoading} 
-                                    onClick={ this.handleSubmit }
-                                    >
-                                    Comment
-                                </Button>
-                            :
-                                <Button icon="poweroff" type="danger" ghost
-                                    onClick={ this.handleAuth.bind(this) }
-                                    >
-                                    Login with Github
-                                </Button>
-                        }
-                    </FormItem>
-                </Form>
+                            <TextArea placeholder="leave a comment" autosize={{ minRows: 2, maxRows: 6 }}
+                                ref={(textarea) => this.textarea = textarea} 
+                                value={ this.state.content.value } 
+                                onChange={ this.handleContentChange.bind(this) }
+                            />
+                        </FormItem>
+                        <FormItem
+                            wrapperCol={{
+                                xs: { span: 24, offset: 0 },
+                                sm: { span: 24 },
+                            }}
+                            >
+                            <span style={{ color: '#1890ff' }} ><Icon type="exclamation-circle-o" />Markdown is supported</span>
+                            <Rate onChange = { this.handleRateChange.bind(this) } />
+                            {
+                                this.state.userInfo.authSuccess?
+                                    <Button htmlType="submit" type="primary" icon="poweroff" loading={this.state.iconLoading} 
+                                        onClick={ this.handleSubmit }
+                                        >
+                                        Comment
+                                    </Button>
+                                :
+                                    <Button icon="poweroff" type="danger" ghost
+                                        onClick={ this.handleAuth.bind(this) }
+                                        >
+                                        Login with Github
+                                    </Button>
+                            }
+                        </FormItem>
+                    </Form>
+                </Card>
             </div>
         );
     }

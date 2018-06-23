@@ -75,7 +75,12 @@ class CommentAppContainer extends Component {
         return (
             <Row>
                 <Col lg ={{ span:18 }} md={{ span:24 }} style={{ borderTop: '1em solid #dfe2e5' }} className='container-fluid markdown-body'>
-                    <CommentInput handleAuth={ this.handleAuth.bind(this) } userInfo={ this.props.authorizationStore } onSubmit={ this.handleSubmitComment.bind(this) } />
+                    <CommentInput 
+                        handleAuth={ this.handleAuth.bind(this) } 
+                        userInfo={ this.props.authorizationStore } 
+                        onSubmit={ this.handleSubmitComment.bind(this) }
+                        commentCount={ message.length }
+                        />
                     <CommentList comments={ message } />
                 </Col>
             </Row>

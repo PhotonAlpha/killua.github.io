@@ -90,13 +90,13 @@
     background-image: url(../../assets/hero/ilu_overlay.png);
 }
 @media only screen and (max-width: 1030px) {
-    #hero {
+    /* #hero {
       display: none;
     }
   
     #hero-mobile {
       display: block;
-    }
+    } */
 }
 #hero-page .tutorial-link {
     color: #fff;

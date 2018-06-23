@@ -52,56 +52,60 @@ export default class Page1 extends Component {
     render() {
         return (
             <div id = 'page1' >
-                <Row>
-                    <Col lg={{ span:16 }}></Col>
-                    <Col lg={{ span:4, offset:2 }}>
-                        <Card title="Open Source" loading={this.state.loading}>
-                            <Card.Grid style={gridStyle}>
-                                <Meta
-                                    title={ <div><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png" />React</div> }
-                                    description="那是一种内在的东西，他们到达不了，也无法触及的"
-                                />
-                                <div style={{ paddingTop: '10px' }}>
-                                    <a href="/">科学搬砖组</a>
-                                    <span>16 分钟前</span>
-                                </div>
-                            </Card.Grid>
-                            <Card.Grid style={gridStyle}>
-                                <Meta
-                                    title={ <div><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/siCrBXXhmvTQGWPNLBow.png" />Bootstrap</div> }
-                                    description="希望是一个好东西，也许是最好的，好东西是不会消亡的"
-                                />
-                                <div style={{ paddingTop: '10px' }}>
-                                    <a href="/">全组都是吴彦祖</a>
-                                    <span>16 分钟前</span>
-                                </div>
-                            
-                            </Card.Grid>
-                            <Card.Grid style={gridStyle}>
-                                <Meta
-                                    title={ <div><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png" />Ant Design</div> }
-                                    description="城镇中有那么多的酒馆，她却偏偏走进了我的酒馆"
-                                />
-                                <div style={{ paddingTop: '10px' }}>
-                                    <a href="/">中二少女团</a>
-                                    <span>16 分钟前</span>
-                                </div>
-                            
-                            </Card.Grid>
-                            <Card.Grid style={gridStyle}>
-                                <Meta
-                                    title={ <div><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png" />Ant Design Pro</div> }
-                                    description="城镇中有那么多的酒馆，她却偏偏走进了我的酒馆"
-                                />
-                                <div style={{ paddingTop: '10px' }}>
-                                    <a href="/">中二少女团</a>
-                                    <span>16 分钟前</span>
-                                </div>
-                            </Card.Grid>
-                        </Card>
-                        <Button onClick={this.handleClick} style={{ marginTop: 16 }}>Toggle loading</Button>
-                    </Col>
-                </Row>
+                <Layout>
+                    <Sider
+                    width={399}
+                    breakpoint="lg"
+                    collapsedWidth="0"
+                    onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
+                    >
+                        <div className="logo" />
+                        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                            <Menu.Item key="home">
+                                <Link to="/"><Icon type="home" />Home</Link>
+                            </Menu.Item>
+                            <Menu.Item key="springboot">
+                                <Link to="/springboot"><Icon type="coffee" />SpringBoot</Link>
+                            </Menu.Item>
+                            <Menu.Item key="springcloud">
+                                <Link to="/springcloud"><Icon type="cloud" />SpringCloud</Link>
+                            </Menu.Item>
+                            <Menu.Item key="docker">
+                                <Link to="/docker"><Icon type="hdd" />Docker</Link>
+                            </Menu.Item>
+                            <SubMenu title={<span><Icon type="youtube" /><span>Videos</span></span>}>
+                                <MenuItemGroup title="Games">
+                                    {/* <Menu.Item key="redio:1"><Link to="/wow">wow</Link></Menu.Item> */}
+                                    <Menu.Item key="redio:1"  >GraphQL</Menu.Item>
+                                </MenuItemGroup>
+                                <MenuItemGroup title="Learning">
+                                    <Menu.Item key="redio:2"   >高等数学</Menu.Item>
+                                    <Menu.Item key="redio:3"   >考研</Menu.Item>
+                                    {/* <Menu.Item key="redio:4" ><Link to="/python">Python</Link></Menu.Item> */}
+                                    <Menu.Item key="redio:4"  ></Menu.Item>
+                                </MenuItemGroup>
+                            </SubMenu>
+                            <Menu.Item key="archives"  >
+                                <Link to="/archives"><Icon type="hdd" />Archives</Link>
+                                {/* <Icon type="hdd" />Archives   */}
+                            </Menu.Item>
+                            <Menu.Item key="about">
+                                <Link to="/about"><Icon type="dashboard" />About</Link>
+                            </Menu.Item>
+                        </Menu>
+                    </Sider>
+                <Layout>
+                    <Header style={{ background: '#fff', padding: 0 }} />
+                    <Content style={{ margin: '24px 16px 0' }}>
+                        <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+                        content
+                        </div>
+                    </Content>
+                    <Footer style={{ textAlign: 'center' }}>
+                        Ant Design ©2016 Created by Ant UED
+                    </Footer>
+                    </Layout>
+                </Layout>
             </div>
         )
     }

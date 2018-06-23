@@ -32,7 +32,7 @@
     content: " ";
     display: block;
     position: absolute;
-    left: -30px;
+    left: -29px;
     z-index: 1;
     /* border: 30px solid #3D79D0; */
     border: 30px solid rgb(24, 144, 255);
@@ -43,7 +43,7 @@
     content: " ";
     display: block;
     position: absolute;
-    left: -60px;
+    left: -59px;
     z-index: -1;
     top: 25px;
     border: 30px solid #1D53C0;

@@ -8,7 +8,8 @@ class CommentInputContainer extends Component {
     static propTypes = {
         onSubmit: PropTypes.func,
         handleAuth: PropTypes.func,
-        userInfo: PropTypes.object
+        userInfo: PropTypes.object,
+        commentCount: PropTypes.number
     };
     constructor(props) {
         super(props);
@@ -56,6 +57,7 @@ class CommentInputContainer extends Component {
             <CommentInput userInfo={ this.state }
                 handleAuth={ this.handleAuth.bind(this) }
                 onSubmit={ this.handleSubmitComment.bind(this) }
+                commentCount={ this.props.commentCount }
             />
         );
     }
