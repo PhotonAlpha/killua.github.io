@@ -1,5 +1,5 @@
 import { Base64 } from 'js-base64';
-import { TEMP_TOKEN_AUTH } from 'components/Utils/Utils';
+import { TEMP_TOKEN_AUTH, CLIENT_ID, CLIENT_SECRET } from 'components/Utils/Utils';
 
 const GET_AUTH_REQUEST = "auth/GET_RESUME_REQUEST";
 const GET_AUTH_SUCCESS = "auth/GET_RESUME_SUCCESS";
@@ -80,9 +80,5 @@ export function postAuth(code) {
     }
     return result;
 }
-// const CLIENT_ID = "MjJmMzNiN2Y0M2VjOWFlNmQwYzk="; // for local
-// const CLIENT_SECRET = "Mjg4OTc5OTI1NjE4MDZjMTFkYmYxNGYyMzFkYzZjMzFhZmE5ODVlNQ=="; // for local
-const CLIENT_ID = "OWMwNDUzNzBhMGZlZTBiZWI3Njg=";
-const CLIENT_SECRET = "OTI2NDcwOWY0MzY5NzBiYThjNDBjMjFjNTg4NDIzZTgyZDMzNjQzYg==";
 const POST_AUTH = `https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token`;
 const GET_USERINFO = `https://api.github.com/user`;

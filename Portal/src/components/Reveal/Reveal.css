@@ -17,3 +17,31 @@
 #reveal .ant-anchor-link:hover {
     font: bold;
 }
+.comment-input .ant-card-head {
+    background: linear-gradient(to right, rgb(24, 144, 255) , rgba(24, 144, 255, 0));
+}
+.comment-input .ant-card-head::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: -29px;
+    z-index: 1;
+    /* border: 30px solid #3D79D0; */
+    border: 30px solid rgb(24, 144, 255);
+    border-right-width: 0px;
+    border-bottom-width: 25px;
+}
+.comment-input .ant-card-head::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: -59px;
+    z-index: -1;
+    top: 25px;
+    border: 30px solid #1D53C0;
+    visibility: visible;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transform: rotate(-5deg);
+}

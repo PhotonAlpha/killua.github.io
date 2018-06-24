@@ -35,7 +35,7 @@ export default class Nav extends Component {
         return (
           <Menu defaultSelectedKeys={['home']} style={{ lineHeight: '64px' }} onClick={this.handleClick} selectedKeys={[this.state.current]} mode='horizontal' >
               <Menu.Item key="home">
-                  <Link to="/"><Icon type="home" />Home</Link>
+                  <Link to="/"><Icon type="html5" />Home</Link>
               </Menu.Item>
               <Menu.Item key="springboot">
                   <Link to="/springboot"><Icon type="coffee" />SpringBoot</Link>

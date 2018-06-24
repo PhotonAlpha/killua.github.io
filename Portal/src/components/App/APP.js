@@ -60,6 +60,7 @@ export default class App extends Component {
                         <div className="logo" ></div>
                     </Col>
                     <Col xs={{ span: 24 }} lg={{ span: 21 }}>
+                        <Col xs={{ span: 3 }} lg={{ span: 0 }} style={{ width:'50px' }} className="logo" ></Col>
                         <Nav/>
                     </Col>
                     </Header>

@@ -51,7 +51,7 @@ class CommentInput extends Component {
     
     
     componentDidMount() {
-        this.textarea.focus();
+        // this.textarea.focus();
     }
     handleAuth(){
         if(this.props.handleAuth){
@@ -107,7 +107,7 @@ class CommentInput extends Component {
                             help={ this.state.content.errorMsg }
                         >
                             <TextArea placeholder="leave a comment" autosize={{ minRows: 2, maxRows: 6 }}
-                                ref={(textarea) => this.textarea = textarea} 
+                                // ref={(textarea) => this.textarea = textarea} 
                                 value={ this.state.content.value } 
                                 onChange={ this.handleContentChange.bind(this) }
                             />
