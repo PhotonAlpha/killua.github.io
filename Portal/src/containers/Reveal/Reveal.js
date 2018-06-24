@@ -51,8 +51,8 @@ export class RevealContainer extends Component {
 
     handleAuthentication(){
         let href = AUTHURL+'?hash='+this.state.git_url+'title='+Base64.encode(encodeURIComponent(this.state.issue_title));
-        console.log(href);
-        // window.location.href = href;
+        // console.log(href);
+        window.location.href = href;
     }
 
     render() {
