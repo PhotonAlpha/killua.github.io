@@ -51,8 +51,8 @@ export const DOCKER='backend/Docker';
 
 // export const CLIENT_ID = "MjJmMzNiN2Y0M2VjOWFlNmQwYzk="; // for local
 // export const CLIENT_SECRET = "Mjg4OTc5OTI1NjE4MDZjMTFkYmYxNGYyMzFkYzZjMzFhZmE5ODVlNQ=="; // for local
-const CLIENT_ID = "OWMwNDUzNzBhMGZlZTBiZWI3Njg=";
-const CLIENT_SECRET = "OTI2NDcwOWY0MzY5NzBiYThjNDBjMjFjNTg4NDIzZTgyZDMzNjQzYg==";
+export const CLIENT_ID = "OWMwNDUzNzBhMGZlZTBiZWI3Njg=";
+export const CLIENT_SECRET = "OTI2NDcwOWY0MzY5NzBiYThjNDBjMjFjNTg4NDIzZTgyZDMzNjQzYg==";
 const redirect_uri = `${window.location.protocol}//${window.location.hostname}${window.location.port? ':'+window.location.port: ''}/auth`;
 export const AUTHURL=` https://github.com/login/oauth/authorize?client_id=${Base64.decode(CLIENT_ID)}&scope=public_repo&redirect_uri=${redirect_uri}`;
 const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
