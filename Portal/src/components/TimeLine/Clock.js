@@ -1,25 +1,6 @@
-import React, {Component} from 'react';
-import ReactDom from 'react-dom';
-import {Link} from 'react-router-dom';
-import './Page1.css';
-import image from 'assets/hashiqi.jpg';
-import { Menu, Icon, Layout, Avatar, Breadcrumb, BackTop, Row, Col, Slider, Card, Button } from 'antd';
-const { Meta } = Card;
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
-const { Header, Content, Footer, Sider  } = Layout;
-import babaCar from 'assets/baba-car.png';
-import Trianglify, { randomColor } from 'trianglify';
+import React, { Component } from 'react'
 
-const gridStyle = {
-    width: '100%',
-    textAlign: 'center',
-};
-export default class Page1 extends Component {
-    constructor(props) {
-        super(props);
-    }
-    
+export default class Clock extends Component {
     componentDidMount() {
         // console.log('canvas', this.canv)
         this._timer = setInterval(() => 
@@ -29,7 +10,7 @@ export default class Page1 extends Component {
         clearInterval(this._timer);
     }
 
-    degToRad(degree){
+    _degToRad(degree){
         var factor = Math.PI/180;
         return degree*factor;
     }
@@ -63,32 +44,29 @@ export default class Page1 extends Component {
         ctx.fillRect(0, 0, 250, 250);
         //Hours
         ctx.beginPath();
-        ctx.arc(125,125,100, this.degToRad(270), this.degToRad((hrs*30)-90));
+        ctx.arc(125,125,100, this._degToRad(270), this._degToRad((hrs*30)-90));
         ctx.stroke();
         //Minutes
         ctx.beginPath();
-        ctx.arc(125,125,85, this.degToRad(270), this.degToRad((smoothmin*6)-90));
+        ctx.arc(125,125,85, this._degToRad(270), this._degToRad((smoothmin*6)-90));
         ctx.stroke();
         //Seconds
         ctx.beginPath();
-        ctx.arc(125,125,70, this.degToRad(270), this.degToRad((smoothsec*6)-90));
+        ctx.arc(125,125,70, this._degToRad(270), this._degToRad((smoothsec*6)-90));
         ctx.stroke();
         //Date
-        ctx.font = "13px Helvetica";
+        ctx.font = "16px Helvetica";
         ctx.fillStyle = 'black'
         ctx.fillText(today, 67, 125);
         //Time
-        ctx.font = "13px Helvetica Bold";
+        ctx.font = "16px Helvetica Bold";
         ctx.fillStyle = 'black';
         ctx.fillText(time, 67, 140);
-
     }
-    
+
     render() {
-        console.log('render')
-        // this.renderTime()
         return (
-            <div id = 'page1' >
+            <div style={{ position: 'fixed' }} >
                 <canvas ref={ (canv)=>this.canv=canv } id="canvas" width="250" height="250" >ccc</canvas>
             </div>
         )

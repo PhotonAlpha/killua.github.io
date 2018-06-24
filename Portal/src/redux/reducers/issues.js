@@ -49,7 +49,7 @@ export function getBlogIssues(params) {
 }
 export function searchBlogIssues(params) {
     console.log('searchBlogIssues', params);
-    const SEARCH_ISSUE = `https://api.github.com/search/issues?q=${params}+type:issue+in:title+state:open+repo:photonalpha/blogs&sort=created&order=desc`+`&`+TOKEN;
+    const SEARCH_ISSUE = `https://api.github.com/search/issues?q=${encodeURIComponent(params)}+type:issue+in:title+state:open+repo:photonalpha/blogs&sort=created&order=desc`+`&`+TOKEN;
     const result = {
         types: [GET_ISSUE_REQUEST, GET_ISSUE_SUCCESS, GET_ISSUE_FAIL],
         promise: client => client.get(SEARCH_ISSUE)

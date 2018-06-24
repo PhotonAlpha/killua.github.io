@@ -27,7 +27,7 @@ export default class Reveal extends Component {
                 <Row>
                     <Col lg ={{ span:18 }} md={{ span:24 }} className='container-fluid markdown-body'>
                         <ReactMarkdown source={ Base64.decode(this.props.blogContent) } 
-                        renderers={{heading: HeadingRenderer}} 
+                        renderers={{heading: HeadingRenderer, link: LinkRenderer}} 
                         // transformImageUri={this.imgUtil}
                         />
                     </Col>
@@ -82,4 +82,8 @@ function HeadingRenderer(props) {
     }
     // var slug = text.toLowerCase().replace(/\W/g, '-')
     return React.createElement('h' + props.level, {id: text, align:content}, props.children)
+}
+function LinkRenderer(props) {
+    // console.log('LinkRenderer', props);
+    return <a href={props.href} target="_blank">{props.children}</a>
 }

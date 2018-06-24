@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Timeline, Button, Icon, Spin, Row, Col, Card, Avatar } from 'antd';
 
+import Clock from './Clock'
 import './TimeLine.css';
 
 const gridStyle = {
@@ -27,7 +28,7 @@ export default class SpringBoot extends Component {
         return (
             <div id='SpringBoot' className='container' >
                 <Row>
-                    <Col lg={{ span:24 }} xs={{ span:24 }} >
+                    <Col lg={{ span:18 }} xs={{ span:20 }} >
                         <Timeline>
                         {
                             this.props.repositoryTree.map((element, index) => {
@@ -41,8 +42,9 @@ export default class SpringBoot extends Component {
                         }
                         </Timeline>
                     </Col>
-                    {/* <Col lg={{ span:5, offset:1 }} xs={{ span:0 }}>
-                        <Card title="Open Source" >
+                    <Col lg={{ span:5, offset:1 }} xs={{ span:4 }}>
+                        <Clock />
+                        {/* <Card title="Open Source" >
                             <Card.Grid style={gridStyle}>
                                 <Meta
                                     title={ <a href='https://reactjs.org/'><Avatar src="https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png" />React</a> }
@@ -81,8 +83,8 @@ export default class SpringBoot extends Component {
                                     <a href="https://github.com/ant-design/ant-design-pro/" target="_blank"><Icon type="github" />Portal</a>
                                 </div>
                             </Card.Grid>
-                        </Card>
-                    </Col> */}
+                        </Card> */}
+                    </Col>
                 </Row>
                 
             </div>

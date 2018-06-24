@@ -57,6 +57,7 @@ class CommentAppContainer extends Component {
     }
     handleSubmitComment(comment) {
         let bodycontent = comment.content
+        console.log('handleSubmitComment',  comment.content)
         if (this.props.postComments && this.props.issueNo > 0) {
             this.props.postComments(this.props.issueNo, bodycontent, this.props.specify)
                 .then(() => {
