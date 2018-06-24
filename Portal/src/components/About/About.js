@@ -26,7 +26,10 @@ export default class About extends Component {
         // console.log('About render', this.props, this.state);
         return (
             <div className='container-fluid markdown-body' >
-                <ReactMarkdown source={ Base64.decode(this.props.blogContent?this.props.blogContent:'') } />
+                <ReactMarkdown 
+                source={ Base64.decode(this.props.blogContent?this.props.blogContent:'') }
+                renderers={{link: LinkRenderer}} 
+                 />
                 <a className="github-fork-ribbon" href="https://github.com/PhotonAlpha/photonalpha.github.io/tree/master/Portal" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
                 <div id = 'letter' onClick = { this.showModal.bind(this) } >
                     <div className="letter-image">
@@ -50,4 +53,9 @@ export default class About extends Component {
             </div>
         )
     }
+}
+
+function LinkRenderer(props) {
+    // console.log('LinkRenderer', props);
+    return <a href={props.href} target="_blank">{props.children}</a>
 }
