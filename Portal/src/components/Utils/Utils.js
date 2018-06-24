@@ -55,6 +55,6 @@ export const CLIENT_ID = "OWMwNDUzNzBhMGZlZTBiZWI3Njg=";
 export const CLIENT_SECRET = "OTI2NDcwOWY0MzY5NzBiYThjNDBjMjFjNTg4NDIzZTgyZDMzNjQzYg==";
 const redirect_uri = `${window.location.protocol}//${window.location.hostname}${window.location.port? ':'+window.location.port: ''}/auth`;
 export const AUTHURL=` https://github.com/login/oauth/authorize?client_id=${Base64.decode(CLIENT_ID)}&scope=public_repo&redirect_uri=${redirect_uri}`;
-const t = 'NmQ4ZGEyMDQ4ZmY3ODAyZjc1ZDViZGRmMTcwNjBjNWQ1NDU5NWRkZg==';
+const t = 'MGQ0MmI3ODNlZTRiMjgzZjBkMzc5Y2JjNjQ5ZjBmNjVmYjc2ZjQ4Mg==';
 export const TEMP_TOKEN = `access_token=`+Base64.decode(t);
 export const TEMP_TOKEN_AUTH = Base64.decode(t);

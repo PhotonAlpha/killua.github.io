@@ -43,16 +43,9 @@ export function getComments(issueNo) {
     console.log('getBlogIssues', issueNo);
     if(issueNo && issueNo>0){
         let token = localStorage.getItem('GT_ACCESS_TOKEN');
-        let config= {
+        const config= {
             headers: {
-                'Authorization': `token `+localStorage.getItem('GT_ACCESS_TOKEN')
-            }
-        }
-        if(!token){
-            config= {
-                headers: {
-                    'Authorization': `token ${TEMP_TOKEN_AUTH}`
-                }
+                'Authorization': `token ${TEMP_TOKEN_AUTH}`
             }
         }
         const result = {

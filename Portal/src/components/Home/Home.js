@@ -88,7 +88,7 @@ export default class Home extends Component {
                                 dataSource={ this.props.rareList }
                                 renderItem={item => (
                                 <List.Item>
-                                    <Card
+                                    <Card onClick={ this.handleClick.bind(this, item.git_sha, item.number, item.title) }
                                     hoverable={true}
                                     style={{ backgroundImage: 'url('+item.backgroundURI+')' }}
                                     >{item.body}</Card>
