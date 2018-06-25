@@ -95,3 +95,65 @@ constructor: con
 component: rccp
 container: rcredux impt bnd
 ``
+
+query issue with label
+```
+{
+  repository(name: "blogs", owner: "photonalpha") {
+    issues(last: 20, labels: ["rare", "BlogWorks"], states:OPEN, orderBy: {direction:DESC,field:CREATED_AT}) {
+      nodes {
+        body
+        id
+        title
+        url
+        state
+        createdAt
+        labels(last: 20) {
+          nodes {
+            name
+            url
+          }
+        }
+      }
+    }
+  }
+}
+
+
+```
+
+> Our GraphQL API currently doesn’t expose any recursive functionality. To achieve this, you’ll have to manually recurse on the tree entry objects. This query gets more information when the object is a Tree. You can also add ... on Blob { ... } if you want more information about blob tree entries.
+```
+{
+  repository(name: "blogs", owner: "photonalpha") {
+    object(expression: "master:") {
+      ... on Tree {
+        entries {
+          name
+          oid
+          type
+          object {
+            ... on Tree {
+              entries {
+                name
+                oid
+                type
+                object {
+                  ... on Tree {
+                    entries {
+                      name
+                      oid
+                      type
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+```
