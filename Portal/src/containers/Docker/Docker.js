@@ -25,7 +25,7 @@ export class DockerContainer extends Component {
             issue_title: title
         };
         const path = {  
-            pathname:'/reveal',  
+            pathname:`/reveal/${sha}/${decodeURIComponent(title)}`,
             state:data
         }
         history.push(path);

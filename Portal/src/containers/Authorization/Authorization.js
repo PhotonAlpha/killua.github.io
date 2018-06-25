@@ -39,13 +39,8 @@ export class Authorization extends Component {
                     history.push(path);
                 }else{
                     this._saveToken(access_token);
-                    const data = {
-                        git_url:hash,
-                        issue_title: decodeURIComponent(Base64.decode(title))
-                    };
                     const path = {  
-                        pathname:'/reveal',  
-                        state:data
+                        pathname:`/reveal/${hash}/${decodeURIComponent(Base64.decode(title))}`,
                     }
                     history.push(path);
                 }

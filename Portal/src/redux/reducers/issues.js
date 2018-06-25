@@ -58,4 +58,4 @@ export function searchBlogIssues(params) {
 }
 
 const TOKEN = TEMP_TOKEN;
-const BOLG_ISSUES = `https://api.github.com/repos/PhotonAlpha/blogs/issues?state=open&labels=rare&labels=BlogWorks`+`&`+TOKEN;
+const BOLG_ISSUES = `https://api.github.com/repos/PhotonAlpha/blogs/issues?state=open&labels=rare&labels=BlogWorks&direction=desc`+`&`+TOKEN;

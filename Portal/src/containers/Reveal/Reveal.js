@@ -19,27 +19,23 @@ export class RevealContainer extends Component {
         this.state = {
             git_url: '',
             issue_title: '',
-            number: 0
         }
     }
     
     componentWillMount() {
-        const queryParams = new URLSearchParams(this.props.location.search);
-        const data = this.props.location.state;
-        // console.log('queryParams', queryParams.get('hash'), data)
-        if(data){
-            const { git_url, issue_title, number } = data;
-            console.log('RevealContainer componentWillMount', data);
+        // const queryParams = new URLSearchParams(this.props.location.search);
+        // const data = this.props.location.state;
+        console.log('queryParams', this.props)
+        const restParams = this.props.match.params;
+        const git_url = restParams.hash;
+        const issue_title = restParams.title;
+        if(git_url && issue_title){
             this.setState({
                 git_url,
                 issue_title,
-                number
             },()=>{
                 this.props.getBlogData(git_url);
-                console.log('number', issue_title)
-                if(!(number && number>0)){
-                    this.props.searchBlogIssues(issue_title);
-                }
+                this.props.searchBlogIssues(issue_title);
             })
         }else{
             const path = {  

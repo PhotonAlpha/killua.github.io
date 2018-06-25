@@ -35,7 +35,7 @@ export class HomeContainer extends Component {
 			issue_title: title
         };
         const path = {  
-            pathname:'/reveal',  
+            pathname:`/reveal/${sha}/${decodeURIComponent(title)}`,
             state:data
         }
         history.push(path);
@@ -76,7 +76,7 @@ export class HomeContainer extends Component {
 					git_sha: blog?blog.sha:'',
 					number: item.number,
 					comments_url: item.comments_url,
-					created_at: item.created_at,
+					created_at: item.updated_at,
 					labels: _abels,
 					title: item.title,
 					body: item.body

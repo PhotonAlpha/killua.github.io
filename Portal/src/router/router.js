@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-// import { Route, Switch } from 'react-router-dom';
 
 import Bundle from './Bundle';
 import Loading from 'components/Loading/Loading';
@@ -37,24 +36,27 @@ const createComponent = (component) => (props) => (
 
 export default () => (
     <div>
-        <Route exact path="/" component={createComponent(Home)}/>
-        <Route path="/page1" component={createComponent(Page1)}/>
-        {/* <Route path="/counter" component={createComponent(Counter)}/> */}
-        {/* <Route path="/userinfo" component={createComponent(UserInfo)}/> */}
+        <Switch>
+            <Route exact path="/" component={createComponent(Home)} />
+            <Route path="/page1" component={createComponent(Page1)}/>
+            {/* <Route path="/counter" component={createComponent(Counter)}/> */}
+            {/* <Route path="/userinfo" component={createComponent(UserInfo)}/> */}
 
-        <Route path="/springboot" component={createComponent(SpringBoot)}/>
-        <Route path="/springcloud" component={createComponent(SpringCloud)}/>
-        <Route path="/docker" component={createComponent(Docker)}/>
-        <Route path="/archives" component={createComponent(Archives)}/>
-        <Route path="/wow" component={createComponent(Wow)}/>
-        <Route path="/python" component={createComponent(Python)}/>
-        <Route path="/about" component={createComponent(About)}/>
-        <Route path="/auth" component={createComponent(Authenticate)}/>
+            <Route path="/springboot" component={createComponent(SpringBoot)}/>
+            <Route path="/springcloud" component={createComponent(SpringCloud)}/>
+            <Route path="/docker" component={createComponent(Docker)}/>
+            <Route path="/archives" component={createComponent(Archives)}/>
+            <Route path="/wow" component={createComponent(Wow)}/>
+            <Route path="/python" component={createComponent(Python)}/>
+            <Route path="/about" component={createComponent(About)}/>
+            <Route path="/auth" component={createComponent(Authenticate)}/>
 
-        {/* <Route path="/reveal" component={createComponent(Reveal)}/> */}
-        <Route path="/reveal" component={Reveal}/>
-        
-        <Route path="/404" component={createComponent(NotFound)}/>
+            {/* <Route path="/reveal" component={createComponent(Reveal)}/> */}
+            <Route path="/reveal/:hash/:title" component={Reveal}/>
+            
+            <Route path="/404" component={createComponent(NotFound)}/>
+            <Route component={createComponent(NotFound)} />
+        </Switch>
     </div>
     // <div>
     //     <Header>
