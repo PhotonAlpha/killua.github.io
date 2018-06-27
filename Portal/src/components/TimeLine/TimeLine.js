@@ -23,6 +23,10 @@ export default class SpringBoot extends Component {
             this.props.handleClick(sha, title);
         }
     }
+    _splitWithTimeZone(date){
+        const tzoffset = (new Date()).getTimezoneOffset() * 60000;//offset in milliseconds var localISOTime 
+        return (new Date(date - tzoffset)).toISOString().slice(0,10); 
+    }
 
     render() {
         return (
@@ -35,7 +39,7 @@ export default class SpringBoot extends Component {
                                 return (
                                     <Timeline.Item key = {index} 
                                         onClick={ this.handleClick.bind(this, element.sha, element.name) } >
-                                        <Icon type="caret-left" />{new Date(element.date).toISOString().slice(0, 10)} {element.name} 
+                                        <Icon type="caret-left" />{ this._splitWithTimeZone(element.date) } {element.name} 
                                     </Timeline.Item>
                                 )
                             })
