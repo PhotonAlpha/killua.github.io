@@ -33,12 +33,10 @@ export class AboutContainer extends Component {
         });
     }
     handleDialogUpdate(authorizationStore){
-        console.log('handleDialogUpdate', authorizationStore)
         const {message , isLoading, errorMsg} = authorizationStore;
         // this.setState(
         //     ...state
         // )
-        console.log(!!(!errorMsg && !isLoading && message))
         if(!errorMsg && !isLoading && message){
             this.setState({
                 visible: false,
@@ -51,7 +49,6 @@ export class AboutContainer extends Component {
 
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
-        console.log('AboutContainer', message , isLoading, errorMsg)
         return (
         <div id='aboutPage'>
             {

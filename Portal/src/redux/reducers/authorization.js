@@ -47,7 +47,7 @@ export function getResumeInfo() {
     return result;
 }
 export function getUserInfo(privKey = false) {
-    console.log('getUserInfo', privKey)
+    // console.log('getUserInfo', privKey)
     let config= {
         headers: {
             'Authorization': `token `+localStorage.getItem('GT_ACCESS_TOKEN')
@@ -73,7 +73,7 @@ export function postAuth(code) {
         client_secret: Base64.decode(CLIENT_SECRET)
     }
     const content = `code=${code}&client_id=${Base64.decode(CLIENT_ID)}&client_secret=${Base64.decode(CLIENT_SECRET)}`;
-    console.log('postAuth', content)
+    // console.log('postAuth', content)
     const result = {
         types: [GET_AUTH_REQUEST, GET_AUTH_SUCCESS, GET_AUTH_FAIL],
         promise: client => client.post(POST_AUTH, content)

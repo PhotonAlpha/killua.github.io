@@ -1,24 +1,8 @@
 import React, { Component } from 'react';
-import Comment from './Comment';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import { List, Avatar } from 'antd';
 
-const data = [
-    {
-      title: 'LiYe107 commented 7 days ago',
-    },
-    {
-      title: 'Ant Design Title 2',
-    },
-    {
-      title: 'Ant Design Title 3',
-    },
-    {
-      title: 'Ant Design Title 4',
-    },
-];
-  
 class CommentList extends Component {
     static propTypes = {
         comments: PropTypes.array,
@@ -41,9 +25,7 @@ class CommentList extends Component {
             const minute = 1000 * 60;
             const hour = minute * 60;
             const day = hour * 24;
-            const halfamonth = day * 15;
             const month = day * 30;
-            const now = new Date().getTime();
             const diffValue = +Date.now() - new Date(date);
             if(diffValue < 0){return;}
             const monthC =diffValue/month;

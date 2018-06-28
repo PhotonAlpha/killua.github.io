@@ -34,7 +34,6 @@ export class SpringBootContainer extends Component {
 
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
-        console.log('SpringBootContainer', message)
         return (
             <div>
             {

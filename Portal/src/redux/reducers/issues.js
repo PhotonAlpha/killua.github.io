@@ -12,7 +12,6 @@ const initialState = {
 }
 
 export default function reducer(state = initialState, action) {
-    // console.log('issue reducer', state, action)
     switch (action.type) {
         case GET_ISSUE_REQUEST:
             return {
@@ -40,7 +39,6 @@ export default function reducer(state = initialState, action) {
     }
 }
 export function getBlogIssues(params) {
-    console.log('getBlogIssues', params);
     const result = {
         types: [GET_ISSUE_REQUEST, GET_ISSUE_SUCCESS, GET_ISSUE_FAIL],
         promise: client => client.get(BOLG_ISSUES)
@@ -48,7 +46,6 @@ export function getBlogIssues(params) {
     return result;
 }
 export function searchBlogIssues(params) {
-    console.log('searchBlogIssues', params);
     const SEARCH_ISSUE = `https://api.github.com/search/issues?q=${encodeURIComponent(params)}+type:issue+in:title+state:open+repo:photonalpha/blogs&sort=created&order=desc`+`&`+TOKEN;
     const result = {
         types: [GET_ISSUE_REQUEST, GET_ISSUE_SUCCESS, GET_ISSUE_FAIL],

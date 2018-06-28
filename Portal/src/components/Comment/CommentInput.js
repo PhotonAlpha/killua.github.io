@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Icon, Input, Button, Rate, Checkbox, Avatar, Card } from 'antd';
+import { Form, Icon, Input, Button, Rate, Avatar, Card } from 'antd';
 const { TextArea } = Input;
 const FormItem = Form.Item;
 

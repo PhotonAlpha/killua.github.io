@@ -40,7 +40,7 @@ export default function reducer(state = initialState, action) {
 }
 
 export function getRepositoryTree() {
-    console.log('getRepositoryTree');
+    // console.log('getRepositoryTree');
     const result = {
         types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
         promise: client => client.get(BOLG_REPOSITORY)
@@ -48,7 +48,7 @@ export function getRepositoryTree() {
     return result;
 }
 export function getCatalogTree(params) {
-    console.log('getCatalogTree', CONTENTS_REPOSITORY.replace(':path', params))
+    // console.log('getCatalogTree', CONTENTS_REPOSITORY.replace(':path', params))
     const result = {
         types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
         promise: client => client.get(CONTENTS_REPOSITORY.replace(':path', params))
@@ -57,7 +57,7 @@ export function getCatalogTree(params) {
 }
 
 export function getBlogData(git_hash) {
-    console.log('getBlogData', git_hash, BLOG_BLOBS.replace(':hash', git_hash));
+    // console.log('getBlogData', git_hash, BLOG_BLOBS.replace(':hash', git_hash));
     const result = {
         types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
         promise: client => client.get(BLOG_BLOBS.replace(':hash', git_hash))
@@ -65,7 +65,7 @@ export function getBlogData(git_hash) {
     return result;
 }
 export function getAboutme() {
-    console.log('getAboutme');
+    // console.log('getAboutme');
     const result = {
         types: [GET_INFO_REQUEST, GET_INFO_SUCCESS, GET_INFO_FAIL],
         promise: client => client.get(ABOUT_REPOSITORY)

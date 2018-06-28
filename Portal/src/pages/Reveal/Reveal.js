@@ -12,23 +12,19 @@ class Reveal extends Component {
     constructor(props) {
         super(props);
         var data = this.props.location.state;  
-        console.log('Reveal', data)
         this.props.getBlogData(data);
     }
 
     componentDidMount() {
         var data = this.props.location.state;
         this.props.getBlogData(data);
-        console.log('componentDidMount~~~~~~~~`')
         var anchors = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
         if(anchors){
 
         }
-        console.log(0)
     }
     render() {
         const {message , isLoading, errorMsg} = this.props.common;
-        console.log('Reveal render', this.props);
         return (
             <div id='reveal'>
                 <Row>

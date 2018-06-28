@@ -40,9 +40,7 @@ export default function reducer(state = initialState, action) {
     }
 }
 export function getComments(issueNo) {
-    console.log('getBlogIssues', issueNo);
     if(issueNo && issueNo>0){
-        let token = localStorage.getItem('GT_ACCESS_TOKEN');
         const config= {
             headers: {
                 'Authorization': `token ${TEMP_TOKEN_AUTH}`
@@ -56,7 +54,6 @@ export function getComments(issueNo) {
     }
 }
 export function postComments(issueNo, comment, privKey = false) {
-    console.log('postComments', comment);
     if(issueNo && issueNo>0){
         let config= {
             headers: {

@@ -54,7 +54,7 @@ export class RevealContainer extends Component {
     render() {
         const {message , isLoading, errorMsg} = this.props.blogStore;
         const issueMessage = this.props.issueStore.message;
-        console.log(issueMessage)
+        // console.log(issueMessage)
         let issueNo = this.state.number;
         if(Array.isArray(issueMessage.items) && issueMessage.items.length > 0){
             let item = issueMessage.items[0];

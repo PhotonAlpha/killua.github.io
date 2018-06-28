@@ -24,15 +24,18 @@ class CommentAppContainer extends Component {
         specify: false
     };
     componentWillReceiveProps(nextProps) {
-        console.log('componentWillReceiveProps', nextProps.issueNo, this.props.issueNo)
+        // console.log('componentWillReceiveProps', nextProps.issueNo, this.props.issueNo)
         if(nextProps.issueNo != this.props.issueNo) {
             if(nextProps.issueNo > 0){
                 this._initComments(nextProps.issueNo)
             }
         }
+        if(!nextProps.issueNo){
+            this.props.commentStore.message={};
+        }
     }
     componentWillMount() {
-        console.log('componentWillMount' , this.props)
+        // console.log('componentWillMount' , this.props)
         if(this.props.getUserInfo){
             if(this.props.specify === true){
                 this.props.getUserInfo(this.props.specify);
@@ -45,7 +48,7 @@ class CommentAppContainer extends Component {
         }
     }
     _initComments(issueNo) {
-        console.log('_initComments', issueNo)
+        // console.log('_initComments', issueNo)
         this.props.getComments(issueNo);
     }
     
@@ -57,11 +60,11 @@ class CommentAppContainer extends Component {
     }
     handleSubmitComment(comment) {
         let bodycontent = comment.content
-        console.log('handleSubmitComment',  comment.content)
+        // console.log('handleSubmitComment',  comment.content)
         if (this.props.postComments && this.props.issueNo > 0) {
             this.props.postComments(this.props.issueNo, bodycontent, this.props.specify)
                 .then(() => {
-                    console.log('postComments');
+                    // console.log('postComments');
                     this.props.getComments(this.props.issueNo);
                 })
         }
@@ -70,6 +73,7 @@ class CommentAppContainer extends Component {
     render() {
         const { isLoading, errorMsg} = this.props.commentStore;
         let { message } = this.props.commentStore;
+        // console.log('message~~~', message)
         if(!Array.isArray(message)){
             message= [];
         }
